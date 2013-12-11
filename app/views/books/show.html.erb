@@ -16,3 +16,19 @@
      <% end %>
 
    </table>
+
+
+   <h3>New Review</h3>
+   <form action="<%= book_reviews_url(@book.id) %>" method="POST">
+     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
+
+     <label>Title
+     <input type="text" name="review[title]"></input>
+     </label>
+     <br>
+     <label>Body
+     <input type="password" name="review[body]"></input>
+     </label>
+
+     <input type="submit" value="Review!"></input>
+   </form>

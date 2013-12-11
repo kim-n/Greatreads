@@ -13,3 +13,11 @@ Users can make posts
 Books index link to all books with isbn as :book_id
 
 Book show pages link to user show pages
+
+Users can make book reviews
+- Added reviews controller, model and table
+- Removed post controller, model and table
+
+Users can make reviews through book show page
+- Book show pages show reviews
+- Book show page holds form for new reviews
