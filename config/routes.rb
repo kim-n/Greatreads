@@ -1,7 +1,8 @@
 GoodReadsClone::Application.routes.draw do
-  resources :users
+  resources :users, :only => [:index, :create, :show, :new]
   resource :session, :only => [:create, :destroy]
   # get 'login', :to => 'sessions#new'
+  resources :books, :only => [:index, :show]
 
   root :to => "sessions#new"
 

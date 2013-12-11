@@ -3,3 +3,6 @@ Kimberly Narine
 
 Can create new users, users can log in, log out
 - Added user model, user controller, session controller
+
+Can create view all books or books/isbn
+- Added books controller, model and database

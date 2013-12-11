@@ -1,0 +1,10 @@
+<table>
+  <tr>
+  <% @books.each do |book| %>
+    <th><%= book.title %></th>
+    <td><%= book.author %></td>
+    <td><%= book.isbn %></td>
+    <td><img src="<%= book.pic %>" width="50"></td>
+  <% end %>
+  </tr>
+</table>
