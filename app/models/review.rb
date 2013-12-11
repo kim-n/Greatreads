@@ -1,7 +1,7 @@
-class Post < ActiveRecord::Base
-  attr_accessible :title, :body, :book_id
+class Review < ActiveRecord::Base
+  attr_accessible :book_id, :user_id, :body, :title
 
-  validates :body, :book, :user, presence: true
+  validates :book_id, :user, :body, presence: true
 
   belongs_to(
     :user,
@@ -16,6 +16,5 @@ class Post < ActiveRecord::Base
     foreign_key: :book_id,
     primary_key: :id
   )
-
 
 end

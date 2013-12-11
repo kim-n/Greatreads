@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many(
-    :posts,
-    class_name: "Post",
+    :reviews,
+    class_name: "Review",
     foreign_key: :user_id,
     primary_key: :id
   )

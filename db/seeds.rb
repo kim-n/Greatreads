@@ -11,6 +11,7 @@ b2 = Book.create(title:"Harry Popper", author: "J.K. Rowling", pic: "https://d20
 u1 = User.create(email: "kim@berly", name: "kimberly narine", password: "password")
 u2 = User.create(email: "k", name: "kim nar", password: "password")
 
-p1 = u1.posts.create(title:"u1", body:"post 1", book_id: b1.id)
-p2 = u1.posts.create(title:"u1", body:"post 2", book_id: b2.id)
-p3 = u2.posts.create(title:"u2", body:"post 1", book_id: b1.id)
+p1 = u1.reviews.create(title:"u1", body:"post 1", book_id: b1.id)
+p2 = u1.reviews.create(title:"u1", body:"post 2", book_id: b2.id)
+p3 = u2.reviews.create(title:"u2", body:"post 1", book_id: b1.id)
+
