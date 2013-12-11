@@ -1,4 +1,10 @@
 GoodReadsClone::Application.routes.draw do
+  resources :users
+  resource :session, :only => [:create, :destroy]
+  # get 'login', :to => 'sessions#new'
+
+  root :to => "sessions#new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
