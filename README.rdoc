@@ -1,2 +1,5 @@
 Goodreads Clone
 Kimberly Narine
+
+Can create new users, users can log in, log out
+- Added user model, user controller, session controller
