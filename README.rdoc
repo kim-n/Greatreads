@@ -4,5 +4,12 @@ Kimberly Narine
 Can create new users, users can log in, log out
 - Added user model, user controller, session controller
 
-Can create view all books or books/isbn
-- Added books controller, model and database
+Can view all books or books/isbn
+- Added books controller, model and table
+
+Users can make posts
+- Added post controller, model and table
+
+Books index link to all books with isbn as :book_id
+
+Book show pages link to user show pages

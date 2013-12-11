@@ -4,3 +4,15 @@
    <%= @book.isbn %>
    <img src="<%= @book.pic %>" width="50">
 
+   <br>Reviews:
+   <table>
+
+     <% @posts.each do |post| %>
+     <tr>
+       <th><%= post.title %></th>
+       <td><%= post.body %></td>
+       <td><a href="/users/<%= post.userid %>"><%= post.username %></a></td>
+      </tr>
+     <% end %>
+
+   </table>
