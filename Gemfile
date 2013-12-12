@@ -25,6 +25,12 @@ group :development do
   gem "binding_of_caller"
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'shoulda-matchers'
+end
+
 gem 'bcrypt-ruby', require: 'bcrypt'
 
 gem 'jquery-rails'

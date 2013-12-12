@@ -1,6 +1,9 @@
 Goodreads Clone
 Kimberly Narine
 
+
+2013.DEC.11
+-----------
 Can create new users, users can log in, log out
 - Added user model, user controller, session controller
 
@@ -21,3 +24,6 @@ Users can make book reviews
 Users can make reviews through book show page
 - Book show pages show reviews
 - Book show page holds form for new reviews
+
+Added Rspec test for existing models
+- Used shoudla-matchers gem for testing validation and association
