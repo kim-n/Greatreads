@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
 
+  before_filter :require_current_user!
+
   def index
     @books = Book.all
     render :index

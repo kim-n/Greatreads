@@ -5,8 +5,11 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 
+# get info from remote site
+require 'nokogiri'
+require 'open-uri'
 
 # Gems used only for assets and not required
 # in production environments by default.

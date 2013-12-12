@@ -1,5 +1,7 @@
 class ClubsController < ApplicationController
 
+  before_filter :require_current_user!
+
   def index
     @clubs = Club.all
     render :index

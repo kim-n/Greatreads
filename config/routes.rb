@@ -1,7 +1,7 @@
 GoodReadsClone::Application.routes.draw do
   resources :users, :only => [:index, :create, :show, :new]
-  resource :session, :only => [:create, :destroy]
-  # get 'login', :to => 'sessions#new'
+  resource :session, :only => [:create, :destroy, :new]
+  get 'setupdb', :to => 'home#setupdb'
   resources :books, :only => [:index, :show] do
     resources :reviews, :only => [:create]
   end
@@ -9,7 +9,8 @@ GoodReadsClone::Application.routes.draw do
     resources :posts, :only => [:create]
   end
 
-  root :to => "sessions#new"
+
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
