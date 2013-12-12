@@ -3,9 +3,17 @@
    <%= @book.author %>
    <%= @book.isbn %>
    <img src="<%= @book.pic %>" width="50">
-<br></br>
+<br>
 <button>Like!</button>
 <button>DisLike!</button>
+
+<% if @wish.nil? %>
+<%= button_to "+Wish", book_wishLists_url(@book) %>
+<% else %>
+<%= button_to "+Unwish", book_wishList_url(@book,@wish.id), method: :delete%>
+<% end %>
+
+
    <br>Reviews:
    <table>
 

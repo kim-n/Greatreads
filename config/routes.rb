@@ -1,9 +1,12 @@
 GoodReadsClone::Application.routes.draw do
   resources :users, :only => [:index, :create, :show, :new]
-  resource :session, :only => [:create, :destroy, :new]
-  # get 'setupdb', :to => 'home#setupdb'
+  resource :session, :only => [:create, :destroy, :new] do
+    post 'mail_request'
+  end
+  get 'request', :to => 'sessions#request_entry'
   resources :books, :only => [:index, :show] do
     resources :reviews, :only => [:create]
+    resources :wishLists, :only => [:create, :destroy]
   end
   resources :clubs, :only => [:index, :create, :show, :new] do
     resources :posts, :only => [:create]

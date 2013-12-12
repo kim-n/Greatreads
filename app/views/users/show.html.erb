@@ -1,7 +1,17 @@
 <%= @user.email %>
 <%= @user.name %>
 
+<br>
+Posts:
+<table>
+<% @wishBooks.each do |book| %>
+<tr>
+  <td><a href="<%= book_url(book.isbn) %>"><%= book.title %></a></td>
+ </tr>
+<% end %>
+</table>
 
+<br>
 Reviews:
 <table>
 <% @reviews.each do |review| %>
@@ -13,7 +23,7 @@ Reviews:
 <% end %>
 </table>
 
-
+<br>
 Posts:
 <table>
 <% @posts.each do |post| %>

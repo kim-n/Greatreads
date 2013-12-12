@@ -1,4 +1,4 @@
-<form action="<%= session_url %>" method="POST">
+<form action="<%= mail_request_session_url %>" method="POST">
   <input type="hidden"
     name="authenticity_token"
     value="<%= form_authenticity_token %>">
@@ -9,14 +9,12 @@
   </label>
   <br>
 
-  <label>Password
-  <input type="password" name="user[password]"></input>
+  <label>Name
+  <input type="text" name="user[name]"></input>
   </label>
   <br>
 
-  <input type="submit" value="Log In"></input>
+  <input type="submit" value="Request"></input>
 </form>
-
-<%= link_to "Request", request_url %>
 
 

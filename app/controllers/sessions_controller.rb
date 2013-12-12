@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :require_no_current_user!, :only => [:create, :new]
+  before_filter :require_no_current_user!, :only => [:create, :new, :request_entry, :mail_request]
   before_filter :require_current_user!, :only => [:destroy]
 
   def create
@@ -23,5 +23,17 @@ class SessionsController < ApplicationController
 
   def new
     render :new
+  end
+
+  def request_entry
+    render :request
+  end
+
+  def mail_request
+    user = User.create(params[:user])
+    msg = UserMailer.request_confirm(user)
+    msg.deliver!
+
+    redirect_to root_url
   end
 end

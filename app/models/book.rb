@@ -14,7 +14,7 @@ class Book < ActiveRecord::Base
     foreign_key: :book_id,
     primary_key: :id
   )
-  
+
   has_many(
     :club_pairngs,
     class_name: "ClubBook",
@@ -22,5 +22,12 @@ class Book < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :book
   )
-  
+
+  has_many(
+    :wish_items,
+    class_name: "WishList",
+    foreign_key: :book_id,
+    primary_key: :id,
+    inverse_of: :book
+  )
 end

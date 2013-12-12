@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password
 
-  validates :email, :name, :session_token, presence: true
+  validates :email, :session_token, presence: true
   validates :password_digest, :presence => { :message => "Password can't be blank" }
   # validates :password, :length => { :minimum => 6, :allow_nil => true }
 
@@ -28,6 +28,15 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :wish_items,
+    class_name: "WishList",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :user
+  )
+
+  has_many :wish_books, through: :wish_items, source: :book
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

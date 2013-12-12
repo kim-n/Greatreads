@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131212033236) do
+ActiveRecord::Schema.define(:version => 20131212221029) do
 
   create_table "books", :force => true do |t|
     t.string   "title",      :null => false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20131212033236) do
   create_table "users", :force => true do |t|
     t.string   "email",           :null => false
     t.string   "password_digest", :null => false
-    t.string   "name",            :null => false
+    t.string   "name"
     t.string   "session_token",   :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -72,5 +72,14 @@ ActiveRecord::Schema.define(:version => 20131212033236) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["session_token"], :name => "index_users_on_session_token"
+
+  create_table "wish_lists", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "book_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "wish_lists", ["user_id", "book_id"], :name => "index_wish_lists_on_user_id_and_book_id", :unique => true
 
 end
