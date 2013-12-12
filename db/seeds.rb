@@ -15,3 +15,7 @@ p1 = u1.reviews.create(title:"u1", body:"post 1", book_id: b1.id)
 p2 = u1.reviews.create(title:"u1", body:"post 2", book_id: b2.id)
 p3 = u2.reviews.create(title:"u2", body:"post 1", book_id: b1.id)
 
+
+u1.created_clubs.create(title: "First Club")
+u1.created_clubs.create(title: "Second Club")
+u2.created_clubs.create(title: "My First Club")

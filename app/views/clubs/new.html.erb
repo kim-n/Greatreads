@@ -1,0 +1,11 @@
+<h3>Create Club</h3>
+<form action="<%= clubs_url %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
+
+  <label>Title
+  <input type="text" name="club[title]"></input>
+  </label>
+  <br>
+
+  <input type="submit" value="Create Club!"></input>
+</form>

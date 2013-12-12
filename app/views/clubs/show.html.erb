@@ -1,0 +1,38 @@
+<a href="<%= clubs_url %>">All Club</a><br>
+
+Name: <%= @club.title %><br>
+Creator: <%= @club.creator.name %>
+
+
+<h3>New Post</h3>
+<form action="<%= club_posts_url(@club.id) %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
+
+  <label>Title
+  <input type="text" name="post[title]"></input>
+  </label>
+  <br>
+  <label>Body
+  <input type="text" name="post[body]"></input>
+  </label>
+  <br>
+  <label>Book
+  <input type="text" name="post[book_id]"></input>
+  </label>
+
+  <input type="submit" value="Post!"></input>
+</form>
+
+
+<br>Reviews:
+<table>
+
+  <% @posts.each do |post| %>
+  <tr>
+    <th><%= post.title %></th>
+    <td><%= post.body %></td>
+    <td><a href="/users/<%= post.user_id %>"><%= post.user_id %></a></td>
+   </tr>
+  <% end %>
+
+</table>

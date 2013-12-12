@@ -7,4 +7,11 @@ class Book < ActiveRecord::Base
     foreign_key: :book_id,
     primary_key: :id
   )
+
+  has_many(
+    :posts,
+    class_name: "Post",
+    foreign_key: :book_id,
+    primary_key: :id
+  )
 end

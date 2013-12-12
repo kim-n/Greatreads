@@ -14,6 +14,21 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :created_clubs,
+    class_name: "Club",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :posts,
+    class_name: "Post",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
+
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
 
