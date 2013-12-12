@@ -17,7 +17,9 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
-    @posts = @club.posts
+    @posts = @club.posts.select("posts.*, users.name AS username").joins("INNER JOIN users ON posts.user_id=users.id")
+    @books = Book.all
+    @clubbooks = @club.books
     render :show
   end
 

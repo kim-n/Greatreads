@@ -14,4 +14,13 @@ class Book < ActiveRecord::Base
     foreign_key: :book_id,
     primary_key: :id
   )
+  
+  has_many(
+    :club_pairngs,
+    class_name: "ClubBook",
+    foreign_key: :book_id,
+    primary_key: :id,
+    inverse_of: :book
+  )
+  
 end

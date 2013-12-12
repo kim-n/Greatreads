@@ -8,8 +8,10 @@ describe Club do
   it { should allow_mass_assignment_of(:title) }
   
   describe "associations" do
-    it { should belong_to(:creator)}
-    it { should have_many(:posts)}
+    it { should belong_to(:creator) }
+    it { should have_many(:posts) }
+    it { should have_many(:book_pairings) }
+    it { should have_many(:books) }
   end
 
 end

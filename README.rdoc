@@ -1,6 +1,6 @@
 Goodreads Clone
 Kimberly Narine
-
+===========
 
 2013.DEC.11
 -----------
@@ -27,3 +27,6 @@ Users can make reviews through book show page
 
 Added Rspec test for existing models
 - Used shoudla-matchers gem for testing validation and association
+
+Added ClubBook join table to asscoiate books to club
+- Added ClubBook table and model

@@ -1,7 +1,7 @@
 <a href="<%= clubs_url %>">All Club</a><br>
 
 Name: <%= @club.title %><br>
-Creator: <%= @club.creator.name %>
+Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></a>
 
 
 <h3>New Post</h3>
@@ -14,12 +14,18 @@ Creator: <%= @club.creator.name %>
   <br>
   <label>Body
   <input type="text" name="post[body]"></input>
-  </label>
-  <br>
-  <label>Book
-  <input type="text" name="post[book_id]"></input>
+	<br>
+  </label>Book:
+	<select name="post[book_id]">
+		<% @clubbooks.each do |book| %>
+		<option value="<%= book.id %>"><%= book.title %></option>
+		<% end %>
+	</select>
+	
   </label>
 
+
+	
   <input type="submit" value="Post!"></input>
 </form>
 
@@ -31,8 +37,9 @@ Creator: <%= @club.creator.name %>
   <tr>
     <th><%= post.title %></th>
     <td><%= post.body %></td>
-    <td><a href="/users/<%= post.user_id %>"><%= post.user_id %></a></td>
+    <td><a href="<%= user_url(post.user_id) %>"><%= post.username %></a></td>
    </tr>
   <% end %>
 
 </table>
+
