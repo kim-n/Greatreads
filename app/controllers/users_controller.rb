@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    @reviews = @user.reviews.select("reviews.*, books.title AS bookname, books.isbn AS bookisbn").joins("INNER JOIN books ON reviews.book_id=books.id")
+    @posts = @user.posts.select("posts.*, books.title AS bookname").joins("INNER JOIN books ON posts.book_id=books.id")
     render :show
   end
 

@@ -1,14 +1,10 @@
 class HomeController < ApplicationController
 
-  before_filter :require_current_user!, only: [:index]
+  before_filter :require_current_user!
 
   def index
     @books = Book.all
     @clubs = Club.all
   end
 
-  def setupdb
-
-    @fin = "Finished"
-  end
 end

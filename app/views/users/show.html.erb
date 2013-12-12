@@ -1,2 +1,26 @@
 <%= @user.email %>
 <%= @user.name %>
+
+
+Reviews:
+<table>
+<% @reviews.each do |review| %>
+<tr>
+  <th><a href="<%= book_url(review.bookisbn) %>"><%= review.bookname %></a></th>
+  <td><%= review.title %></td>
+  <td><%= review.body %></td>
+ </tr>
+<% end %>
+</table>
+
+
+Posts:
+<table>
+<% @posts.each do |post| %>
+<tr>
+  <th><%= post.bookname %></th>
+  <td><a href="<%= club_url(post.club) %>"><%= post.title %></a></td>
+  <td><%= post.body %></td>
+ </tr>
+<% end %>
+</table>

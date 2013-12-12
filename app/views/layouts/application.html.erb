@@ -10,7 +10,8 @@
 
   <nav style="background-color:red;display:block;text-align:right">
     <% if current_user%>
-      <header style="float:right;color:white;text-align:right;"><%= current_user.name %></header>
+      <header style="float:right;color:white;text-align:right;">
+        <a href="<%= user_url(current_user) %>"><%= current_user.name %></a></header>
       <header style="float:left;color:white;text-align:left;">
         <a href="<%= root_url %>">GoodReadsClone</a>
       </header>
