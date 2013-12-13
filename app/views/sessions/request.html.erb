@@ -1,20 +1,21 @@
-<form action="<%= mail_request_session_url %>" method="POST">
-  <input type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
-  </input>
+<article>
+  <form action="<%= mail_request_session_url %>" method="POST">
+    <input type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+    </input>
 
-  <label>Email
-  <input type="text" name="user[email]"></input>
-  </label>
-  <br>
+    <label>Email
+    <input type="text" name="user[email]"></input>
+    </label>
+    <br>
 
-  <label>Name
-  <input type="text" name="user[name]"></input>
-  </label>
-  <br>
+	  <label>Name
+	  <input type="text" name="user[name]"></input>
+	  </label>
+	  <br>
 
-  <input type="submit" value="Request"></input>
-</form>
-
+    <input id="#button" type="submit" value="Request"></input>
+  </form>
+</article>
 

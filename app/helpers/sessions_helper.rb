@@ -9,7 +9,7 @@ module SessionsHelper
   end
 
   def is_admin?
-    current_user.id == 1
+    current_user.admin != 0
   end
 
   def logout_current_user!
