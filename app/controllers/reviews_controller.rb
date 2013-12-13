@@ -8,12 +8,13 @@ class ReviewsController < ApplicationController
 
     @review.book_id = params[:book_id]
 
-    if @review.save
-      book = Book.find(params[:book_id])
-      redirect_to book_url(book.isbn)
-    else
-      render :json => "something went wrong"
+    unless @review.save
+      flash[:errors] = club.errors.full_messages
     end
+    
+    book = Book.find(params[:book_id])
+    redirect_to book_url(book.isbn)
+    
   end
 
   def no_double_review!

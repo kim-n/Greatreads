@@ -8,10 +8,6 @@ module SessionsHelper
     session[:session_token] = user.session_token
   end
 
-  def is_admin?
-    current_user.admin != 0
-  end
-
   def logout_current_user!
     current_user.reset_session_token!
     session[:session_token] = nil
@@ -23,5 +19,16 @@ module SessionsHelper
 
   def require_no_current_user!
     redirect_to user_url(current_user) unless current_user.nil?
+  end
+
+  def is_admin?
+    current_user.admin != 0
+  end
+  
+  def require_admin_status!
+    unless is_admin?
+      flash[:errors] = ["Must be admin to do that"]
+      redirect_to user_url(current_user) 
+    end
   end
 end

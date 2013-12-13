@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
   before_filter :require_current_user!
+  before_filter :require_admin_status!, only: [:create, :new]
 
   def index
     @books = Book.all

@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
 
   before_filter :require_current_user!
+  before_filter :require_admin_status!, only: [:new, :create]
 
   def index
     @clubs = Club.all
@@ -13,7 +14,8 @@ class ClubsController < ApplicationController
     if club.save
       redirect_to club_url(club)
     else
-      render :json => "error"
+      flash[:errors] = club.errors.full_messages
+      render :new
     end
   end
 

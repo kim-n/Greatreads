@@ -6,10 +6,10 @@ class PostsController < ApplicationController
     post = current_user.posts.new(params[:post])
     post.club_id = params[:club_id]
 
-    if post.save
-      redirect_to club_url(params[:club_id])
-    else
-      render :json => "error creating new post"
+    unless post.save
+      flash[:errors] = post.errors.full_messages
     end
+    
+    redirect_to club_url(params[:club_id])
   end
 end
