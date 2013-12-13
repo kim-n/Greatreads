@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash[:errors] = ["Emails don't match"]
-      redirect_to activate_users_url({activation_token: params[:id]})
+      redirect_to new_user_url({activation_token: params[:id]})
     end
 
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       @reviews = @user.reviews.select("reviews.*, books.title AS bookname, books.isbn AS bookisbn").joins("INNER JOIN books ON reviews.book_id=books.id")
       @posts = @user.posts.select("posts.*, books.title AS bookname").joins("INNER JOIN books ON posts.book_id=books.id")
       @wishes = @user.wish_books
-      @reads = @user.readBooks
+      @reads = @user.read_books
       render :show
     else
       redirect_to users_url

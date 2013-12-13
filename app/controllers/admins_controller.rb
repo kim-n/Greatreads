@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
-  before_filter :require_administrator!
 
+  before_filter :require_current_user!
+  before_filter :require_administrator!
 
   def users
     @users = User.valid_users

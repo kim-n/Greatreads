@@ -1,28 +1,46 @@
-<%= @user.email %>
+<section id="main">
+
+<h3><%= @user.email %></h3>
 <%= @user.name %>
 
-<br>
-Wish List:
 <table>
-<% @wishes.each do |wish| %>
-<tr>
-  <td><a href="<%= book_url(wish.book.isbn) %>"><%= wish.book.title %></a></td>
- </tr>
-<% end %>
+  <tr>
+
+    <td><h3>Read List:</h3></td>
+    <td><h3>Wish List:</h3></td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+      <% @reads.each do |book| %>
+      <tr>
+        <td><%= book.taste == 1 ? "^ " : "V "%><a href="<%= book_url(book.book.isbn) %>"><%= book.book.title %></a></td>
+       </tr>
+      <% end %>
+      </table>
+    </td>
+
+    <td>
+      <table>
+      <% @wishes.each do |wish| %>
+      <tr>
+        <td><a href="<%= book_url(wish.book.isbn) %>"><%= wish.book.title %></a></td>
+       </tr>
+      <% end %>
+      </table>
+
+      <br>
+    </td>
+
+  </tr>
 </table>
 
-<br>
-Read List:
-<table>
-<% @reads.each do |read| %>
-<tr>
-  <td><%= read.taste == 1 ? "^ " : "V "%><a href="<%= book_url(read.book.isbn) %>"><%= read.book.title %></a></td>
- </tr>
-<% end %>
-</table>
+
+
+
 
 <br>
-Reviews:
+<h3>Reviews:</h3>
 <table>
 <% @reviews.each do |review| %>
 <tr>
@@ -34,7 +52,7 @@ Reviews:
 </table>
 
 <br>
-Posts:
+<h3>Posts:</h3>
 <table>
 <% @posts.each do |post| %>
 <tr>
@@ -44,3 +62,4 @@ Posts:
  </tr>
 <% end %>
 </table>
+<sector>

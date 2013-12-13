@@ -44,8 +44,8 @@ class User < ActiveRecord::Base
     self.tastes.where(taste: 0).includes(:book)
   end
 
-  def readBooks
-    self.tastes.select("likes.*").where("likes.taste <> 0").includes(:book)
+  def read_books
+    self.tastes.where("likes.taste <> 0").includes(:book)
   end
 
   def self.valid_users
