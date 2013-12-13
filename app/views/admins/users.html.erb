@@ -1,16 +1,29 @@
 <section id="main">
-
+  <nav>
+    <a href="<%= users_admin_url %>">Users</a>
+    <a href="<%= clubs_admin_url %>">Clubs</a>
+    <a href="<%= requests_admin_url %>">Requests</a>
+  </nav>
+  <br>
 <section id="users">
 <table>
   <tr>
-    <th>User Name: </th>
-    <th>User Creator: </th>
+    <th>Name: </th>
+    <th>Email: </th>
   </tr>
   <% @users.each do |user| %>
   <tr>
+    <% if user.admin == 0 %>
+      <td>S</td>
+    <% elsif user.admin == 1 %>
+      <td>T</td>
+    <% else %>
+      <td>A</td>
+    <% end %>
     <td><a href="<%= user_url(user.id) %>"><%= user.name %></a></td>
     <td><%= user.email %></td>
 		<td><%= button_to "X", user_url(user.id), method: :delete %></td>
+
   </tr>
   <% end %>
 

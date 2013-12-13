@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20131213074516) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "likes", ["user_id", "book_id"], :name => "index_likes_on_user_id_and_book_id", :unique => true
+
   create_table "posts", :force => true do |t|
     t.integer  "club_id",    :null => false
     t.integer  "book_id",    :null => false
@@ -70,25 +72,16 @@ ActiveRecord::Schema.define(:version => 20131213074516) do
   add_index "reviews", ["book_id", "user_id"], :name => "index_reviews_on_book_id_and_user_id", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                          :null => false
-    t.string   "password_digest",                :null => false
+    t.string   "email",                           :null => false
+    t.string   "password_digest",                 :null => false
     t.string   "name"
-    t.string   "session_token",                  :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "admin",           :default => 0
+    t.string   "session_token",                   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "admin",           :default => -1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["session_token"], :name => "index_users_on_session_token"
-
-  create_table "wish_lists", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "book_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "wish_lists", ["user_id", "book_id"], :name => "index_wish_lists_on_user_id_and_book_id", :unique => true
 
 end

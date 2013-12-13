@@ -21,19 +21,19 @@ module SessionsHelper
     redirect_to user_url(current_user) unless current_user.nil?
   end
 
-  def is_admin?
-    current_user.admin != 0
+  def is_admin?(user)
+    user.admin > 0
   end
-  
+
   def require_admin_status!
-    unless is_admin?
+    unless is_admin?(current_user)
       flash[:errors] = ["Must be admin to do that"]
-      redirect_to user_url(current_user) 
+      redirect_to user_url(current_user)
     end
   end
-  
+
   def require_administrator!
-    unless (current_user.admin == 1)
+    unless (current_user.admin == 2)
       flash[:errors] = ["Must be site admin"]
       redirect_to root_url
     end

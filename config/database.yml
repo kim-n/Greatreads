@@ -6,8 +6,7 @@
 development:
   adapter: postgresql
   database: grc_dev
-  username: Kimberly
-  host: localhost
+  username: appacademy
 
 
 # Warning: The database defined as "test" will be erased and
@@ -16,6 +15,4 @@ development:
 test:
   adapter: postgresql
   database: grc_test
-  username: Kimberly
-  host: localhost
-
+  username: appacademy

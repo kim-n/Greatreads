@@ -40,6 +40,11 @@ nav {
   padding-right: 20px;
 }
 
+nav > a {
+  padding-right: 120px;
+  color:white;
+}
+
 nav:after {
   clear: both;
 }
@@ -77,5 +82,4 @@ nav div input {
 nav div input:hover {
   color: white;
 }
-
 

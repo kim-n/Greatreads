@@ -2,7 +2,7 @@
 <table></table>
 <h3><%= @book.title %></h3>
 <h5><%= @book.author %></h5>
-   
+
    <%= @book.isbn %>
    <img class="cover" src="<%= @book.pic %>" width="50">
 <br>
@@ -40,7 +40,16 @@
      <% end %>
    </table>
 
+   <% if @current_user_review %>
 
+     <h3>My Review</h3>
+      <table>
+        <tr>
+       <td><%= @current_user_review.title %></td>
+       <td><%= @current_user_review.body %></td>
+      </tr>
+    </table>
+    <% else %>
    <h3>New Review</h3>
    <form action="<%= book_reviews_url(@book.id) %>" method="POST">
      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
@@ -55,4 +64,6 @@
 
      <input type="submit" value="Review!"></input>
    </form>
+
+      <% end %>
  </section>

@@ -1,5 +1,7 @@
 <h3>New User</h3>
-<form action="<%= users_url %>" method="POST">
+<form action="<%= user_url(params[:activation_token]) %>" method="POST">
+  <input  type="hidden" name="_method" value="put">
+
   <label>Email
   <input type="text" name="user[email]"></input>
   </label>
@@ -8,8 +10,6 @@
   <input type="password" name="user[password]"></input>
   </label>
   <br>
-  <label>Name
-  <input type="text" name="user[name]"></input>
-  </label>
+
   <input type="submit" value="Create"></input>
 </form>

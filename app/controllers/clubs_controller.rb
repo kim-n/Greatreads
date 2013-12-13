@@ -20,19 +20,25 @@ class ClubsController < ApplicationController
   end
 
   def show
-    @club = Club.find(params[:id])
-    @posts = @club.posts.select("posts.*, users.name AS username, books.title AS bookname").joins("INNER JOIN users ON posts.user_id=users.id").joins("INNER JOIN books ON posts.book_id=books.id")
-    @books = Book.all
-    @clubbooks = @club.books
-    render :show
+    @club = Club.find_by_id(params[:id])
+
+    if @club
+      @posts = @club.posts.select("posts.*, users.name AS username, books.title AS bookname, books.isbn AS bookisbn").joins("INNER JOIN users ON posts.user_id=users.id").joins("INNER JOIN books ON posts.book_id=books.id")
+      @books = Book.all
+      @clubbooks = @club.books
+      render :show
+    else
+      redirect_to clubs_url
+    end
   end
 
   def new
     render :new
   end
-  
-  def destroy
 
+  def destroy
+    club = Club.find(params[:id])
+    club.destroy
 
     redirect_to clubs_admin_url
   end

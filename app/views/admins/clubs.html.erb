@@ -1,5 +1,10 @@
 <section id="main">
-
+  <nav>
+    <a href="<%= users_admin_url %>">Users</a>
+    <a href="<%= clubs_admin_url %>">Clubs</a>
+    <a href="<%= requests_admin_url %>">Requests</a>
+  </nav>
+  <br>
 <section id="clubs">
 <table>
   <tr>
@@ -9,7 +14,7 @@
   <% @clubs.each do |club| %>
   <tr>
     <td><a href="<%= club_url(club.id) %>"><%= club.title %></a></td>
-    <td><a href="<%= user_url(club.creator) %>"><%= club.creator.name %></a></td>
+    <td><%= club.creator.nil? ? "DELETED" : club.creator.name %></td>
 		<td><%= button_to "X", club_url(club.id), method: :delete %></td>
   </tr>
   <% end %>

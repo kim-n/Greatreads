@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password
+  # remove admin from attr_accessable
+  attr_accessible :email, :name, :password, :admin
 
   validates :email, :session_token, presence: true
   validates :password_digest, :presence => { :message => "Password can't be blank" }
   # validates :password, :length => { :minimum => 6, :allow_nil => true }
+  validates :admin, :inclusion  => { :in => [ -1, 0, 1, 2 ] }
 
   after_initialize :ensure_session_token
 
@@ -33,17 +35,29 @@ class User < ActiveRecord::Base
     class_name: "Like",
     foreign_key: :user_id,
     primary_key: :id
-  ) 
-  
+  )
+
   has_many :rated_books, through: :tastes, source: :book
-  
-  
+
+
   def wish_books
     self.tastes.where(taste: 0).includes(:book)
   end
-  
+
   def readBooks
     self.tastes.select("likes.*").where("likes.taste <> 0").includes(:book)
+  end
+
+  def self.valid_users
+    User.where("admin > -1")
+  end
+
+  def self.requests
+    User.where("admin = -1 AND created_at = updated_at")
+  end
+
+  def self.pending
+    User.where("admin = -1 AND created_at <> updated_at")
   end
 
   def self.find_by_credentials(email, password)

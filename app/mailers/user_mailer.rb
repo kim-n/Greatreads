@@ -10,7 +10,13 @@ class UserMailer < ActionMailer::Base
   def request_confirm(user)
     @user = user
     @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @user.email, subject: 'Request Recieved')
   end
+
+  def activation_email(user)
+     @user = user
+     @url  = new_user_url({activation_token: @user.session_token})
+     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+   end
 
 end

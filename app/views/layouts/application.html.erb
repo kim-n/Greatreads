@@ -15,16 +15,19 @@
       </header>
       <header id="logo">
         <a href="<%= root_url %>">GoodReadsClone</a>
+        <% if current_user.id == 1 %>
+          <%= link_to "ADMIN", home_admin_url %>
+        <% end %>
       </header>
         <%= button_to "Log Out", session_url, method: :delete %>
     <% else %>
       <header id="logo">GoodReadsClone</header>
     <% end %>
   </nav>
-	
+
 	<% if flash.now[:errors] %>
 	  <% flash.now[:errors].each do |error| %>
-	   <%= error %><br />	
+	   <%= error %><br />
 	  <% end %>
 	<% end %>
 
