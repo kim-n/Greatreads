@@ -6,15 +6,27 @@
    <%= @book.isbn %>
    <img class="cover" src="<%= @book.pic %>" width="50">
 <br>
-<button>Like!</button>
-<button>DisLike!</button>
 
-<% if @wish.nil? %>
-<%= button_to "+Wish", book_wishLists_url(@book) %>
-<% else %>
-<%= button_to "+Unwish", book_wishList_url(@book,@wish.id), method: :delete%>
-<% end %>
 
+<table class="rating">
+	<tr>
+		<% if @book_rating.nil? %>
+			<td><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></td>
+			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></td>
+			<td><%= button_to "+Wish", book_like_url(@book, {taste: "0"}) %></td>
+		<% elsif @book_rating.taste == 0%>
+			<td><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></td>
+			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></td>
+			<td><%= button_to "+Unwish", book_like_url(@book), method: :delete%></td>
+		<% elsif @book_rating.taste == 1 %>
+			<td><%= button_to "#{@like_count} Likes", book_like_url(@book), method: :delete %></td>
+			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></td>
+		<% elsif @book_rating.taste == -1 %>
+			<td><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></td>
+			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book), method: :delete %></td>
+		<% end %>
+	<tr>
+</table>
 
    <h3>Reviews:</h3>
    <table>

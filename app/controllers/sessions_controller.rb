@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   before_filter :require_no_current_user!, :only => [:create, :new, :request_entry, :mail_request]
   before_filter :require_current_user!, :only => [:destroy]
 

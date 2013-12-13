@@ -9,11 +9,13 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by_isbn(params[:id])
-    @wish = WishList.find_by_user_id_and_book_id(
-      current_user.id,
-      @book.id
-    )
+    @book_rating = Like.find_rating(current_user.id, @book.id)
+
+    
     @posts = @book.reviews.select("reviews.*, users.name AS username, users.id AS userid").joins("INNER JOIN users ON reviews.user_id=users.id")
+    
+    @like_count = @book.likes.count
+    @dislike_count = @book.dislikes.count
     render :show
   end
 end

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-
+  
+  before_filter :require_current_user!
+    
   def index
     @users = User.all
 
@@ -21,7 +23,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @reviews = @user.reviews.select("reviews.*, books.title AS bookname, books.isbn AS bookisbn").joins("INNER JOIN books ON reviews.book_id=books.id")
     @posts = @user.posts.select("posts.*, books.title AS bookname").joins("INNER JOIN books ON posts.book_id=books.id")
-    @wishBooks = @user.wish_books
+    @wishes = @user.wish_books
+    @reads = @user.readBooks
     render :show
   end
 

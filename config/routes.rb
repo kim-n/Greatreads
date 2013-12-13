@@ -5,6 +5,7 @@ GoodReadsClone::Application.routes.draw do
   end
   get 'request', :to => 'sessions#request_entry'
   resources :books, :only => [:index, :show] do
+    resource :like, :only => [:create, :destroy]
     resources :reviews, :only => [:create]
     resources :wishLists, :only => [:create, :destroy]
   end

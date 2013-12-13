@@ -29,14 +29,22 @@ class User < ActiveRecord::Base
   )
 
   has_many(
-    :wish_items,
-    class_name: "WishList",
+    :tastes,
+    class_name: "Like",
     foreign_key: :user_id,
-    primary_key: :id,
-    inverse_of: :user
-  )
-
-  has_many :wish_books, through: :wish_items, source: :book
+    primary_key: :id
+  ) 
+  
+  has_many :rated_books, through: :tastes, source: :book
+  
+  
+  def wish_books
+    self.tastes.where(taste: 0).includes(:book)
+  end
+  
+  def readBooks
+    self.tastes.select("likes.*").where("likes.taste <> 0").includes(:book)
+  end
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

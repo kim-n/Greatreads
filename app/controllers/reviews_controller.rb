@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
   before_filter :require_current_user!
   before_filter :no_double_review!
+  
   def create
     @review = current_user.reviews.new(params[:review])
 
