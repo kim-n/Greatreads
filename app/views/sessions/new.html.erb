@@ -1,22 +1,23 @@
-<form action="<%= session_url %>" method="POST">
-  <input type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
-  </input>
+<article>
+  <form action="<%= session_url %>" method="POST">
+    <input type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+    </input>
 
-  <label>Email
-  <input type="text" name="user[email]"></input>
-  </label>
-  <br>
+    <label>Email
+    <input type="text" name="user[email]"></input>
+    </label>
+    <br>
 
-  <label>Password
-  <input type="password" name="user[password]"></input>
-  </label>
-  <br>
+    <label>Password
+    <input id="#button" type="password" name="user[password]"></input>
+    </label>
+    <br>
 
-  <input type="submit" value="Log In"></input>
-</form>
+    <input id="#button" type="submit" value="Log In"></input>
+  </form>
 
-<%= link_to "Request", request_url %>
+  <%= link_to "Request", request_url %>
 
-
+</article>

@@ -8,18 +8,18 @@
 </head>
 <body>
 
-  <nav style="background-color:red;display:block;text-align:right">
+  <nav>
     <% if current_user%>
       <header style="float:right;color:white;text-align:right;">
-        <a href="<%= user_url(current_user) %>"><%= current_user.name %></a></header>
-      <header style="float:left;color:white;text-align:left;">
+        <a href="<%= user_url(current_user) %>"><%= current_user.name %></a>
+      </header>
+      <header id="logo">
         <a href="<%= root_url %>">GoodReadsClone</a>
       </header>
-<%= button_to "Log Out", session_url, method: :delete %>
+        <%= button_to "Log Out", session_url, method: :delete %>
     <% else %>
-    <h3 style="color:white;text-align:left;">GoodReadsClone</h3>
+      <header id="logo">GoodReadsClone</header>
     <% end %>
-
   </nav>
 
 <%= yield %>

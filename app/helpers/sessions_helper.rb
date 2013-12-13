@@ -8,6 +8,10 @@ module SessionsHelper
     session[:session_token] = user.session_token
   end
 
+  def is_admin?
+    current_user.id == 1
+  end
+
   def logout_current_user!
     current_user.reset_session_token!
     session[:session_token] = nil

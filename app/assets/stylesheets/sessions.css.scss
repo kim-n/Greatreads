@@ -1,3 +1,25 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+article {
+  margin: auto;
+  margin-top: 100px;
+  width: 600px;
+  height: 400px;
+  text-align: right;
+  font-size: 30px;
+}
+
+input{
+  border: 1px solid lightgrey;
+  margin: 10px;
+  color: grey;
+  font-family: "Helvetica";
+}
+
+label {
+  font-family: "Verdana";
+}
+

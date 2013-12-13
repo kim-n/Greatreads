@@ -1,10 +1,20 @@
+
+<section id="main">
+
 <a href="<%= new_club_url %>">Create Club</a><br>
+<section id="clubs">
 <table>
+  <tr>
+    <th>Club Name: </th>
+    <th>Club Creator: </th>
+  </tr>
   <% @clubs.each do |club| %>
   <tr>
-    <th>Club Name: </th><td><a href="<%= club_url(club.id) %>"><%= club.title %></a></td>
-    <th>Club Creator: </th><td><a href="<%= user_url(club.creator) %>"><%= club.creator.name %></a></td>
+    <td><a href="<%= club_url(club.id) %>"><%= club.title %></a></td>
+    <td><a href="<%= user_url(club.creator) %>"><%= club.creator.name %></a></td>
   </tr>
   <% end %>
 
 </table>
+</section>
+</section>

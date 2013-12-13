@@ -11,3 +11,69 @@
  *= require_self
  *= require_tree .
  */
+
+
+body, header, footer, section, ul, li, img, div, button, strong, input, a{
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-family: sans-serif;
+  position: relative;
+}
+
+ul, li {
+  list-style: none;
+}
+
+nav {
+  background-color: red;
+  display: block;
+  text-align: right;
+  height: 34px;
+  font-size: 30px;
+  padding-right: 20px;
+}
+
+nav:after {
+  clear: both;
+}
+
+header#logo {
+  float: left;
+  color: white;
+  text-align: left;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: #C0C0C0;
+}
+
+nav div {
+  position:relative;
+}
+
+
+nav div input {
+  margin-top: -1px;
+  margin-left: -130px;
+  position:absolute;
+  background: red;
+  color: #C0C0C0;
+  border: none;
+  height: 34px;
+}
+
+nav div input:hover {
+  color: white;
+}

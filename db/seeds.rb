@@ -39,9 +39,9 @@ b3 = Book.create(title:"Mary Poppin", author: "J.K. Rowling", pic: "https://d202
 b1=Book.first
 b2 = Book.all[1]
 b3=Book.all[2]
+User.create(email: "k", name: "k nar", password: "k")
 u1 = User.create(email: "kim@berly", name: "kimberly narine", password: "password")
 u2 = User.create(email: "kim", name: "kim nar", password: "password")
-User.create(email: "k", name: "k nar", password: "k")
 
 p1 = u1.reviews.create(title:"u1", body:"post 1", book_id: b1.id)
 p2 = u1.reviews.create(title:"u1", body:"post 2", book_id: b2.id)

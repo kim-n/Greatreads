@@ -1,25 +1,31 @@
-<%= @output %>
-<h3>Books:</h3>
-<table>
+
+<section id="main">
+  <section id="books">
+  <h3><a href="<%= books_url %>">Books:</a></h3>
+  <table>
+
   <% @books.each do |book| %>
     <tr>
       <td>
         <a href="<%= book_url(book.isbn) %>">
           <img src="<%= book.pic %>" width="42">
         </a>
-      </td>
-      <td>
         <a href="<%= book_url(book.isbn) %>"><%= book.title %></a>
       </td>
     </tr>
   <% end %>
 </table>
+</section>
 
-<h3>Clubs:</h3>
+  <section id="clubs">
+  <h3><a href="<%= clubs_url %>">Clubs:</a></h3>
 <table>
+
   <% @clubs.each do |club| %>
     <tr>
       <td><a href="<%= club_url(club) %>"><%= club.title %></a></td>
     </tr>
   <% end %>
 </table>
+</section>
+</section>
