@@ -18,7 +18,8 @@ class ReviewsController < ApplicationController
   def no_double_review!
     book = Book.find(params[:book_id])
     @review = Review.find_by_user_id_and_book_id(current_user.id, book.id)
-    render :json => "Can't double review" unless @review.nil?
+    flash[:errors] = ["Can't double review"] unless @review.nil?
+    redirect_to book_url(book.isbn)
   end
 
 end

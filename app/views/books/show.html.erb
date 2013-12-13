@@ -1,8 +1,10 @@
+<section id="main">
 <table></table>
-   <%= @book.title %>
-   <%= @book.author %>
+<h3><%= @book.title %></h3>
+<h5><%= @book.author %></h5>
+   
    <%= @book.isbn %>
-   <img src="<%= @book.pic %>" width="50">
+   <img class="cover" src="<%= @book.pic %>" width="50">
 <br>
 <button>Like!</button>
 <button>DisLike!</button>
@@ -14,17 +16,16 @@
 <% end %>
 
 
-   <br>Reviews:
+   <h3>Reviews:</h3>
    <table>
-
+		 <tr><h4><td><h4>Title</h4></td><td><h4>Body</h4></td><td><h4>Reviewer</h4></td></h4></tr>
      <% @posts.each do |post| %>
      <tr>
-       <th><%= post.title %></th>
+       <td><%= post.title %></td>
        <td><%= post.body %></td>
        <td><a href="/users/<%= post.userid %>"><%= post.username %></a></td>
       </tr>
      <% end %>
-
    </table>
 
 
@@ -42,3 +43,4 @@
 
      <input type="submit" value="Review!"></input>
    </form>
+ </section>

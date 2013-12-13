@@ -11,10 +11,9 @@ section#main {
 }
 
 
-
 td{
   height: 50px;
-  width: 200px;
+  width: 300px;
   text-align: left;
 }
 
@@ -30,4 +29,9 @@ a:hover {
 th{
   background-color: red;
   text-align: left;
+}
+
+img.cover {
+	float:left;
+	padding: 5px;
 }

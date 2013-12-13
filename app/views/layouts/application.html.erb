@@ -21,6 +21,13 @@
       <header id="logo">GoodReadsClone</header>
     <% end %>
   </nav>
+	
+	<% if flash.now[:errors] %>
+	  <% flash.now[:errors].each do |error| %>
+	   <%= error %><br />	
+	  <% end %>
+	<% end %>
+
 
 <%= yield %>
 
