@@ -22,11 +22,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+  gem 'faker'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
-  gem 'faker'
 end
 
 group :test do
