@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   before_filter :require_current_user!
+  before_filter :require_administrator!
     
   def index
     @users = User.all
@@ -30,5 +31,10 @@ class UsersController < ApplicationController
 
   def new
     render :new
+  end
+  
+  def destroy
+    
+    redirect_to users_admin_url
   end
 end

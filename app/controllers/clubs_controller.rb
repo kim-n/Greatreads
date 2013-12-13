@@ -1,7 +1,7 @@
 class ClubsController < ApplicationController
 
   before_filter :require_current_user!
-  before_filter :require_admin_status!, only: [:new, :create]
+  before_filter :require_admin_status!, only: [:new, :create, :destroy]
 
   def index
     @clubs = Club.all
@@ -29,5 +29,11 @@ class ClubsController < ApplicationController
 
   def new
     render :new
+  end
+  
+  def destroy
+
+
+    redirect_to clubs_admin_url
   end
 end

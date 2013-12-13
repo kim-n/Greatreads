@@ -1,0 +1,19 @@
+<section id="main">
+
+<section id="users">
+<table>
+  <tr>
+    <th>User Name: </th>
+    <th>User Creator: </th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><a href="<%= user_url(user.id) %>"><%= user.name %></a></td>
+    <td><%= user.email %></td>
+		<td><%= button_to "X", user_url(user.id), method: :delete %></td>
+  </tr>
+  <% end %>
+
+</table>
+</section>
+</section>

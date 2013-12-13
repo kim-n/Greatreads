@@ -1,5 +1,5 @@
 GoodReadsClone::Application.routes.draw do
-  resources :users, :only => [:index, :create, :show, :new]
+  resources :users, :only => [:index, :create, :show, :new, :destroy]
   resource :session, :only => [:create, :destroy, :new] do
     post 'mail_request'
   end
@@ -7,9 +7,12 @@ GoodReadsClone::Application.routes.draw do
   resources :books, :only => [:index, :show] do
     resource :like, :only => [:create, :destroy]
     resources :reviews, :only => [:create]
-    resources :wishLists, :only => [:create, :destroy]
   end
-  resources :clubs, :only => [:index, :create, :show, :new] do
+  resource :admin, :only => [:index] do
+    get 'users'
+    get 'clubs'
+  end
+  resources :clubs, :only => [:index, :create, :show, :new, :destroy] do
     resources :posts, :only => [:create]
   end
 
