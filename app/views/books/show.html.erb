@@ -5,6 +5,7 @@
    <img class="cover" src="<%= @book.pic %>" width="50">
 <br>
 
+	<% if current_user %>
 		<% if @book_rating.nil? %>
 			<% button_class = "is-none" %>
 		<% elsif @book_rating.taste == 0%>
@@ -23,21 +24,25 @@
 		<div id="wish"><%= button_to "+Wish", book_like_url(@book, {taste: "0"}) %></div>
 		<div id="unwish"><%= button_to "+Unwish", book_like_url(@book), method: :delete%></div>
 		</div>
+		
+		<% else %>
+		<%= @like_count %> Likes <%= @dislike_count %> Dislikes
+		
+<% end %>
 
-
-   <h3>Reviews:</h3>
+   <header class="sub-title">Reviews:</header>
 	 <%= render "posts/posts", :posts => @posts, :book_page => "hide-tag" %>
 	 
 
    <% if @current_user_review %>
-   <h3>My Review</h3>
+   <header class="sub-title">My Review</header>
     <table>
 		<tr>
 			<td><%= @current_user_review.title %></td>
  			<td><%= @current_user_review.body %></td>
 		<tr>
 		</table>
-   <% else %>
-	 <h3>New Review</h3>
+   <% elsif current_user %>
+	 <header class="sub-title">New Review</header>
 	 <%= render "posts/form_post", type: "review", post_path: book_reviews_url(@book.id) %>
 	 <% end %>

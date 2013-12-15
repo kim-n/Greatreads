@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :require_current_user!, except: [:update, :new]
+  before_filter :require_current_user!, except: [:update, :new, :index, :show]
   before_filter :require_no_current_user!, only: [:update, :new]
   # before_filter :require_administrator!, only: [:create, :new]
 

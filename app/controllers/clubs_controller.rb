@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
 
-  before_filter :require_current_user!
+  before_filter :require_current_user!, except: [:index, :show]
   before_filter :require_admin_status!, only: [:new, :create, :destroy]
 
   def index

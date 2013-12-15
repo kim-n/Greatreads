@@ -1,6 +1,6 @@
 <header class="page-title">All Clubs</header>
 
-<% if is_admin?(current_user) %>
+<% if current_user && is_admin?(current_user) %>
 	<a href="<%= new_club_url %>">Create Club</a><br>
 <% end %>
 

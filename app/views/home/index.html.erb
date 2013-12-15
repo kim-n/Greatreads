@@ -2,5 +2,8 @@
 
 <a href="<%= users_url %>">All Users</a>
 
+<header class="sub-title"><a href="<%= books_url %>">Books</a></header>
 <%= render "books/list_books", :books => @books, :root_page => "hide-tag" %>
+
+<header class="sub-title"><a href="<%= clubs_url %>">Clubs</a></header>
 <%= render "clubs/list_clubs", :clubs => @clubs %>

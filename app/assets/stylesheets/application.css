@@ -34,19 +34,84 @@ body {
 
 nav {
 	background: #04B45F;
-	height: 45px;	
 	display: block;
+	height: 40px;
 	font-size: 34px;
 	text-align: left;
 	font-weight: 100;
 	color:white;
 }
 
-nav > #logo {
-	float:left;
-	margin-right:20px;
+nav > ul{
+  float:right;
 }
 
+nav > ul > li{
+  float: left;
+	padding-right: 10px;
+}
+
+nav a:visited{
+	color:white;
+}
+
+nav  a:hover {
+  color: #C0C0C0;
+}
+
+nav > a#logo {
+	float:left;
+}
+
+nav li input {
+	background: #04B45F;
+	color:white;
+}
+
+input:hover {
+  color: #C0C0C0;
+}
+
+#main {
+	width: 800px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+
+header.page-title {
+	background: red;
+	display: block;
+	font-size: 30px;
+}
+
+header.sub-title {
+	background: green;
+	display: block;
+	font-size: 20px;
+}
+
+
+.admin {
+	display: none;
+}
+
+.hide-tag {
+	display: none;
+}
+
+a {
+	color: inherit;
+}
+
+a:visited {
+	color:inherit;
+}
+
+a:hover {
+	color:#C0C0C0;
+}
+/*
 input {
 	color: green;
 }
@@ -56,37 +121,9 @@ nav > #username, nav > #logout-botton{
 	margin-left: 20px;
 }	
 
-#logout-botton input {
-	padding: 0px;
-	height: 44px;
-}	
-	
-#main {
-	width: 800px;
-	margin: auto;
-	margin-top: 200px;
-}
 
-header.page-title {
-	background: red;
-	display: block;
-	font-size: 30px;
-}
 
-header.sub {
-	background: green;
-	display: block;
-	font-size: 20px;
-}
 
-nav > a {
-  color: white;
-  text-decoration: none;
-}
-
-nav > a:hover {
-  color: #C0C0C0;
-}
 
 nav div input {
   background: #04B45F;
@@ -99,18 +136,23 @@ nav div input:hover {
   color: white;
 }
 
+
+#logout-botton input {
+	padding: 0px;
+	height: 44px;
+}	*/
+	/*
+
+
+
+
 th {
 	text-align: left;
 	background: red;
 }
 
-.admin {
-	display: none;
-}
 
-.hide-tag {
-	display: none;
-}
+
 
 
 input {
@@ -128,4 +170,4 @@ label > input {
 	margin: 100px, 1000px;
 	border: 1px solid grey;
 	padding: 0px;
-}
+}*/

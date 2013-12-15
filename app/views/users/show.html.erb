@@ -2,7 +2,7 @@
 <h3><%= @user.email %></h3>
 
 <table>
-	<header class="sub">Read List:</header>
+	<header class="sub-title">Read List:</header>
 	<% @reads.each do |book| %>
 	<tr>
 		<td><%= book.taste == 1 ? "^ " : "v "%>
@@ -16,7 +16,7 @@
 
 
 <table>
-	<header class="sub">Wish List</header>
+	<header class="sub-title">Wish List:</header>
 	<% @wishes.each do |wish| %>
 	<tr>
 		<td>
@@ -29,10 +29,10 @@
 </table>
 
 
-<header class="sub">Reviews:</header>
+<header class="sub-title">Reviews:</header>
 <%= render "posts/posts", :posts => @reviews, :a_review => "hide-tag" %>
 
 <br>
-<header class="sub">Posts:</header>
+<header class="sub-title">Posts:</header>
 
 <%= render "posts/posts", :posts => @posts, :a_post => "hide-tag" %>
