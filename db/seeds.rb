@@ -22,20 +22,13 @@ end
 
 isbns.each do |isbn|
   sleep(2)
-  page =Nokogiri::HTML(open("https://www.goodreads.com/book/isbn?isbn=#{isbn}&key=1yXOk25Y6vrdXcvdZmVOtA") )
-  title = page.xpath("//book//work//original_title")[0].content().strip
-  title2 = page.xpath("//book//work//original_title")[0].content().strip
-  book_title = nil
-  if !title.empty?
-    book_title = title
-  elsif !title2.empty?
-    book_title = title
-  else
-    next
-  end
-  pic = page.xpath("//book//image_url")[0].content().strip
-  author = page.xpath("//book//authors//name")[0].content().strip
-  Book.create(title: book_title, author: author, pic: pic, isbn: isbn) unless book_title.nil?
+  page =Nokogiri::XML(open("https://www.goodreads.com/book/isbn?isbn=#{isbn}&key=1yXOk25Y6vrdXcvdZmVOtA") )
+  title = page.xpath("//book//title")[0].text.strip
+  pic = page.xpath("//book//image_url")[0].text.strip
+  author = page.xpath("//book//authors//name")[0].text.strip
+  
+  pic.gsub!(/m\//,'l/') unless pic.index("goodreads")
+  Book.create(title: title, author: author, pic: pic, isbn: isbn) unless title.nil?
 end
 
 
@@ -109,15 +102,15 @@ book_id = 4
 User.valid_users.each do |user|
 
     user.tastes.create(
-      book_id: (book_id % 8) + 1,
+      book_id: (book_id % 7) + 1,
       taste: -1
     )
     user.tastes.create(
-      book_id: ((book_id + 1) % 8) + 1,
+      book_id: ((book_id + 1) % 7) + 1,
       taste: 0
     )
     user.tastes.create(
-      book_id: ((book_id + 2) % 8) + 1,
+      book_id: ((book_id + 2) % 7) + 1,
       taste: 1
     )
 
