@@ -30,3 +30,39 @@ Added Rspec test for existing models
 
 Added ClubBook join table to asscoiate books to club
 - Added ClubBook table and model
+
+Deployed to Heroku
+
+
+
+2013.DEC.12
+-----------
+Created a script to get isbns of top 100 books from amazon list.
+
+Uses isbns to get book image, title, author via GoodreadsAPI
+
+Users can request access
+
+Errors show up on pages above page body
+
+Implemented Like/Dislike system and new Wish system
+- Removed WishList model which linked user to looks wished for
+- Added Likes model
+- Likes model keeps track of likes/dislikes and wishes
+- Likes are 1, dislikes are -1 and wishes are 0
+
+Added admin column to Users Table which classifies users
+- Administrators are 2
+- Teachers are 1
+- Students are 0
+- Unauthorized users/ requests are -1
+
+
+2013.DEV.13
+-----------
+Controlers checks appropriately that users are admin
+
+Created admin controller for admin section of site
+- In /admin/users, admin can delete users
+- In /admin/clubs, admin can delete clubs
+- In admin/requests, admin can approve/deny prospective users 
