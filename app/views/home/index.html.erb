@@ -1,28 +1,6 @@
+<header class="page-title">Home</header>
 
-<section id="main">
-  <section id="books">
-  <h3><a href="<%= books_url %>">Books:</a></h3>
-  <table>
+<a href="<%= users_url %>">All Users</a>
 
-  <% @books.each do |book| %>
-    <tr>
-      <td>
-        <a href="<%= book_url(book.isbn) %>"><%= book.title %></a>
-      </td>
-    </tr>
-  <% end %>
-</table>
-</section>
-
-  <section id="clubs">
-  <h3><a href="<%= clubs_url %>">Clubs:</a></h3>
-<table>
-
-  <% @clubs.each do |club| %>
-    <tr>
-      <td><a href="<%= club_url(club) %>"><%= club.title %></a></td>
-    </tr>
-  <% end %>
-</table>
-</section>
-</section>
+<%= render "books/list_books", :books => @books %>
+<%= render "clubs/list_clubs", :clubs => @clubs %>

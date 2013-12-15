@@ -2,6 +2,10 @@ class AdminsController < ApplicationController
 
   before_filter :require_current_user!
   before_filter :require_administrator!
+  
+  def index
+    render :index
+  end
 
   def users
     @users = User.valid_users
@@ -16,10 +20,6 @@ class AdminsController < ApplicationController
   def activation
     @requests = User.requests
     @pending = User.pending
-  end
-
-  def index
-    render :index
   end
 
 end

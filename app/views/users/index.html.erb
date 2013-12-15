@@ -1,4 +1,2 @@
-<% @users.each do |user| %>
-  <h2><%= user.name %></h2>
-  <h4><%= user.email %></h4>
-<% end %>
+<header class="page-title">All Users</header>
+<%= render "list_users", :users => @users %>

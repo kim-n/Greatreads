@@ -1,53 +1,13 @@
-<section id="main">
-  <nav>
-    <a href="<%= users_admin_url %>">Users</a>
-    <a href="<%= clubs_admin_url %>">Clubs</a>
-    <a href="<%= requests_admin_url %>">Requests</a>
-  </nav>
-  <br>
+<%= render "admin_nav" %>
+
+<header class="page-title">Requests</header>
 
 
+<h3>Pending</h3>
 
-<section id="clubs">
-  <h3>Pending</h3>
+<%= render "users/list_users", :users => @pending, :icon => "=>" %>
 
-<table>
-  <tr>
-    <th>Name: </th>
-    <th>Email: </th>
-    <th>Deny </th>
-  </tr>
-  <% @pending.each do |user| %>
-  <tr>
-    <td><%= user.name %></a></td>
-    <td><%= user.email %></td>
-		<td><%= button_to "X", user_url(user.id), method: :delete %></td>
-    <td><%= button_to "=>", user_approve_url(user.id)%></td>
-  </tr>
-  <% end %>
 
-</table>
-</section>
+<h3>Requests</h3>
+<%= render "users/list_users", :users => @requests, :icon => "+" %>
 
-<section id="clubs">
-  <h3>Requests</h3>
-<table>
-  <tr>
-    <th>Name: </th>
-    <th>Email: </th>
-    <th>Approve </th>
-    <th>Deny </th>
-  </tr>
-  <% @requests.each do |user| %>
-  <tr>
-    <td><%= user.name %></a></td>
-    <td><%= user.email %></td>
-    <td><%= button_to "+", user_approve_url(user.id)%></td>
-		<td><%= button_to "X", user_url(user.id), method: :delete %></td>
-  </tr>
-  <% end %>
-
-</table>
-</section>
-
-</section>

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <nav>
+  <!-- <nav>
     <% if current_user%>
       <header style="float:right;color:white;text-align:right;">
         <a href="<%= user_url(current_user) %>"><%= current_user.name %></a>
@@ -29,10 +29,10 @@
 	  <% flash.now[:errors].each do |error| %>
 	   <%= error %><br />
 	  <% end %>
-	<% end %>
+	<% end %> -->
 
 
-<%= yield %>
+	<%= yield %>
 
 </body>
 </html>

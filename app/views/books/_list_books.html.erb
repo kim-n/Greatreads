@@ -1,0 +1,26 @@
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+		<th></th>
+	</tr>
+	
+  <% books.each do |book| %>
+	  <tr>
+			
+	    <td>
+				<a href="/books/<%= book.isbn %>">
+					<%= book.title %>
+				</a>
+			</td>
+	    <td>
+				<%= book.author %>
+			</td>
+	    <td>
+				<img src="<%= book.pic %>" width="50">
+			</td>
+			
+		</tr>
+	<% end %>
+	
+</table>

@@ -9,13 +9,19 @@ class ClubsController < ApplicationController
   end
 
   def create
-    club = current_user.created_clubs.new(params[:club])
-
-    if club.save
-      redirect_to club_url(club)
+    params[:club][:books_ids].delete("")
+    if params[:club][:books_ids].empty?
+      flash[:errors] = ["Clubs must have atleast 1 book"]
+      redirect_to new_club_url
     else
-      flash[:errors] = club.errors.full_messages
-      render :new
+      club = current_user.created_clubs.new(params[:club])
+
+      if club.save
+        redirect_to club_url(club)
+      else
+        flash[:errors] = club.errors.full_messages
+        render :new
+      end
     end
   end
 
@@ -33,6 +39,7 @@ class ClubsController < ApplicationController
   end
 
   def new
+    @books = Book.all
     render :new
   end
 
