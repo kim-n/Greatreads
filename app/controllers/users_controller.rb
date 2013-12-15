@@ -41,8 +41,8 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
 
     if @user
-      @reviews = @user.reviews.select("reviews.*, books.title AS bookname, books.isbn AS bookisbn").joins("INNER JOIN books ON reviews.book_id=books.id")
-      @posts = @user.posts.select("posts.*, books.title AS bookname").joins("INNER JOIN books ON posts.book_id=books.id")
+      @reviews = @user.reviews.includes(:book)
+      @posts = @user.posts.includes(:book)
       @wishes = @user.wish_books
       @reads = @user.read_books
       render :show

@@ -1,59 +1,17 @@
 <a href="<%= clubs_url %>">ALL CLUBS</a><br>
-<section id="main">
 
-
-
-<h3>Name: <%= @club.title %></h3>
+<header class="page-title"><%= @club.title %></header>
 Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></a>
-<br>
-<br>
 
 <% @clubbooks.each do |book| %>
   <button><%= book.title %></button>
 <% end %>
 
 <h3>Posts</h3>
-<table>
-
-<tr><th>Book</th><th>Post Title</th><th>Body</th><th>Poster</th></tr>
-  <% @posts.each do |post| %>
-  <tr>
-    <td><a href="<%= book_url(post.bookisbn) %>"><%= post.bookname %></td>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><a href="<%= user_url(post.user_id) %>"><%= post.username %></a></td>
-   </tr>
-  <% end %>
-
-</table>
-
+<%= render "posts/posts", :posts => @posts, :club_page => "hide-tag" %>
 
 
 <h3>New Post</h3>
-<form action="<%= club_posts_url(@club.id) %>" method="POST">
-  <input type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
-  </input>
+<%= render "posts/form_post", type: "post", books: @clubbooks, post_path: club_posts_url(@club.id)  %>
 
-  <label>Title
-    <input type="text" name="post[title]"></input>
-  </label>
-  <br>
 
-  <label>Body
-    <input type="text" name="post[body]"></input>
-	<br>
-
-  </label>Book:
-  	<select name="post[book_id]">
-  		<% @clubbooks.each do |book| %>
-  		<option value="<%= book.id %>"><%= book.title %></option>
-  		<% end %>
-  	</select>
-  </label>
-
-  <input type="submit" value="Post!"></input>
-</form>
-
-<section>

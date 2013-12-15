@@ -5,9 +5,10 @@
 
 <h3>Pending</h3>
 
-<%= render "users/list_users", :users => @pending, :icon => "=>" %>
+<%= render "users/list_users", :users => @pending, :icon => "=>", :req_page => "hide-tag" %>
 
 
 <h3>Requests</h3>
-<%= render "users/list_users", :users => @requests, :icon => "+" %>
+<%= render "users/list_users", :users => @requests, :icon => "+",
+:req_page => "hide-tag" %>
 

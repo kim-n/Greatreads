@@ -1,0 +1,29 @@
+<% books = books || nil %>
+
+<form action="<%= post_path %>" method="POST">
+  <input type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  </input>
+
+  <label>Title
+    <input type="text" name="<%= type %>[title]"></input>
+  </label>
+  <br>
+
+  <label>Body
+    <input type="text" name="<%= type %>[body]"></input>
+	<br>
+
+	<% if books %>
+  </label>Book:
+  	<select name="post[book_id]">
+  		<% books.each do |book| %>
+  		<option value="<%= book.id %>"><%= book.title %></option>
+  		<% end %>
+  	</select>
+  </label>
+	<% end %>
+	
+<input type="submit" value="Post!"></input>
+</form>

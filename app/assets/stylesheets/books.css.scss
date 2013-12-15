@@ -2,3 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div.is-none {
+	background:red;
+	color:blue;
+}
+
+.is-none > #unlike, .is-none > #undislike, 
+.is-none > #unwish {
+	display: none;
+}
+
+
+.is-wish > #unlike, .is-wish > #undislike,
+.is-wish > #wish {
+	display: none;
+}
+
+.is-like > #like, .is-like > #undislike,
+.is-like > #unwish, .is-like > #wish {
+	display: none;
+}
+
+.is-dislike > #unlike, .is-dislike > #dislike,
+.is-dislike > #unwish, .is-dislike > #wish {
+	display: none;
+}
+
+.is-like > #unlike, .is-dislike > #undislike,
+.is-wish > #unwish {
+	background:blue;
+}

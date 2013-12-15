@@ -9,6 +9,123 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ * require_tree .
  */
 
+
+body, header, img, a, div, button, input, form, table, tr, th, td, ul ,li {
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+body {
+	background: #F5ECCE;
+	font-family: sans-serif;
+}
+
+nav {
+	background: #04B45F;
+	height: 45px;	
+	display: block;
+	font-size: 34px;
+	text-align: left;
+	font-weight: 100;
+	color:white;
+}
+
+nav > #logo {
+	float:left;
+	margin-right:20px;
+}
+
+input {
+	color: green;
+}
+	
+nav > #username, nav > #logout-botton{
+	float:right;
+	margin-left: 20px;
+}	
+
+#logout-botton input {
+	padding: 0px;
+	height: 44px;
+}	
+	
+#main {
+	width: 800px;
+	margin: auto;
+	margin-top: 200px;
+}
+
+header.page-title {
+	background: red;
+	display: block;
+	font-size: 30px;
+}
+
+header.sub {
+	background: green;
+	display: block;
+	font-size: 20px;
+}
+
+nav > a {
+  color: white;
+  text-decoration: none;
+}
+
+nav > a:hover {
+  color: #C0C0C0;
+}
+
+nav div input {
+  background: #04B45F;
+  color: #C0C0C0;
+  border: none;
+  height: 34px;
+}
+
+nav div input:hover {
+  color: white;
+}
+
+th {
+	text-align: left;
+	background: red;
+}
+
+.admin {
+	display: none;
+}
+
+.hide-tag {
+	display: none;
+}
+
+
+input {
+	background: #FFFFAF;
+	border-radius: 9px;
+	margin: 100px, 1000px;
+	border: 1px solid grey;
+	padding: 10px;
+	
+}
+
+label > input {
+	background: #F0FFCF;
+	border-radius: 9px;
+	margin: 100px, 1000px;
+	border: 1px solid grey;
+	padding: 0px;
+}

@@ -1,15 +1,18 @@
-<% icon = icon || "?" %>
+<% icon = icon || nil %>
+<% req_page = req_page || nil %>
+<% usr_page = usr_page || nil %>
+
 
 <table>
   <tr>
-    <th class="admin">St: </th>
-    <th>Name: </th>
-    <th>Email: </th>
+    <th class="admin <%= req_page %>">St: </th>
+    <th>Name</th>
+    <th>Email</th>
   </tr>
 	
   <% users.each do |user| %>
 	<tr>
-		<td>
+		<td class="admin <%= req_page%>">
 		  <%= "S" if user.admin == 0 %>
 		  <%= "T" if user.admin == 1 %>
 		  <%= "A" if user.admin == 2 %>
@@ -23,7 +26,7 @@
 			<%= user.email %>
 		</td>
 		
-		<td class="admin">
+		<td class="admin <%= usr_page %>" >
 			<%= button_to icon, user_approve_url(user.id)%>
 		</td>
 		<td class="admin">

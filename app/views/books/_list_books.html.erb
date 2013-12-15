@@ -1,3 +1,5 @@
+<% root_page = root_page || nil %>
+
 <table>
 	<tr>
 		<th>Title</th>
@@ -16,7 +18,7 @@
 	    <td>
 				<%= book.author %>
 			</td>
-	    <td>
+	    <td class="<%= root_page %>">
 				<img src="<%= book.pic %>" width="50">
 			</td>
 			

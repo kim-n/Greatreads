@@ -52,7 +52,7 @@ User.valid_users.each do |user|
   user.reviews.create(
     title:Faker::Lorem.word,
     body:Faker::Lorem.sentence,
-    book_id: (book_id % 4)
+    book_id: (book_id % 4) + 1
   )
   book_id = book_id + 1
 end

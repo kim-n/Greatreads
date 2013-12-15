@@ -34,7 +34,6 @@ Added ClubBook join table to asscoiate books to club
 Deployed to Heroku
 
 
-
 2013.DEC.12
 -----------
 Created a script to get isbns of top 100 books from amazon list.
@@ -74,3 +73,12 @@ Fixed Nokogiri parsing from HTML to appropriately XML
 - Was calling Nokogiri::HTML on goodreads instead of Nokogiri::XML
 - Because of this fields that were wraped in CDATA tags were empty
 - Created partial to be used when user, books or clubs are listed
+
+
+2013.DEC.15
+-----------
+Removed all development CSS
+
+Stopped app from loading all CSS files
+
+CSS filed loaded only for appropriate controller 

@@ -1,69 +1,43 @@
-<section id="main">
-<table></table>
-<h3><%= @book.title %></h3>
-<h5><%= @book.author %></h5>
+<header class="page-title"><%= @book.title %></header>
+<h3><%= @book.author %></h3>
 
    <%= @book.isbn %>
    <img class="cover" src="<%= @book.pic %>" width="50">
 <br>
 
-
-<table class="rating">
-	<tr>
 		<% if @book_rating.nil? %>
-			<td><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></td>
-			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></td>
-			<td><%= button_to "+Wish", book_like_url(@book, {taste: "0"}) %></td>
+			<% button_class = "is-none" %>
 		<% elsif @book_rating.taste == 0%>
-			<td><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></td>
-			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></td>
-			<td><%= button_to "+Unwish", book_like_url(@book), method: :delete%></td>
+			<% button_class = "is-wish" %>
 		<% elsif @book_rating.taste == 1 %>
-			<td><%= button_to "#{@like_count} Likes", book_like_url(@book), method: :delete %></td>
-			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></td>
+			<% button_class = "is-like" %>
 		<% elsif @book_rating.taste == -1 %>
-			<td><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></td>
-			<td><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book), method: :delete %></td>
+			<% button_class = "is-dislike" %>
 		<% end %>
-	<tr>
-</table>
+		
+		<div class="<%= button_class %>">
+		<div id="like"><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></div>
+		<div id="unlike"><%= button_to "#{@like_count} Likes", book_like_url(@book), method: :delete %></div>
+		<div id="dislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></div>
+		<div id="undislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book), method: :delete %></div>
+		<div id="wish"><%= button_to "+Wish", book_like_url(@book, {taste: "0"}) %></div>
+		<div id="unwish"><%= button_to "+Unwish", book_like_url(@book), method: :delete%></div>
+		</div>
+
 
    <h3>Reviews:</h3>
-   <table>
-		 <tr><h4><td><h4>Title</h4></td><td><h4>Body</h4></td><td><h4>Reviewer</h4></td></h4></tr>
-     <% @posts.each do |post| %>
-     <tr>
-       <td><%= post.title %></td>
-       <td><%= post.body %></td>
-       <td><a href="/users/<%= post.userid %>"><%= post.username %></a></td>
-      </tr>
-     <% end %>
-   </table>
+	 <%= render "posts/posts", :posts => @posts, :book_page => "hide-tag" %>
+	 
 
    <% if @current_user_review %>
-
-     <h3>My Review</h3>
-      <table>
-        <tr>
-       <td><%= @current_user_review.title %></td>
-       <td><%= @current_user_review.body %></td>
-      </tr>
-    </table>
-    <% else %>
-   <h3>New Review</h3>
-   <form action="<%= book_reviews_url(@book.id) %>" method="POST">
-     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
-
-     <label>Title
-     <input type="text" name="review[title]"></input>
-     </label>
-     <br>
-     <label>Body
-     <input type="text" name="review[body]"></input>
-     </label>
-
-     <input type="submit" value="Review!"></input>
-   </form>
-
-      <% end %>
- </section>
+   <h3>My Review</h3>
+    <table>
+		<tr>
+			<td><%= @current_user_review.title %></td>
+ 			<td><%= @current_user_review.body %></td>
+		<tr>
+		</table>
+   <% else %>
+	 <h3>New Review</h3>
+	 <%= render "posts/form_post", type: "review", post_path: book_reviews_url(@book.id) %>
+	 <% end %>

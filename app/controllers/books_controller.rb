@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     @book_rating = Like.find_rating(current_user.id, @book.id)
 
 
-    @posts = @book.reviews.select("reviews.*, users.name AS username, users.id AS userid").joins("INNER JOIN users ON reviews.user_id=users.id")
+    @posts = @book.reviews.select("reviews.*, users.name AS username").joins("INNER JOIN users ON reviews.user_id=users.id")
     @current_user_review = Review.where("user_id = ? AND book_id = ?", current_user.id, @book.id)[0]
 
     @like_count = @book.likes.count

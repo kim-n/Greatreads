@@ -1,65 +1,38 @@
-<section id="main">
-
+<header class="page-title"><%= @user.name %></header>
 <h3><%= @user.email %></h3>
-<%= @user.name %>
 
 <table>
-  <tr>
-
-    <td><h3>Read List:</h3></td>
-    <td><h3>Wish List:</h3></td>
-  </tr>
-  <tr>
-    <td>
-      <table>
-      <% @reads.each do |book| %>
-      <tr>
-        <td><%= book.taste == 1 ? "^ " : "V "%><a href="<%= book_url(book.book.isbn) %>"><%= book.book.title %></a></td>
-       </tr>
-      <% end %>
-      </table>
-    </td>
-
-    <td>
-      <table>
-      <% @wishes.each do |wish| %>
-      <tr>
-        <td><a href="<%= book_url(wish.book.isbn) %>"><%= wish.book.title %></a></td>
-       </tr>
-      <% end %>
-      </table>
-
-      <br>
-    </td>
-
-  </tr>
+	<header class="sub">Read List:</header>
+	<% @reads.each do |book| %>
+	<tr>
+		<td><%= book.taste == 1 ? "^ " : "v "%>
+			<a href="<%= book_url(book.book.isbn) %>">
+				<%= book.book.title %>
+			</a>
+		</td>
+	</tr>
+	<% end %>
 </table>
 
 
+<table>
+	<header class="sub">Wish List</header>
+	<% @wishes.each do |wish| %>
+	<tr>
+		<td>
+			<a href="<%= book_url(wish.book.isbn) %>">
+				<%= wish.book.title %>
+			</a>
+		</td>
+	</tr>
+	<% end %>
+</table>
 
 
+<header class="sub">Reviews:</header>
+<%= render "posts/posts", :posts => @reviews, :a_review => "hide-tag" %>
 
 <br>
-<h3>Reviews:</h3>
-<table>
-<% @reviews.each do |review| %>
-<tr>
-  <th><a href="<%= book_url(review.bookisbn) %>"><%= review.bookname %></a></th>
-  <td><%= review.title %></td>
-  <td><%= review.body %></td>
- </tr>
-<% end %>
-</table>
+<header class="sub">Posts:</header>
 
-<br>
-<h3>Posts:</h3>
-<table>
-<% @posts.each do |post| %>
-<tr>
-  <th><%= post.bookname %></th>
-  <td><a href="<%= club_url(post.club) %>"><%= post.title %></a></td>
-  <td><%= post.body %></td>
- </tr>
-<% end %>
-</table>
-<sector>
+<%= render "posts/posts", :posts => @posts, :a_post => "hide-tag" %>
