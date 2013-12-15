@@ -58,7 +58,7 @@ Added admin column to Users Table which classifies users
 - Unauthorized users/ requests are -1
 
 
-2013.DEV.13
+2013.DEC.13
 -----------
 Controlers checks appropriately that users are admin
 
@@ -66,3 +66,11 @@ Created admin controller for admin section of site
 - In /admin/users, admin can delete users
 - In /admin/clubs, admin can delete clubs
 - In admin/requests, admin can approve/deny prospective users 
+
+
+2013.DEC.14
+-----------
+Fixed Nokogiri parsing from HTML to appropriately XML
+- Was calling Nokogiri::HTML on goodreads instead of Nokogiri::XML
+- Because of this fields that were wraped in CDATA tags were empty
+- Created partial to be used when user, books or clubs are listed
