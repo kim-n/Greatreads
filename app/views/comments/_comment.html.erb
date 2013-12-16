@@ -1,6 +1,8 @@
-<ul>
-  <li><%= comment.body %></li>
-  <% comment.children_comments.each do |child| %>
-    <%= render "comments/comment", comment: child %>
-  <% end %>
+<ul class="comment">
+  <li class="comment-poster"><a href="<%= user_url(comment.user_id) %>"><%= comment.username %></a> says </li>
+  <li class="comment-body"><%= comment.body %></li>
+
+  <!-- <#% comment.children_comments.each do |child| %>
+    <#%= render "comments/comment", comment: child %>
+  <#% end %> -->
 </ul>

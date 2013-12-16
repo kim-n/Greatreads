@@ -183,11 +183,32 @@ a:hover {
   margin-left: 20px;
 }
 
-.post .post-footer .comment{
+.post .post-footer .comment-button{
   float:right;
 }
 
+.post .post-comments {
+  background: red;
+  width: 50%;
+  margin-left: 360px;
+}
 
+.comment {
+  background: blue;
+  border: 3px dashed red;
+  margin-bottom: 10px;
+}
+
+
+.comment .comment-body{
+/*  background: green;
+*/}
+
+.comment .comment-poster{
+  background: pink;
+  float:left;
+  margin: 0px 5px;
+}
 
 /*
 input {

@@ -35,20 +35,31 @@
   		<% end %>
 
       <% if current_user %>
-      <li class="comment"><a href="#">Comment</a></li>
+      <li class="comment-button"><a href="#">Comment</a></li>
       <% end %>
     </footer>
 
-    <!-- <td>
-      <%= link_to "Comment", new_post_comment_url(post.id) %>
-    </td> -->
+    <div class="post-comments hide-tag">
+        <% post.top_level_comments.each do |comment| %>
+          <%= render "comments/comment", comment: comment %>
+          <% end %>
+
+          <%= render "comments/form_comment", post: post %>
+
+    </div>
 
  </ul>
 
-<!-- <tr>
-    <% post.top_level_comments.each do |comment| %>
-      <%= render "comments/comment", comment: comment %>
-      <% end %>
-</tr> -->
+
 	<% end %>
 
+<script>
+$(document).ready(function (){
+  $(".comment-button").on("click", function (event){
+    event.preventDefault()
+    $commentButton = $(this)
+    $(".post-comments").addClass("hide-tag")
+    $commentButton.parent().next().toggleClass("hide-tag")
+  });
+});
+</script>
