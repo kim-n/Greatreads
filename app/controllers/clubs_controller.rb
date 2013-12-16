@@ -1,7 +1,6 @@
 class ClubsController < ApplicationController
 
   before_filter :require_current_user!, except: [:index, :show]
-  before_filter :require_admin_status!, only: [:new, :create, :destroy]
 
   def index
     @clubs = Club.all
@@ -44,8 +43,14 @@ class ClubsController < ApplicationController
 
   def destroy
     club = Club.find(params[:id])
-    club.destroy
 
-    redirect_to clubs_admin_url
+    if is_administrator?(current_user) || current_user.id == club.creator.id
+      flash[:errors] = ["#{club.title} destroyed!"]
+      club.destroy
+      redirect_to clubs_admin_url
+    else
+      flash[:errors] = ["Must be club owner to delete!"]
+      redirect_to club_url(club)
+    end
   end
 end
