@@ -88,7 +88,9 @@ header.page-title {
 header.sub-title {
 	background: green;
 	display: block;
-	font-size: 20px;
+	font-size: 30px;
+  color:red;
+
 }
 
 
@@ -111,15 +113,18 @@ a:visited {
 a:hover {
 	color:#C0C0C0;
 }
+
+
+
 /*
 input {
 	color: green;
 }
-	
+
 nav > #username, nav > #logout-botton{
 	float:right;
 	margin-left: 20px;
-}	
+}
 
 
 
@@ -161,7 +166,7 @@ input {
 	margin: 100px, 1000px;
 	border: 1px solid grey;
 	padding: 10px;
-	
+
 }
 
 label > input {

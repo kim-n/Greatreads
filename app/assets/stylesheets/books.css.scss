@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.is-none > #unlike, .is-none > #undislike, 
+.is-none > #unlike, .is-none > #undislike,
 .is-none > #unwish {
 	display: none;
 }
@@ -53,3 +53,4 @@ img {
 	display: table;
 	clear:both;
 };
+
