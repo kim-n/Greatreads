@@ -8,9 +8,9 @@ require 'open-uri'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# 
+#
 # isbns = []
-# 
+#
 # 1.times do |t|
 #   page = Nokogiri::HTML(open("http://www.amazon.com/gp/bestsellers/books/ref=sv_b_2##{t+1}") )
 #   page.css("div.zg_title").css("a").each do |link|
@@ -19,23 +19,23 @@ require 'open-uri'
 #     isbns += book_isbn
 #   end
 # end
-# 
+#
 # isbns.each do |isbn|
 #   sleep(2)
-#   page =Nokogiri::XML(open("https://www.goodreads.com/book/isbn?isbn=#{isbn}&key=1yXOk25Y6vrdXcvdZmVOtA") )
+#   page =Nokogiri::XML(open("https://www.goodreads.com/book/isbn?isbn=#{isbn}&key=#{ENV["GOODREADS_DEV_KEY"]}") )
 #   title = page.xpath("//book//title")[0].text.strip
 #   pic = page.xpath("//book//image_url")[0].text.strip
 #   author = page.xpath("//book//authors//name")[0].text.strip
-#   
+#
 #   pic.gsub!(/m\//,'l/') unless pic.index("goodreads")
 #   Book.create(title: title, author: author, pic: pic, isbn: isbn) unless title.nil?
 # end
-# 
-# 
+#
+#
 # User.create(email: "k", name: "Admin", password: "k", admin: 2)
-# 
+#
 # [-1,0,1,2].each do |admin_num|
-# 
+#
 #   (5-admin_num).times do
 #     username = Faker::Internet.email
 #     User.create(
@@ -46,7 +46,7 @@ require 'open-uri'
 #     )
 #   end
 # end
-# 
+#
 # book_id = 1
 # User.valid_users.each do |user|
 #   user.reviews.create(
@@ -56,14 +56,14 @@ require 'open-uri'
 #   )
 #   book_id = book_id + 1
 # end
-# 
-# 
+#
+#
 # User.valid_users.shuffle[0...4].each do |user|
 #   user.created_clubs.create(
 #     title:Faker::Lorem.word
 #   )
 # end
-# 
+#
 # book_id = 1
 # User.valid_users.each do |user|
 #   [4,5,6,7].each do |id|
@@ -74,19 +74,19 @@ require 'open-uri'
 #     )
 #   end
 # end
-# 
-# 
+#
+#
 # Club.all.each do |club|
 #   id = rand(8) + 1
 #   club.book_pairings.create(book_id: id)
 #   club.book_pairings.create(book_id: (id + 1) % 8)
 # end
-# 
-# 
-# 
+#
+#
+#
 # book_id = 1
 # User.valid_users.shuffle.each do |user|
-# 
+#
 #   3.times do |t|
 #     club = Club.all.shuffle[0]
 #     user.posts.create(
@@ -97,10 +97,10 @@ require 'open-uri'
 #     )
 #   end
 # end
-# 
+#
 # book_id = 4
 # User.valid_users.each do |user|
-# 
+#
 #     user.tastes.create(
 #       book_id: (book_id % 7) + 1,
 #       taste: -1
@@ -113,10 +113,10 @@ require 'open-uri'
 #       book_id: ((book_id + 2) % 7) + 1,
 #       taste: 1
 #     )
-# 
+#
 #     book_id = book_id + 1
 # end
-# 
+#
 
 
 
@@ -133,7 +133,7 @@ User.create(email: "k", name: "k nar", password: "k", admin: 2)
 u1 = User.create(email: "kim@berly", name: "kimberly narine", password: "password", admin: 0)
 u2 = User.create(email: "kim", name: "kim nar", password: "password", admin: 1)
 u3 = User.create(email: "test", name: "be blank",  password: "")
-# 
+#
 # p1 = u1.reviews.create(title:"u1", body:"post 1", book_id: b1.id)
 # p2 = u1.reviews.create(title:"u1", body:"post 2", book_id: b2.id)
 # p3 = u2.reviews.create(title:"u2", body:"post 1", book_id: b1.id)

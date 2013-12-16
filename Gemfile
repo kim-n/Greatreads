@@ -22,7 +22,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-  gem 'faker'
+gem 'faker'
 
 group :development do
   gem 'better_errors'
@@ -35,6 +35,8 @@ group :test do
   gem 'guard-rspec'
   gem 'shoulda-matchers'
 end
+
+gem 'figaro'
 
 gem 'bcrypt-ruby', require: 'bcrypt'
 
