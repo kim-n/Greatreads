@@ -35,6 +35,7 @@ ul, li {
 
 
 nav {
+  position: relative;
 	background: #04B45F;
 	display: block;
 	height: 40px;
@@ -42,6 +43,22 @@ nav {
 	text-align: left;
 	font-weight: 100;
 	color:white;
+}
+
+nav #search-box {
+  position: absolute;
+	background: green;
+  height: 50%;
+  border: 2px solid white;
+  border-radius: 20px;
+  font-size: 50%;
+  margin-left: 10px;
+  margin-top: 4px;
+  padding: 4px 10px;
+}
+
+nav #search-box:focus{
+  border: 0px;
 }
 
 nav > ul{
