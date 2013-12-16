@@ -82,3 +82,7 @@ Removed all development CSS
 Stopped app from loading all CSS files
 
 CSS filed loaded only for appropriate controller 
+
+Keeps reviews and posts in same model
+- Destroyed review model and reviews controller
+- Reviews are held in posts table with class = 0

@@ -14,7 +14,7 @@ GoodReadsClone::Application.routes.draw do
   
   resources :books, :only => [:index, :show] do
     resource :like, :only => [:create, :destroy]
-    resources :reviews, :only => [:create]
+    post 'review', :to => 'posts#create_review'
   end
   
   resource :admin, :only => [:index] do

@@ -13,6 +13,6 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 
 <% if current_user %>
 	<header class="sub-title">New Post</header>
-	<%= render "posts/form_post", type: "post", books: @clubbooks, post_path: club_posts_url(@club.id)  %>
+	<%= render "posts/form_post", books: @clubbooks, post_path: club_posts_url(@club.id)  %>
 <% end %>
 

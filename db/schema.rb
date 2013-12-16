@@ -60,17 +60,6 @@ ActiveRecord::Schema.define(:version => 20131213074516) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "reviews", :force => true do |t|
-    t.integer  "book_id",    :null => false
-    t.integer  "user_id",    :null => false
-    t.string   "title"
-    t.string   "body",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "reviews", ["book_id", "user_id"], :name => "index_reviews_on_book_id_and_user_id", :unique => true
-
   create_table "users", :force => true do |t|
     t.string   "email",                           :null => false
     t.string   "password_digest",                 :null => false

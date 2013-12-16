@@ -2,13 +2,6 @@ class Book < ActiveRecord::Base
   attr_accessible :title, :author, :isbn, :pic
 
   has_many(
-    :reviews,
-    class_name: "Review",
-    foreign_key: :book_id,
-    primary_key: :id
-  )
-
-  has_many(
     :posts,
     class_name: "Post",
     foreign_key: :book_id,
@@ -46,5 +39,8 @@ class Book < ActiveRecord::Base
     self.tastes.where(taste: -1)
   end
 
+  def reviews
+    self.posts.where(club_id: 0).select("posts.*, users.name AS username").joins("INNER JOIN users ON posts.user_id=users.id")
+  end
 end
 

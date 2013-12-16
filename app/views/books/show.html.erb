@@ -44,5 +44,5 @@
 		</table>
    <% elsif current_user %>
 	 <header class="sub-title">New Review</header>
-	 <%= render "posts/form_post", type: "review", post_path: book_reviews_url(@book.id) %>
+	 <%= render "posts/form_post", post_path: book_review_url(@book.id) %>
 	 <% end %>
