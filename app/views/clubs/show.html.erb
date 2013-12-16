@@ -8,7 +8,7 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 <% end %>
 
 <header class="sub-title">Posts</header>
-<%= render "posts/posts", :posts => @posts, :club_page => "hide-tag" %>
+<%= render "posts/list_posts", :posts => @posts, :club_page => "hide-tag" %>
 
 
 <% if current_user %>

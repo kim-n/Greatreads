@@ -23,14 +23,16 @@ body, header, img, a, div, button, input, form, table, tr, th, td, ul ,li {
 	text-decoration: none;
 }
 
-ul, li {
-  list-style: none;
-}
 
 body {
 	background: #F5ECCE;
 	font-family: sans-serif;
 }
+
+ul, li {
+  list-style: none;
+}
+
 
 nav {
 	background: #04B45F;
@@ -88,9 +90,7 @@ header.page-title {
 header.sub-title {
 	background: green;
 	display: block;
-	font-size: 30px;
-  color:red;
-
+	font-size: 20px;
 }
 
 
@@ -112,6 +112,62 @@ a:visited {
 
 a:hover {
 	color:#C0C0C0;
+}
+
+
+
+.post {
+  width: 90%;
+  padding-bottom: 20px;
+}
+
+.post .post-header{
+  background: yellow;
+  border: 2px dashed black;
+  height: 30px;
+}
+
+.post .post-contents{
+ border: 2px dashed green;
+}
+
+.post .post-footer{
+  height: 20px;
+  border: 2px dashed orange;
+}
+
+.post .post-header .post-title{
+  background:blue;
+  float:right;
+}
+
+.post .post-header .poster{
+  background:pink;
+  float:left;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+
+.post .post-contents .post-body{
+  background: purple;
+  margin: 10px 20px;
+}
+
+.post .post-footer .book-title{
+  background:red;
+  float:left;
+
+}
+
+.post .post-footer .club-title{
+  background:orange;
+  float:left;
+  margin-left: 20px;
+}
+
+.post .post-footer .comment{
+  float:right;
 }
 
 

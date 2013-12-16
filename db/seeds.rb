@@ -46,102 +46,98 @@ require 'open-uri'
 #     )
 #   end
 # end
-#
-# book_id = 1
-# User.valid_users.each do |user|
-#   user.reviews.create(
-#     title:Faker::Lorem.word,
-#     body:Faker::Lorem.sentence,
-#     book_id: (book_id % 4) + 1
-#   )
-#   book_id = book_id + 1
-# end
-#
-#
-# User.valid_users.shuffle[0...4].each do |user|
-#   user.created_clubs.create(
-#     title:Faker::Lorem.word
-#   )
-# end
-#
-# book_id = 1
-# User.valid_users.each do |user|
-#   [4,5,6,7].each do |id|
-#     user.reviews.create(
-#       title:Faker::Lorem.word,
-#       body:Faker::Lorem.sentence,
-#       book_id: (id)
-#     )
-#   end
-# end
-#
-#
-# Club.all.each do |club|
-#   id = rand(8) + 1
-#   club.book_pairings.create(book_id: id)
-#   club.book_pairings.create(book_id: (id + 1) % 8)
-# end
-#
-#
-#
-# book_id = 1
-# User.valid_users.shuffle.each do |user|
-#
-#   3.times do |t|
-#     club = Club.all.shuffle[0]
-#     user.posts.create(
-#       title:Faker::Lorem.word,
-#       body:Faker::Lorem.sentence,
-#       book_id: club.books.shuffle[0].id,
-#       club_id: club.id
-#     )
-#   end
-# end
-#
-# book_id = 4
-# User.valid_users.each do |user|
-#
-#     user.tastes.create(
-#       book_id: (book_id % 7) + 1,
-#       taste: -1
-#     )
-#     user.tastes.create(
-#       book_id: ((book_id + 1) % 7) + 1,
-#       taste: 0
-#     )
-#     user.tastes.create(
-#       book_id: ((book_id + 2) % 7) + 1,
-#       taste: 1
-#     )
-#
-#     book_id = book_id + 1
-# end
-#
+
+book_id = 1
+User.valid_users.each do |user|
+  user.posts.create(
+    title:Faker::Lorem.word,
+    body:Faker::Lorem.sentence,
+    book_id: (book_id % 4) + 1,
+    club_id: 0
+  )
+  book_id = book_id + 1
+end
+
+
+User.valid_users.shuffle[0...4].each do |user|
+  user.created_clubs.create(
+    title:Faker::Lorem.word
+  )
+end
+
+book_id = 1
+User.valid_users.each do |user|
+  [4,5,6,7].each do |id|
+    user.reviews.create(
+      title:Faker::Lorem.word,
+      body:Faker::Lorem.sentence,
+      book_id: (id)
+    )
+  end
+end
+
+
+Club.all.each do |club|
+  id = rand(8) + 1
+  club.book_pairings.create(book_id: id)
+  club.book_pairings.create(book_id: (id + 1) % 8)
+end
 
 
 
+book_id = 1
+User.valid_users.shuffle.each do |user|
 
-b1 = Book.create(title:"Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", pic: "https://d202m5krfqbpi5.cloudfront.net/books/1361572757l/3.jpg", isbn:"0439554934")
-b2 = Book.create(title:"Harry Popper", author: "J.K. Rowling", pic: "https://d202m5krfqbpi5.cloudfront.net/books/1361572757l/3.jpg", isbn:"022222")
-b3 = Book.create(title:"Mary Poppin", author: "J.K. Rowling", pic: "https://d202m5krfqbpi5.cloudfront.net/books/1361572757l/3.jpg", isbn:"033333")
+  3.times do |t|
+    club = Club.all.shuffle[0]
+    user.posts.create(
+      title:Faker::Lorem.word,
+      body:Faker::Lorem.sentence,
+      book_id: club.books.shuffle[0].id,
+      club_id: club.id
+    )
+  end
+end
+
+book_id = 4
+User.valid_users.each do |user|
+
+    user.tastes.create(
+      book_id: (book_id % 7) + 1,
+      taste: -1
+    )
+    user.tastes.create(
+      book_id: ((book_id + 1) % 7) + 1,
+      taste: 0
+    )
+    user.tastes.create(
+      book_id: ((book_id + 2) % 7) + 1,
+      taste: 1
+    )
+
+    book_id = book_id + 1
+end
 
 
-b1=Book.first
-b2 = Book.all[1]
-b3=Book.all[2]
-User.create(email: "k", name: "k nar", password: "k", admin: 2)
-u1 = User.create(email: "kim@berly", name: "kimberly narine", password: "password", admin: 0)
-u2 = User.create(email: "kim", name: "kim nar", password: "password", admin: 1)
-u3 = User.create(email: "test", name: "be blank",  password: "")
+
 #
-# p1 = u1.reviews.create(title:"u1", body:"post 1", book_id: b1.id)
-# p2 = u1.reviews.create(title:"u1", body:"post 2", book_id: b2.id)
-# p3 = u2.reviews.create(title:"u2", body:"post 1", book_id: b1.id)
-
-
-c1 = u1.created_clubs.create(title: "First Club")
-u1.created_clubs.create(title: "Second Club")
-u2.created_clubs.create(title: "My First Club")
-
-Club.first.book_pairings.create(book_id: b1.id)
-Club.first.book_pairings.create(book_id: b3.id)
+#
+# b1 = Book.create(title:"Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", pic: "https://d202m5krfqbpi5.cloudfront.net/books/1361572757l/3.jpg", isbn:"0439554934")
+# b2 = Book.create(title:"Harry Popper", author: "J.K. Rowling", pic: "https://d202m5krfqbpi5.cloudfront.net/books/1361572757l/3.jpg", isbn:"022222")
+# b3 = Book.create(title:"Mary Poppin", author: "J.K. Rowling", pic: "https://d202m5krfqbpi5.cloudfront.net/books/1361572757l/3.jpg", isbn:"033333")
+#
+#
+# b1=Book.first
+# b2 = Book.all[1]
+# b3=Book.all[2]
+# User.create(email: "k", name: "k nar", password: "k", admin: 2)
+# u1 = User.create(email: "kim@berly", name: "kimberly narine", password: "password", admin: 0)
+# u2 = User.create(email: "kim", name: "kim nar", password: "password", admin: 1)
+# u3 = User.create(email: "test", name: "be blank",  password: "")
+#
+# c1 = u1.created_clubs.create(title: "First Club")
+# u1.created_clubs.create(title: "Second Club")
+# u2.created_clubs.create(title: "My First Club")
+#
+# Club.first.book_pairings.create(book_id: b1.id)
+# Club.first.book_pairings.create(book_id: b3.id)

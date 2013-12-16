@@ -1,0 +1,54 @@
+<% a_review = a_review || "" %>
+<% a_post = a_post || "" %>
+<% book_page = book_page || "" %>
+<% club_page = club_page || "" %>
+
+
+	<% posts.each do |post| %>
+	<ul class="post">
+
+    <header class="post-header">
+  		<% unless book_page.empty? && club_page.empty? %>
+  			<li class="poster"><a href="<%= user_url(post.user_id) %>"><%= post.username %></a></li>
+  		<% end %>
+    	<li class="post-title"><%= post.created_at %></li>
+
+    </header>
+    <div class="post-contents">
+    	<li class="post-body"><%= post.body %></li>
+    </div>
+    <footer class="post-footer">
+  		<% if book_page.empty? %>
+    	<li class="book-title">
+  			<a href="<%= book_url(post.book.isbn) %>">
+  				<%= post.book.title %>
+  			</a>
+      </li>
+  		<% end %>
+
+  		<% unless a_post.empty? %>
+  		<li class="club-title">
+  			<a href="<%= club_url(post.club) %>">
+  				<%= post.club.title %>
+  			</a>
+  		</li>
+  		<% end %>
+
+      <% if current_user %>
+      <li class="comment"><a href="#">Comment</a></li>
+      <% end %>
+    </footer>
+
+    <!-- <td>
+      <%= link_to "Comment", new_post_comment_url(post.id) %>
+    </td> -->
+
+ </ul>
+
+<!-- <tr>
+    <% post.top_level_comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
+      <% end %>
+</tr> -->
+	<% end %>
+
