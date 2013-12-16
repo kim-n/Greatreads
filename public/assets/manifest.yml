@@ -3,8 +3,12 @@ rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 application.js: application-1c82d7c21c3b5b529839ebf852a71acd.js
 application/index.js: application-1c82d7c21c3b5b529839ebf852a71acd.js
+admins.css: admins-195617b4eb80692ef05e7f7eca4b3b5a.css
+admins/index.css: admins-195617b4eb80692ef05e7f7eca4b3b5a.css
 application.css: application-c8b666cf089413b3c2ed3ff061d03bb1.css
 application/index.css: application-c8b666cf089413b3c2ed3ff061d03bb1.css
+books.css: books-81eb799e02d918db2ad109c4dd58bc96.css
+books/index.css: books-81eb799e02d918db2ad109c4dd58bc96.css
 home.css: home-1b13569e9620782f423d4cd3ce931750.css
 home/index.css: home-1b13569e9620782f423d4cd3ce931750.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
