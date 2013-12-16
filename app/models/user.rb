@@ -8,13 +8,7 @@ class User < ActiveRecord::Base
   validates :admin, :inclusion  => { :in => [ -1, 0, 1, 2 ] }
 
   after_initialize :ensure_session_token
-
-  has_many(
-    :reviews,
-    class_name: "Review",
-    foreign_key: :user_id,
-    primary_key: :id
-  )
+  
 
   has_many(
     :created_clubs,
@@ -39,6 +33,13 @@ class User < ActiveRecord::Base
 
   has_many :rated_books, through: :tastes, source: :book
 
+  def reviews
+    Post.user_reviews(self.id)
+  end
+  
+  def post_items
+    Post.user_posts(self.id)
+  end
 
   def wish_books
     self.tastes.where(taste: 0).includes(:book)

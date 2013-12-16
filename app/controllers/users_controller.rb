@@ -41,8 +41,8 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
 
     if @user
-      @reviews = @user.reviews.includes(:book)
-      @posts = @user.posts.includes(:book)
+      @reviews = @user.reviews
+      @posts = @user.post_items
       @wishes = @user.wish_books
       @reads = @user.read_books
       render :show

@@ -15,7 +15,6 @@ class ClubsController < ApplicationController
       redirect_to new_club_url
     else
       club = current_user.created_clubs.new(params[:club])
-
       if club.save
         redirect_to club_url(club)
       else

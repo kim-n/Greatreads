@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   attr_accessible :title, :author, :isbn, :pic
 
   has_many(
-    :posts,
+    :post_items,
     class_name: "Post",
     foreign_key: :book_id,
     primary_key: :id
@@ -40,7 +40,7 @@ class Book < ActiveRecord::Base
   end
 
   def reviews
-    self.posts.where(club_id: 0).select("posts.*, users.name AS username").joins("INNER JOIN users ON posts.user_id=users.id")
+    Post.book_reviews(self.id)
   end
 end
 
