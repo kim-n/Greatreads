@@ -23,6 +23,17 @@ class Post < ActiveRecord::Base
     foreign_key: :club_id,
     primary_key: :id
   )
+
+  has_many(
+    :comments,
+    class_name: "Comment",
+    foreign_key: :post_id,
+    primary_key: :id
+  )
+  
+  def top_level_comments
+    self.comments.where(parent_id: 0)
+  end
   
   def self.review_for(current_user_id, book_id)
     Post.where("club_id = ? AND user_id = ? AND book_id = ?", 0, current_user_id, book_id)[0]

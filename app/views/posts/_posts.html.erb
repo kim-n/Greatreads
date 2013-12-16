@@ -37,7 +37,17 @@
 			<td><a href="<%= user_url(post.user_id) %>"><%= post.username %></a></td>
 		<% end %>
 		
+		<td>
+			<%= link_to "Comment", new_post_comment_url(post.id) %>
+		</td>
+
  </tr>
+ 
+<tr>
+		<% post.top_level_comments.each do |comment| %>
+	    <%= render "comments/comment", comment: comment %>
+			<% end %>
+</tr>
 	<% end %>
 </table>
 

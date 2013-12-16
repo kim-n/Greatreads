@@ -27,7 +27,12 @@ GoodReadsClone::Application.routes.draw do
   resources :clubs, :only => [:index, :create, :show, :new, :destroy] do
     resources :posts, :only => [:create]
   end
+  
+  resources :comments, only: [:index, :show]
 
+  resources :posts, only: [:show] do
+    resources :comments, only: [:new, :create]
+  end
   root :to => "home#index"
 
   # The priority is based upon order of creation:

@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   end
   
   def create_review
-    
     @review = current_user.posts.new(params[:post])
 
     @review.book_id = params[:book_id]
@@ -28,7 +27,6 @@ class PostsController < ApplicationController
 
     book = Book.find(params[:book_id])
     redirect_to book_url(book.isbn)
-
   end
 
   def no_double_review!

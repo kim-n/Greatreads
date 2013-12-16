@@ -1,0 +1,20 @@
+	<table>
+		<tr>
+			<td>id</td>
+			<td>
+				User_id
+			</td>
+			<td>
+				Post_id
+			</td>
+			<td>
+				Parend_it
+			</td>
+			<td>
+				Body
+			</td>
+		</tr>
+		<% @comments.each do |comment| %>
+	    <%= render "comments/comment", comment: comment %>
+		<% end %>
+	</table>

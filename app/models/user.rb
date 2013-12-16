@@ -33,6 +33,13 @@ class User < ActiveRecord::Base
 
   has_many :rated_books, through: :tastes, source: :book
 
+  has_many(
+    :comments,
+    class_name: "Comment",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+  
   def reviews
     Post.user_reviews(self.id)
   end
