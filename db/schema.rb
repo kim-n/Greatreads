@@ -49,8 +49,6 @@ ActiveRecord::Schema.define(:version => 20131216034012) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "comments", ["user_id", "post_id", "parent_id"], :name => "index_comments_on_user_id_and_post_id_and_parent_id", :unique => true
-
   create_table "likes", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "book_id",    :null => false

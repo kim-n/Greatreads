@@ -8,44 +8,44 @@ require 'open-uri'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#
-# isbns = []
-#
-# 1.times do |t|
-#   page = Nokogiri::HTML(open("http://www.amazon.com/gp/bestsellers/books/ref=sv_b_2##{t+1}") )
-#   page.css("div.zg_title").css("a").each do |link|
-#     book_link = link.attributes()["href"].value.strip
-#     book_isbn = book_link.match(/\/dp\/(.*)/i).captures
-#     isbns += book_isbn
-#   end
-# end
-#
-# isbns.each do |isbn|
-#   sleep(2)
-#   page =Nokogiri::XML(open("https://www.goodreads.com/book/isbn?isbn=#{isbn}&key=#{ENV["GOODREADS_DEV_KEY"]}") )
-#   title = page.xpath("//book//title")[0].text.strip
-#   pic = page.xpath("//book//image_url")[0].text.strip
-#   author = page.xpath("//book//authors//name")[0].text.strip
-#
-#   pic.gsub!(/m\//,'l/') unless pic.index("goodreads")
-#   Book.create(title: title, author: author, pic: pic, isbn: isbn) unless title.nil?
-# end
-#
-#
-# User.create(email: "k", name: "Admin", password: "k", admin: 2)
-#
-# [-1,0,1,2].each do |admin_num|
-#
-#   (5-admin_num).times do
-#     username = Faker::Internet.email
-#     User.create(
-#       email: username,
-#       name: Faker::Name.name ,
-#       password: username,
-#       admin: admin_num
-#     )
-#   end
-# end
+
+isbns = []
+
+1.times do |t|
+  page = Nokogiri::HTML(open("http://www.amazon.com/gp/bestsellers/books/ref=sv_b_2##{t+1}") )
+  page.css("div.zg_title").css("a").each do |link|
+    book_link = link.attributes()["href"].value.strip
+    book_isbn = book_link.match(/\/dp\/(.*)/i).captures
+    isbns += book_isbn
+  end
+end
+
+isbns.each do |isbn|
+  sleep(2)
+  page =Nokogiri::XML(open("https://www.goodreads.com/book/isbn?isbn=#{isbn}&key=#{ENV["GOODREADS_DEV_KEY"]}") )
+  title = page.xpath("//book//title")[0].text.strip
+  pic = page.xpath("//book//image_url")[0].text.strip
+  author = page.xpath("//book//authors//name")[0].text.strip
+
+  pic.gsub!(/m\//,'l/') unless pic.index("goodreads")
+  Book.create(title: title, author: author, pic: pic, isbn: isbn) unless title.nil?
+end
+
+
+User.create(email: "k", name: "Admin", password: "k", admin: 2)
+
+[-1,0,1,2].each do |admin_num|
+
+  (5-admin_num).times do
+    username = Faker::Internet.email
+    User.create(
+      email: username,
+      name: Faker::Name.name ,
+      password: username,
+      admin: admin_num
+    )
+  end
+end
 
 book_id = 1
 User.valid_users.each do |user|

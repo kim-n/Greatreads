@@ -9,7 +9,7 @@
 
     <header class="post-header">
   		<% unless book_page.empty? && club_page.empty? %>
-  			<li class="poster"><a href="<%= user_url(post.user_id) %>"><%= post.username %></a></li>
+  			<li class="poster"><a href="<%= user_url(post.user_id) %>"><%= post.user.name %></a></li>
   		<% end %>
     	<li class="post-title"><%= post.created_at %></li>
 
@@ -34,18 +34,18 @@
   		</li>
   		<% end %>
 
-      <% if current_user %>
+
       <li class="comment-button"><a href="#">Comment</a></li>
-      <% end %>
+
     </footer>
 
     <div class="post-comments hide-tag">
-        <% post.top_level_comments.each do |comment| %>
+        <div><% post.top_level_comments.each do |comment| %>
           <%= render "comments/comment", comment: comment %>
+          <% end %></div>
+          <% if current_user %>
+            <%= render "comments/form_comment", post: post %>
           <% end %>
-
-          <%= render "comments/form_comment", post: post %>
-
     </div>
 
  </ul>
@@ -56,10 +56,17 @@
 <script>
 $(document).ready(function (){
   $(".comment-button").on("click", function (event){
-    event.preventDefault()
+    event.preventDefault();
     $commentButton = $(this)
     $(".post-comments").addClass("hide-tag")
     $commentButton.parent().next().toggleClass("hide-tag")
   });
+
+  $(".post-comments").on("ajax:success", function (event, data) {
+    event.preventDefault();
+    $(this).children("div").append(data);
+    console.log(data)
+  });
+
 });
 </script>

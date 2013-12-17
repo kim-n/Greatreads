@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   )
 
   def top_level_comments
-    self.comments.where(parent_id: 0).select("comments.*, users.name AS username").joins("INNER JOIN users ON comments.user_id=users.id")
+    self.comments.where(parent_id: 0)
   end
 
   def self.review_for(current_user_id, book_id)
@@ -40,7 +40,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.book_reviews(book_id)
-    Post.where("club_id = ? AND book_id = ? ", 0, book_id).select("posts.*, users.name AS username").joins("INNER JOIN users ON posts.user_id=users.id")
+    Post.where("club_id = ? AND book_id = ? ", 0, book_id)
   end
 
   def self.user_reviews(user_id)
