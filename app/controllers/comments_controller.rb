@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
       if is_saved
         render partial: "comments/comment", locals: {comment: comment}
       else
-        render json: @nothing
+        render json: comment.errors.full_messages, status: :unprocessable_entity
       end
     else
       redirect_to book_url(comment.post.book.isbn)

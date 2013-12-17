@@ -40,7 +40,7 @@
     </footer>
 
     <div class="post-comments hide-tag">
-        <div><% post.top_level_comments.each do |comment| %>
+        <div class="comments-list"><% post.top_level_comments.each do |comment| %>
           <%= render "comments/comment", comment: comment %>
           <% end %></div>
           <% if current_user %>
@@ -54,7 +54,10 @@
 	<% end %>
 
 <script>
+
 $(document).ready(function (){
+
+  // On click of comment button drop down of comments appear
   $(".comment-button").on("click", function (event){
     event.preventDefault();
     $commentButton = $(this)
@@ -62,10 +65,28 @@ $(document).ready(function (){
     $commentButton.parent().next().toggleClass("hide-tag")
   });
 
+  // On successful comment post
   $(".post-comments").on("ajax:success", function (event, data) {
     event.preventDefault();
-    $(this).children("div").append(data);
-    console.log(data)
+
+    $commentsList = $(this).children(".comments-list")
+    $errors = $commentsList.children(".errors")
+    $errors.remove();
+
+
+    $commentsList.append(data);
+
+  });
+
+  // on unsuccessful comment post
+  $(".post-comments").on("ajax:error", function (event, data) {
+    event.preventDefault();
+
+    $commentsList = $(this).children(".comments-list")
+    $errors = $commentsList.children(".errors")
+    $errors.remove();
+
+    $commentsList.append('<div class="errors">' + data.responseText + '</div>');
   });
 
 });
