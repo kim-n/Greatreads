@@ -1,0 +1,40 @@
+<ul class="post">
+
+   <header class="post-header">
+ 		<li class="poster"><a href="<%= user_url(post.user_id) %>"><%= post.user.name %></a></li>
+   	<li class="post-title"><%= post.created_at %></li>
+   </header>
+   <div class="post-contents">
+   	<li class="post-body"><%= post.body %></li>
+   </div>
+   <footer class="post-footer">
+   	<li class="book-title">
+ 			<a href="<%= book_url(post.book.isbn) %>">
+ 				<%= post.book.title %>
+ 			</a>
+     </li>
+
+ 		<% unless post.club_id == 0 %>
+ 		<li class="club-title">
+ 			<a href="<%= club_url(post.club) %>">
+ 				<%= post.club.title %>
+ 			</a>
+ 		</li>
+ 		<% end %>
+
+
+     <li class="comment-button"><a href="#">Comment</a></li>
+
+   </footer>
+
+   <div class="post-comments hide-tag">
+       <div class="comments-list"><% post.top_level_comments.each do |comment| %>
+         <%= render "comments/comment", comment: comment %>
+         <% end %></div>
+         <% if current_user %>
+           <%= render "comments/form_comment", post: post %>
+         <% end %>
+   </div>
+
+</ul>
+

@@ -32,8 +32,9 @@
 		</div>
 
    <header class="sub-title">Reviews:</header>
-	 <%= render "posts/list_posts", :posts => @posts, :book_page => "hide-tag" %>
-
+   <div class="posts-list">
+	   <%= render "posts/list_posts", :posts => @posts, :book_page => "hide-tag" %>
+   </div>
 
    <% if @current_user_review %>
    <header class="sub-title">My Review</header>
@@ -44,6 +45,10 @@
 		<tr>
 		</table>
    <% elsif current_user %>
-	 <header class="sub-title">New Review</header>
-	 <%= render "posts/form_post", post_path: book_review_url(@book.id) %>
+   <div class="new-post">
+  	 <header class="sub-title">New Review</header>
+    	 <%= render "posts/form_post", post_path: book_review_url(@book.id) %>
+     </div>
 	 <% end %>
+
+

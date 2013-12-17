@@ -8,11 +8,14 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 <% end %>
 
 <header class="sub-title">Posts</header>
-<%= render "posts/list_posts", :posts => @posts, :club_page => "hide-tag" %>
-
+<div class="posts-list">
+  <%= render "posts/list_posts", :posts => @posts, :club_page => "hide-tag" %>
+</div>
 
 <% if current_user %>
 	<header class="sub-title">New Post</header>
-	<%= render "posts/form_post", books: @clubbooks, post_path: club_posts_url(@club.id)  %>
+  <div class="new-post">
+  	<%= render "posts/form_post", books: @clubbooks, post_path: club_posts_url(@club.id)  %>
+  </div>
 <% end %>
 
