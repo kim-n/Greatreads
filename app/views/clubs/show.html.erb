@@ -26,14 +26,6 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 <script>
 $(document).ready(function (){
 
-  // On click of comment button drop down of comments appear
-  $("body").on("click", ".comment-button", function (event){
-    event.preventDefault();
-    $commentButton = $(this)
-    $(".post-comments").addClass("hide-tag")
-    $commentButton.parent().next().toggleClass("hide-tag")
-  });
-
   // On successful comment creation
   $("div.filter-buttons").on("ajax:success", ".button_to", function (event, data) {
     event.preventDefault();
