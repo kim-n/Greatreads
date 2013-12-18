@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  attr_accessible :title, :author, :isbn, :pic
+  attr_accessible :title, :author, :isbn, :pic, :description
 
   has_many(
     :post_items,

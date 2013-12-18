@@ -1,4 +1,4 @@
-<form class="post-form" action="<%=  club_posts_url(club.id) %>" method="POST" data-remote="true">
+<form class="review-form" action="<%= book_review_url(book.id) %>" method="POST" data-remote="true">
   <input type="hidden"
     name="authenticity_token"
     value="<%= form_authenticity_token %>">
@@ -12,14 +12,6 @@
   <label>Body
     <input type="text" name="post[body]"></input>
 	<br>
-
-	</label>Book:
-  	<select name="post[book_id]">
-  		<% books.each do |book| %>
-  		<option value="<%= book.id %>"><%= book.title %></option>
-  		<% end %>
-  	</select>
-  </label>
 
 <input type="submit" value="Post!"></input>
 </form>

@@ -14,12 +14,13 @@
 ActiveRecord::Schema.define(:version => 20131216034012) do
 
   create_table "books", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "author",     :null => false
-    t.string   "isbn",       :null => false
-    t.string   "pic",        :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "title",       :null => false
+    t.string   "author",      :null => false
+    t.string   "isbn",        :null => false
+    t.string   "pic",         :null => false
+    t.text     "description", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "books", ["isbn"], :name => "index_books_on_isbn", :unique => true
@@ -60,13 +61,13 @@ ActiveRecord::Schema.define(:version => 20131216034012) do
   add_index "likes", ["user_id", "book_id"], :name => "index_likes_on_user_id_and_book_id", :unique => true
 
   create_table "posts", :force => true do |t|
-    t.integer  "club_id",    :null => false
-    t.integer  "book_id",    :null => false
-    t.integer  "user_id",    :null => false
+    t.integer  "club_id",    :default => 0
+    t.integer  "book_id",                   :null => false
+    t.integer  "user_id",                   :null => false
     t.string   "title"
-    t.string   "body",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "body",                      :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -74,9 +75,9 @@ ActiveRecord::Schema.define(:version => 20131216034012) do
     t.string   "password_digest",                 :null => false
     t.string   "name"
     t.string   "session_token",                   :null => false
+    t.integer  "admin",           :default => -1
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.integer  "admin",           :default => -1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :author, null: false
       t.string :isbn, null: false
       t.string :pic, null: false
+      t.text :description, null: false
       t.timestamps
     end
     add_index :books, :isbn, unique: true

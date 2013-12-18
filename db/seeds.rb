@@ -26,9 +26,9 @@ isbns.each do |isbn|
   title = page.xpath("//book//title")[0].text.strip
   pic = page.xpath("//book//image_url")[0].text.strip
   author = page.xpath("//book//authors//name")[0].text.strip
-
+  description = page.xpath("//book//description")[0].text.strip
   pic.gsub!(/m\//,'l/') unless pic.index("goodreads")
-  Book.create(title: title, author: author, pic: pic, isbn: isbn) unless title.nil?
+  Book.create(title: title, author: author, pic: pic, isbn: isbn, description: description) unless description.nil? || title.nil?
 end
 
 

@@ -29,7 +29,6 @@ class PostsController < ApplicationController
     review = current_user.posts.new(params[:post])
 
     review.book_id = params[:book_id]
-    review.club_id = 0
 
     is_saved = review.save
 

@@ -3,8 +3,12 @@
 
 
    <%= @book.isbn %>
+	 
 	 <div class="group">
    <img class="cover" src="<%= @book.pic %>">
+	 
+	 <div class="desctiprion"><%= @book.description.html_safe %></div>
+	 
 
 		<% if current_user %>
 			<% if @book_rating.nil? %>
@@ -47,7 +51,7 @@
    <% elsif current_user %>
    <div class="new-post">
   	 <header class="sub-title">New Review</header>
-    	 <%= render "posts/form_post", post_path: book_review_url(@book.id) %>
+    	 <%= render "posts/form_review", book: @book  %>
      </div>
 	 <% end %>
 
