@@ -31,10 +31,17 @@ isbns.each do |isbn|
   Book.create(title: title, author: author, pic: pic, isbn: isbn, description: description) unless description.nil? || title.nil?
 end
 
+images = ["https://identicons.github.com/807d5a1c7facea5fca0692a25dc6d238.png", "https://identicons.github.com/glimberg.png",
+"https://identicons.github.com/GrantSolar.png",
+"https://identicons.github.com/gvx.png"]
 
-User.create(email: "k", name: "Admin", password: "k", admin: 2)
-User.create(email: "dummyAdmin", name: "Who let YOU in?", password: "whydidiletyouin", admin: 2)
-User.create(email: "dummyRegular", name: "Dummy User", password: "okayGO", admin: 0)
+User.create(email: "k", name: "Admin", password: "k",
+admin: 2,
+image: images.shuffle.first)
+User.create(email: "dummyAdmin", name: "Who let YOU in?", password: "whydidiletyouin",
+ admin: 2, image: images.shuffle.first)
+User.create(email: "dummyRegular", name: "Dummy User", password: "okayGO",
+ admin: 0, image: images.shuffle.first)
 
 
 [-1,0,1,2].each do |admin_num|
@@ -45,7 +52,8 @@ User.create(email: "dummyRegular", name: "Dummy User", password: "okayGO", admin
       email: username,
       name: Faker::Name.name ,
       password: username,
-      admin: admin_num
+      admin: admin_num,
+      image: images.shuffle.first
     )
   end
 end

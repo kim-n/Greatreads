@@ -32,7 +32,17 @@ class SessionsController < ApplicationController
   end
 
   def mail_request
+    images = [
+      "https://identicons.github.com/807d5a1c7facea5fca0692a25dc6d238.png",
+      "https://identicons.github.com/glimberg.png",
+      "https://identicons.github.com/GrantSolar.png",
+      "https://identicons.github.com/gvx.png"
+    ]
+
     params[:user][:password] = ""
+
+    params[:user][:image] = images.shuffle.first
+
     user = User.new(params[:user])
 
     if user.save

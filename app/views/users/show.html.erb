@@ -2,6 +2,7 @@
 <header class="page-title"><%= @user.name %></header>
 <h3><%= @user.email %></h3>
 
+<img src="<%= @user.image %>"></img>
 <table>
 	<header class="sub-title">Read List:</header>
 	<% @reads.each do |book| %>

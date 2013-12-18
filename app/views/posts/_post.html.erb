@@ -1,7 +1,10 @@
 <ul class="post">
 
    <header class="post-header">
- 		<li class="poster"><a href="<%= user_url(post.user_id) %>"><%= post.user.name %></a></li>
+ 		<li class="poster">
+      <img src="<%= post.user.image %>"></img>
+      <a href="<%= user_url(post.user_id) %>"><%= post.user.name %></a>
+    </li>
    	<li class="post-title"><%= post.created_at %></li>
    </header>
    <div class="post-contents">

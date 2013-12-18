@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # remove admin from attr_accessable
-  attr_accessible :email, :name, :password, :admin
+  attr_accessible :email, :name, :password, :admin, :image
 
   validates :email, :session_token, presence: true
   validates :password_digest, :presence => { :message => "Password can't be blank" }
@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :admin, :inclusion  => { :in => [ -1, 0, 1, 2 ] }
 
   after_initialize :ensure_session_token
-  
+
 
   has_many(
     :created_clubs,
@@ -39,11 +39,11 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
-  
+
   def reviews
     Post.user_reviews(self.id)
   end
-  
+
   def post_items
     Post.user_posts(self.id)
   end
