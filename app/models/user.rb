@@ -49,11 +49,12 @@ class User < ActiveRecord::Base
   end
 
   def wish_books
-    self.tastes.where(taste: 0).includes(:book)
+    self.tastes.where(taste: 0)
   end
 
   def read_books
-    self.tastes.where("likes.taste <> 0").includes(:book)
+    likes = self.tastes.where("likes.taste <> 0")
+    reviews = Post.user_reviews(self.id)
   end
 
   def self.valid_users

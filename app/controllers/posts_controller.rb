@@ -36,6 +36,9 @@ class PostsController < ApplicationController
       flash[:errors] = review.errors.full_messages
     end
 
+    like = Like.where(user_id: current_user.id, book_id: params[:book_id],  taste: 0)[0]
+    like.destroy if like
+
     if request.xhr?
       if is_saved
         render partial: "posts/post", locals: {post: review}

@@ -7,7 +7,6 @@
 	display: none;
 }
 
-
 .is-wish > #unlike, .is-wish > #undislike,
 .is-wish > #wish {
 	display: none;
@@ -26,6 +25,10 @@
 .is-like > #unlike, .is-dislike > #undislike,
 .is-wish > #unwish {
 	border: 2px solid blue;
+}
+
+.is-reviewed > #wish, .is-reviewed > #unwish {
+  display: none;
 }
 
 img.cover {

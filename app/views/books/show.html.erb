@@ -22,6 +22,10 @@
 				<% button_class = "is-dislike" %>
 			<% end %>
 
+      <% if @current_user_review %>
+        <% button_class += " is-reviewed" %>
+      <% end %>
+
 			<ul class="<%= button_class %>">
 			<li id="like"><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></li>
 			<li id="unlike"><%= button_to "#{@like_count} Likes", book_like_url(@book), method: :delete %></li>
