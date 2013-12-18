@@ -10,17 +10,17 @@ class UsersController < ApplicationController
 
     render :index
   end
-
-  def create
-    user = User.new(params[:user])
-
-    if user.save
-      self.current_user = user
-      redirect_to user_url(current_user)
-    else
-      render :new
-    end
-  end
+  #
+  # def create
+  #   user = User.new(params[:user])
+  #
+  #   if user.save
+  #     self.current_user = user
+  #     redirect_to user_url(current_user)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def update
     user = User.find_by_session_token(params[:id])

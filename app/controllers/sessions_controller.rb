@@ -32,10 +32,13 @@ class SessionsController < ApplicationController
   end
 
   def mail_request
-    user = User.create(params[:user])
-    msg = UserMailer.request_confirm(user)
-    msg.deliver!
+    params[:user][:password] = ""
+    user = User.new(params[:user])
 
+    if user.save
+      msg = UserMailer.request_confirm(user)
+      msg.deliver!
+    end
     redirect_to root_url
   end
 end
