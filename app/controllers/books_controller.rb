@@ -13,12 +13,12 @@ class BooksController < ApplicationController
 
 
     @posts = @book.reviews
-   
+
     if current_user
       @book_rating = Like.find_rating(current_user.id, @book.id)
       @current_user_review = Post.review_for(current_user.id, @book.id)
     end
-    
+
     @like_count = @book.likes.count
     @dislike_count = @book.dislikes.count
     render :show

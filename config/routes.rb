@@ -5,29 +5,30 @@ GoodReadsClone::Application.routes.draw do
     end
     post 'approve', :to => 'users#send_activation_email'
   end
-  
+
   resource :session, :only => [:create, :destroy, :new] do
     post 'mail_request'
   end
 
   get 'request', :to => 'sessions#request_entry'
-  
+
   resources :books, :only => [:index, :show] do
     resource :like, :only => [:create, :destroy]
     post 'review', :to => 'posts#create_review'
   end
-  
+
   resource :admin, :only => [:index] do
     get 'home', :to => 'admins#index'
     get 'requests', :to => 'admins#activation'
     get 'users'
     get 'clubs'
   end
-  
+
   resources :clubs, :only => [:index, :create, :show, :new, :destroy] do
+    post 'filter', :to => 'clubs#filter_show'
     resources :posts, :only => [:create]
   end
-  
+
   resources :comments, only: [:index, :show]
 
   resources :posts, only: [:show] do

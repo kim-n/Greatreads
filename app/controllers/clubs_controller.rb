@@ -27,14 +27,25 @@ class ClubsController < ApplicationController
     @club = Club.find_by_id(params[:id])
 
     if @club
-      @posts = @club.posts.select("posts.*, users.name AS username, books.title AS bookname, books.isbn AS bookisbn").joins("INNER JOIN users ON posts.user_id=users.id").joins("INNER JOIN books ON posts.book_id=books.id")
-      @books = Book.all
+      @posts = @club.posts
       @clubbooks = @club.books
       render :show
     else
       redirect_to clubs_url
     end
   end
+
+  def filter_show
+    @club = Club.find_by_id(params[:club_id])
+    if params[:book_id] == "0"
+      @posts = @club.posts
+    else
+      @posts = @club.posts.where(book_id: params[:book_id])
+    end
+    render partial: "posts/list_posts", locals:{posts: @posts, club_page: "hide-tag"}
+  end
+
+
 
   def new
     @books = Book.all

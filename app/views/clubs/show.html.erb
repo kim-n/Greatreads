@@ -3,9 +3,13 @@
 <header class="page-title"><%= @club.title %></header>
 Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></a>
 
+<div class="filter-buttons">
+    <%= button_to "ALL", club_filter_url(@club.id, {book_id: 0}), remote: true %>
 <% @clubbooks.each do |book| %>
-  <button><%= book.title %></button>
+  <%= button_to book.title, club_filter_url(@club.id, {book_id: book.id}), remote: true %>
+  <!-- <button><%= book.title %></button> -->
 <% end %>
+</div>
 
 <header class="sub-title">Posts</header>
 <div class="posts-list">
@@ -19,3 +23,22 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
   </div>
 <% end %>
 
+<script>
+$(document).ready(function (){
+
+  // On click of comment button drop down of comments appear
+  $("body").on("click", ".comment-button", function (event){
+    event.preventDefault();
+    $commentButton = $(this)
+    $(".post-comments").addClass("hide-tag")
+    $commentButton.parent().next().toggleClass("hide-tag")
+  });
+
+  // On successful comment creation
+  $("div.filter-buttons").on("ajax:success", ".button_to", function (event, data) {
+    event.preventDefault();
+    $(".posts-list").html(data)
+  });
+
+});
+</script>
