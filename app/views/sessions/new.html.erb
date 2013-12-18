@@ -1,4 +1,7 @@
 <article>
+	<%= button_to "Log in as ADMIN", session_url(@book, {user: {email: "k", password: "k"} }) %>
+	
+	
   <form action="<%= session_url %>" method="POST">
     <input type="hidden"
       name="authenticity_token"
