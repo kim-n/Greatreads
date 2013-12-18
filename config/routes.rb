@@ -12,7 +12,7 @@ GoodReadsClone::Application.routes.draw do
 
   get 'request', :to => 'sessions#request_entry'
 
-  resources :books, :only => [:index, :show] do
+  resources :books, :only => [:index, :show, :create] do
     resource :like, :only => [:create, :destroy]
     post 'review', :to => 'posts#create_review'
   end

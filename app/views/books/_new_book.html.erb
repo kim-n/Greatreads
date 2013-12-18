@@ -1,0 +1,10 @@
+<form action="<%= books_url %>" method="post">
+  <input type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>" >
+
+  <label> ISBN:
+  <input type="text" name="isbn"></input>
+  </label>
+  <input type="submit" value="+"></input>
+</form>

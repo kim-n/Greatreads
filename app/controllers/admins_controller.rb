@@ -1,8 +1,8 @@
 class AdminsController < ApplicationController
 
   before_filter :require_current_user!
-  before_filter :require_administrator!
-  
+  before_filter :require_admin_status!
+
   def index
     render :index
   end

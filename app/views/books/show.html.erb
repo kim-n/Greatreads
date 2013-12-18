@@ -1,14 +1,15 @@
+<a class="back-button" href="<%= books_url %>">ALL BOOKS</a>
 <header class="page-title"><%= @book.title %></header>
 <h3><%= @book.author %></h3>
 
 
    <%= @book.isbn %>
-	 
+
 	 <div class="group">
    <img class="cover" src="<%= @book.pic %>">
-	 
+
 	 <div class="desctiprion"><%= @book.description.html_safe %></div>
-	 
+
 
 		<% if current_user %>
 			<% if @book_rating.nil? %>

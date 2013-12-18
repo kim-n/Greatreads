@@ -31,7 +31,7 @@ module SessionsHelper
 
   def require_admin_status!
     unless is_admin?(current_user)
-      flash[:errors] = ["Must be admin to do that"]
+      flash.now[:errors] = ["Must be admin to do that"]
       redirect_to user_url(current_user)
     end
   end
