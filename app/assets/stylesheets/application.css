@@ -188,15 +188,15 @@ a:hover {
 }
 
 .post .post-comments {
-  background: red;
-  width: 50%;
-  margin-left: 360px;
+  background: rgba(0,0,0, 0.2);
+  width: 75%;
+  margin-left: 190px;
 }
 
 .comment {
-  background: blue;
-  border: 3px dashed red;
+  border: 1px dashed grey;
   margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 

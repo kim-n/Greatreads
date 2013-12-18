@@ -3,7 +3,17 @@
     <a href="<%= user_url(comment.user_id) %>"><%= comment.user.name %></a> says </li>
   <li class="comment-body"><%= comment.body %></li>
 
-  <!-- <#% comment.children_comments.each do |child| %>
-    <#%= render "comments/comment", comment: child %>
-  <#% end %> -->
+  <% comment.children_comments.each do |child| %>
+    <%= render "comments/comment", comment: child %>
+  <% end %>
+
+  <div class="new-comment"></div>
+  <li class="reply-button"><a href="#">Reply</a></li>
+
+  <div class="reply-form hide-tag">
+      <% if current_user %>
+        <%= render "comments/form_comment", post: comment, parent_id: comment.id %>
+      <% end %>
+  </div>
+
 </ul>
