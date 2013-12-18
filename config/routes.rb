@@ -3,6 +3,7 @@ GoodReadsClone::Application.routes.draw do
     collection do
       get 'activate'
     end
+    # get 'recommendations', :to => 'users#recommendations'
     post 'approve', :to => 'users#send_activation_email'
   end
 

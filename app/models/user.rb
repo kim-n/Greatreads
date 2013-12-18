@@ -52,9 +52,42 @@ class User < ActiveRecord::Base
     self.tastes.where(taste: 0)
   end
 
+
+  def likes
+    self.tastes.where(taste: 1)
+  end
+
+  def dislikes
+    self.tastes.where(taste: -1)
+  end
+
+
+  def liked_books
+    books = []
+    self.likes.each do |like|
+      books << like.book
+    end
+    books
+  end
+
+  def disliked_books
+    books = []
+    self.dislikes.each do |like|
+      books << like.book
+    end
+    books
+  end
+
+  def reviewed_books
+    books = []
+    self.reviews.each do |review|
+      books << review.book
+    end
+    books
+  end
+
   def read_books
     likes = self.tastes.where("likes.taste <> 0")
-    reviews = Post.user_reviews(self.id)
   end
 
   def self.valid_users
@@ -68,6 +101,41 @@ class User < ActiveRecord::Base
   def self.pending
     User.where("admin = -1 AND created_at <> updated_at")
   end
+
+
+  def recommendations
+
+    my_liked_books = self.liked_books
+    my_liked_books.shuffle!
+
+    my_disliked_books = self.disliked_books
+    my_reviewed_books = self.reviewed_books
+
+    recs = []
+    my_liked_books.each do |book|
+      likes_of_book = Like.where("taste = ? AND book_id = ? AND user_id <> ?", 1, book.id, self.id )
+
+
+      # all other users who like book
+      users_like_book = []
+      likes_of_book.each do |like|
+        users_like_book << like.user
+      end
+
+      users_like_book.each do |user|
+        user.liked_books.each do |book|
+          unless my_liked_books.include?(book) || my_disliked_books.include?(book) ||my_reviewed_books.include?(book)
+
+            recs << book
+          end
+        end
+      end
+
+    end
+
+    # recs
+  end
+
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
