@@ -33,6 +33,9 @@ end
 
 
 User.create(email: "k", name: "Admin", password: "k", admin: 2)
+User.create(email: "dummyAdmin", name: "Who let YOU in?", password: "whydidiletyouin", admin: 2)
+User.create(email: "dummyRegular", name: "Dummy User", password: "okayGO", admin: 0)
+
 
 [-1,0,1,2].each do |admin_num|
 

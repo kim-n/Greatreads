@@ -3,3 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.trial-logins{
+	background:red;
+	text-size: 24px;
+}
+
+.trial-logins .button_to input{
+	margin: 20px;
+	float:left;
+	background: red;
+	color:white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.trial-logins .button_to input:hover{
+
+	background: green;
+
+}

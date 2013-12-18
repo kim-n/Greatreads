@@ -1,6 +1,9 @@
+<div class="trial-logins">
+<%= button_to "Free ADMIN access", session_url(@book, {user: {email: "dummyAdmin", password: "whydidiletyouin"} }) %>
+<%= button_to "Try App!", session_url(@book, {user: {email: "dummyRegular", password: "okayGO"} }) %>
+</div>
+
 <article>
-	<%= button_to "Log in as ADMIN", session_url(@book, {user: {email: "k", password: "k"} }) %>
-	
 	
   <form action="<%= session_url %>" method="POST">
     <input type="hidden"
