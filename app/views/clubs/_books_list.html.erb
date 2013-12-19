@@ -1,6 +1,6 @@
-<select name="club[books_ids][]">
+<select name="books_ids[]">
   <option></option>
-	<% Book.all.each do |book| %>
+	<% books.each do |book| %>
 	  <option value="<%= book.id %>"><%= book.title %></option>
 	<% end %>
 </select>

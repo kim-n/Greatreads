@@ -1,5 +1,5 @@
-<h3>Create Club</h3>
-<form action="<%= clubs_url %>" method="POST">
+<form class="club-form " action="<%= clubs_url %>" method="POST" data-remote=true>
+  <h3>Create Club</h3>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"></input>
 
   <label>Title
@@ -7,7 +7,7 @@
   </label>
   <br>
 
-	<%= render "books_list", books: Book.all %>
+	<%= render "books_list", books: books%>
 
   <input type="submit" value="Create Club!"></input>
 </form>

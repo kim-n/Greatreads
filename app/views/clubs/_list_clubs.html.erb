@@ -3,19 +3,8 @@
     <th>Club Name: </th>
     <th>Club Creator: </th>
   </tr>
-  
 	<% clubs.each do |club| %>
-  <tr>
-    <td>
-			<a href="<%= club_url(club.id) %>"><%= club.title %></a>
-		</td>
-    <td>
-			<a href="<%= user_url(club.creator) %>"><%= club.creator.name %></a>
-		</td>
-		<td class="admin">
-			<%= button_to "X", club_url(club.id), method: :delete %>
-		</td>
-  </tr>
+    <%=render partial: "clubs/club", locals: {club: club} %>
   <% end %>
 
 </table>

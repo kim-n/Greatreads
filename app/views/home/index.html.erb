@@ -1,8 +1,5 @@
 <header class="page-title">Home</header>
 
-<a href="<%= users_url %>">All Users</a>
-
-
 <header class="sub-title"><a href="<%= books_url %>">Recommendations</a></header>
 <%= render "books/list_books", :books => @recommendations, :root_page => "hide-tag" %>
 

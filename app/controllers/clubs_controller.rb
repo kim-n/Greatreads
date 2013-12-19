@@ -1,24 +1,45 @@
 class ClubsController < ApplicationController
 
   before_filter :require_current_user!, except: [:index, :show]
-
+  before_filter :require_admin_status!, only: [:create]
   def index
-    @clubs = Club.all
+    @clubs = Club.find(:all, :order => "created_at DESC")
     render :index
   end
 
   def create
-    params[:club][:books_ids].delete("")
-    if params[:club][:books_ids].empty?
+    params[:books_ids].delete("")
+    if params[:books_ids].empty?
       flash[:errors] = ["Clubs must have atleast 1 book"]
-      redirect_to new_club_url
-    else
-      club = current_user.created_clubs.new(params[:club])
-      if club.save
-        redirect_to club_url(club)
+      if request.xhr?
+        render json: flash[:errors], status: :unprocessable_entity
       else
-        flash[:errors] = club.errors.full_messages
-        render :new
+        redirect_to clubs_url
+      end
+    else
+      club = nil
+      is_saved = false
+      begin
+        Club.transaction do
+          club = current_user.created_clubs.new(params[:club])
+          is_saved = club.save!
+          params[:books_ids].each do |book_id|
+            club.book_pairings.create!(book_id: book_id)
+          end
+        end
+
+        if request.xhr?
+          render partial: "list_clubs", locals: {clubs: Club.find(:all, :order => "created_at DESC")}
+        else
+          redirect_to club_url(club)
+        end
+      rescue ActiveRecord::RecordInvalid => invalid
+        if request.xhr?
+          render json: club.errors.full_messages, status: :unprocessable_entity
+        else
+          flash[:errors] = club.errors.full_messages
+          redirect_to clubs_url
+        end
       end
     end
   end
@@ -47,12 +68,12 @@ class ClubsController < ApplicationController
     render partial: "posts/list_posts", locals:{posts: @posts, club_page: "hide-tag"}
   end
 
-
-
-  def new
-    @books = Book.all
-    render :new
-  end
+  #
+  #
+  # def new
+  #   @books = Book.all
+  #   render :new
+  # end
 
   def destroy
     club = Club.find(params[:id])

@@ -1,8 +1,70 @@
 <header class="page-title">All Clubs</header>
 
 <% if current_user && is_admin?(current_user) %>
-	<a href="<%= new_club_url %>">Create Club</a><br>
+	<a class="create-club-button" href="#">Create Club</a><br>
+  <div class="new-club-form hide-tag">
+  <%= render "club_form", books: Book.all %>
+  </div>
 <% end %>
 
+<div class="club-list">
+<%= render "list_clubs", clubs: @clubs %>
+</div>
 
-<%= render "list_clubs", :clubs => @clubs %>
+
+
+<script>
+$(document).ready(function (){
+
+  // On click of create club button drop down of create form
+  $("body").on("click", ".create-club-button", function (event){
+    event.preventDefault();
+    $commentButton = $(this)
+    $(".new-club-form").toggleClass("hide-tag")
+  });
+
+
+  // On successful club creation
+  $("body").on("ajax:success", ".club-form", function (event, data) {
+    event.preventDefault();
+
+    $commentForm = $(this)
+
+    console.log($(this))
+    console.log(data)
+    $(".club-list").html(data)
+    $(".new-club-form").toggleClass("hide-tag")
+
+  });
+
+  // on unsuccessful club creation
+  $("body").on("ajax:error", ".club-form", function (event, data) {
+    event.preventDefault();
+    $commentForm = $(this)
+    $newClubDiv = $("div.new-club-form")
+
+    $errors = $newClubDiv.children(".errors")
+    $errors.remove();
+
+    $newClubDiv.append('<div class="errors">' + data.responseText + '</div>');
+  });
+  //
+  //
+  //
+  // // On click of comment button drop down of comments appear
+  // $("body").on("click", ".reply-button", function (event){
+  //   event.preventDefault();
+  //
+  //   $commentButton = $(this)
+  //
+  //   $(".reply-button").removeClass("hide-tag")
+  //   $(this).toggleClass("hide-tag")
+  //
+  //   $(".reply-form").addClass("hide-tag")
+  //   $commentButton.siblings(".reply-form").toggleClass("hide-tag")
+  // });
+
+
+
+});
+</script>
