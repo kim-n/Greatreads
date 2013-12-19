@@ -61,6 +61,37 @@ class User < ActiveRecord::Base
     self.tastes.where(taste: -1)
   end
 
+  def read_books_with_rating
+    book_ids = []
+    book_rating_pairs = []
+    self.tastes.each do |like|
+      if like.taste == 1
+        book_ids << like.book_id
+        book_rating_pairs << {taste: "^", book: like.book}
+      elsif like.taste == -1
+        book_ids << like.book_id
+        book_rating_pairs << {taste: "v", book: like.book}
+      end
+    end
+    
+    self.reviews.each do |review|
+      unless book_ids.include?(review.book_id)
+        book_ids << review.book_id
+        book_rating_pairs << {taste: "-", book: review.book}
+      end
+    end
+    
+    book_rating_pairs
+  end
+  
+  def read_books 
+    book_rating_pairs = self.read_books_with_rating
+    books = []
+    book_rating_pairs.each do |pair|
+      books << pair[:book]
+    end
+    books
+  end
 
   def liked_books
     books = []
@@ -86,10 +117,6 @@ class User < ActiveRecord::Base
     books
   end
 
-  def read_books
-    likes = self.tastes.where("likes.taste <> 0")
-  end
-
   def self.valid_users
     User.where("admin > -1")
   end
@@ -105,35 +132,39 @@ class User < ActiveRecord::Base
 
   def recommendations
 
-    my_liked_books = self.liked_books
-    my_liked_books.shuffle!
+    user_likes_books = self.liked_books    
+    user_likes_books.shuffle!
 
-    my_disliked_books = self.disliked_books
-    my_reviewed_books = self.reviewed_books
+    all_my_read_books = self.read_books
 
-    recs = []
-    my_liked_books.each do |book|
+    recommendations = []
+    user_likes_books.each do |book|
       likes_of_book = Like.where("taste = ? AND book_id = ? AND user_id <> ?", 1, book.id, self.id )
 
-
       # all other users who like book
-      users_like_book = []
+      users_who_like_book = []
       likes_of_book.each do |like|
-        users_like_book << like.user
+        users_who_like_book << like.user
       end
 
-      users_like_book.each do |user|
+      users_who_like_book.each do |user|
         user.liked_books.each do |book|
-          unless my_liked_books.include?(book) || my_disliked_books.include?(book) ||my_reviewed_books.include?(book)
-
-            recs << book
+          unless all_my_read_books.include?(book)
+            recommendations << book
           end
         end
       end
-
+    end
+    
+    books = Book.all.shuffle!
+    until recommendations.count >= 5 || books.count <= 0
+      book = books.shift
+      unless all_my_read_books.include?(book) || recommendations.include?(book)
+        recommendations << book
+      end 
     end
 
-    # recs
+    recommendations
   end
 
 

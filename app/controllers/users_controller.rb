@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       @reviews = @user.reviews
       @posts = @user.post_items
       @wishes = @user.wish_books
-      @reads = @user.read_books
+      @read_books_with_rating = @user.read_books_with_rating
       render :show
     else
       redirect_to users_url

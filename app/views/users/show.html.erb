@@ -5,11 +5,11 @@
 <img src="<%= @user.image %>"></img>
 <table>
 	<header class="sub-title">Read List:</header>
-	<% @reads.each do |book| %>
+	<% @read_books_with_rating.each do |pair| %>
 	<tr>
-		<td><%= book.taste == 1 ? "^ " : "v "%>
-			<a href="<%= book_url(book.book.isbn) %>">
-				<%= book.book.title %>
+		<td><%= pair[:taste] %>
+			<a href="<%= book_url(pair[:book].isbn) %>">
+				<%= pair[:book].title %>
 			</a>
 		</td>
 	</tr>
