@@ -37,4 +37,13 @@ class Club < ActiveRecord::Base
 
   has_many :members, through: :user_memberships, source: :user
 
+  def notify_members_new_post(post)
+    self.members.each do |member|
+      Notification.create(
+        user_id: member.id,
+        obj_type: "Club",
+        obj_id: post.id
+      )
+    end
+  end
 end

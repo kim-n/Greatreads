@@ -6,12 +6,12 @@
 <% button_class = @is_followed_by_current_user ? "follow" : "unfollow" %>
 <ul class="<%= button_class %>">
   <li class="button-follow"><%= button_to "Follow", user_follows_url(params[:id]) %></li>
-  <li class="button-unfollow"><%= button_to "Unfollow", user_follow_url(params[:id]), method: :delete %></li> 
+  <li class="button-unfollow"><%= button_to "Unfollow", user_follow_url(params[:id]), method: :delete %></li>
 </ul>
 <% end %>
 
 Followed by:
-<%= render "users/list_users", :users => @user.followees %>
+<%= render "users/list_users", :users => @user.follows %>
 
 Following:
 <%= render "users/list_users", :users => @user.followers %>

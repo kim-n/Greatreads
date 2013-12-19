@@ -31,4 +31,26 @@ class Comment < ActiveRecord::Base
     primary_key: :id
   )
 
+
+  def notify_user_responding_to
+    unless self.parent_id == 0 #comment is a reply to another comment
+      unless parent_comment.user_id == self.user_id
+        Notification.create(
+          user_id: self.parent_comment.user_id,
+          obj_type: "Comment",
+          obj_id: self.id
+        )
+      end
+    else #comment is a reply to a post
+    # Notify post author
+    unless post.user_id == self.user_id
+        Notification.create(
+          user_id: self.post.user_id,
+          obj_type: "Comment",
+          obj_id: self.id
+        )
+      end
+    end
+  end
+
 end

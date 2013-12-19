@@ -13,8 +13,7 @@ class CommentsController < ApplicationController
     comment = current_user.comments.new(params[:comment])
     comment.post_id = params[:post_id]
     comment.parent_id = params[:parent_id]
-
-
+    puts params[:parent_id]
 
     is_saved = comment.save
 
@@ -24,11 +23,17 @@ class CommentsController < ApplicationController
 
     if request.xhr?
       if is_saved
+        # Notify user responding to
+        comment.notify_user_responding_to()
+
         render partial: "comments/comment", locals: {comment: comment}
       else
         render json: comment.errors.full_messages, status: :unprocessable_entity
       end
     else
+      # Notify user responding to
+      comment.notify_user_responding_to()
+
       redirect_to book_url(comment.post.book.isbn)
     end
   end

@@ -207,7 +207,7 @@ class User < ActiveRecord::Base
 
 
 ####---Notifications-----####
-  def send_notifications(new_object)
+  def notify_followers_new_post(new_object)
     self.followers.each do |follower|
       Notification.send_notification(new_object, follower)
     end
