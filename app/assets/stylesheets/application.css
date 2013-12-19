@@ -12,54 +12,142 @@
  * require_tree .
  */
 
+/* --- RESET --- */
 
-body, header, img, a, div, button, input, form, table, tr, th, td, ul ,li {
-	margin: 0px;
-	border: 0px;
-	padding: 0px;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	text-decoration: none;
+html, body, header, footer, section, article, div,
+strong, a, img, p, h1, h2, h3, time, ul, li, small, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
+/* --- ELEMENTS --- */
 
 body {
-	background: #F5ECCE;
-	font-family: sans-serif;
+  font-family: sans-serif;
+  background: #fff;
+  font-size: 16px;
+  line-height: normal;
 }
 
-ul, li {
+ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: #00f;
+}
+
+strong {
+  font-weight: bold;
+}
 
 img {
   display: block;
 }
 
-nav {
-  position: relative;
-	background: #04B45F;
-	display: block;
-	height: 40px;
-	font-size: 34px;
-	text-align: left;
-	font-weight: 100;
-	color:white;
+
+/* --- CLEARFIX --- */
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-nav #search-box {
-  position: absolute;
-	background: green;
-  height: 50%;
-  border: 2px solid white;
-  border-radius: 20px;
-  font-size: 50%;
-  margin-left: 10px;
-  margin-top: 4px;
-  padding: 4px 10px;
+/* --- GLOBALS --- */
+
+/*a {
+  color: inherit;
 }
+
+a:visited {
+  color:inherit;
+}
+
+a:hover {
+  color:#C0C0C0;
+}*/
+
+
+/* --- NAV BAR --- */
+nav {
+  background: #F5ECCE;
+  height: 50px;
+}
+
+.site-nav {
+  width: 900px;
+  margin: auto;
+  height: inherit;
+  border: 1px solid black;
+}
+
+.site-nav > .static-elements {
+  float:left;
+}
+
+.site-nav > .static-elements > a#logo {
+  font-size: 30px;
+  float:left;
+  font-weight: 100;
+  position: relative;
+  margin: 5px 40px 0px 20px;
+}
+
+.site-nav > .static-elements > a#logo > strong {
+  font-weight: 400;
+}
+
+.site-nav > .static-elements > a#logo > tag {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  font-family: cursive;
+  right: -20px;
+  bottom: -12px;
+}
+
+.site-nav > .static-elements > #search-box {
+  float:left;
+  background: white;
+  border-radius: 4px;
+  margin-top: 14px;
+  width: 140px;
+  font-size: 15px;
+}
+
+.site-nav > .static-elements > .site-links {
+  float:right;
+}
+
+.site-nav > .static-elements > .site-links > li{
+  float:left;
+  margin: 14px 10px;
+  border: 2px solid white;
+}
+
+.site-nav > .user-links {
+  float: right;
+}
+
+.site-nav > .user-links li {
+  float: left;
+}
+
+
+/* --- MAIN --- */
+#main {
+  width: 900px;
+  margin: auto;
+  height: auto;
+  border: 1px solid red;
+}
+/*
 
 nav #search-box:focus{
   border: 0px;
@@ -71,11 +159,11 @@ nav > ul{
 
 nav > ul > li{
   float: left;
-	padding-right: 10px;
+  padding-right: 10px;
 }
 
 nav a:visited{
-	color:white;
+  color:white;
 }
 
 nav  a:hover {
@@ -83,12 +171,12 @@ nav  a:hover {
 }
 
 nav > a#logo {
-	float:left;
+  float:left;
 }
 
 nav li input {
-	background: #04B45F;
-	color:white;
+  background: #04B45F;
+  color:white;
 }
 
 .back-button {
@@ -101,44 +189,33 @@ input:hover {
 }
 
 #main {
-	width: 800px;
-	margin: auto;
-	margin-top: 100px;
+  width: 800px;
+  margin: auto;
+  margin-top: 100px;
 }
 
 
 header.page-title {
-	background: red;
-	display: block;
-	font-size: 30px;
+  background: red;
+  display: block;
+  font-size: 30px;
 }
 
 header.sub-title {
-	background: green;
-	display: block;
-	font-size: 20px;
+  background: green;
+  display: block;
+  font-size: 20px;
 }
 
 
 .admin {
-	display: none;
+  display: none;
 }
 
 .hide-tag {
-	display: none;
+  display: none;
 }
 
-a {
-	color: inherit;
-}
-
-a:visited {
-	color:inherit;
-}
-
-a:hover {
-	color:#C0C0C0;
-}
 
 
 
@@ -247,7 +324,7 @@ a:hover {
   display: none;
 }
 
-
+*/
 /*
 input {
 	color: green;
