@@ -39,25 +39,26 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
-  
+
   has_many(
     :follower_entries,
     class_name: "Follow",
     foreign_key: :follower_id,
     primary_key: :id,
-    inverse_of: :user_following
+    inverse_of: :follower
   )
-  
+
   has_many(
     :followee_entries,
     class_name: "Follow",
     foreign_key: :followee_id,
     primary_key: :id,
-    inverse_of: :user_being_followed
+    inverse_of: :followee
   )
-  has_many :followers, through: :followee_entries, source: :user_following
-  
-  has_many :followees, through: :follower_entries, source: :user_being_followed
+
+  has_many :followers, through: :followee_entries, source: :follower
+
+  has_many :follows, through: :follower_entries, source: :followee
 
   def reviews
     Post.user_reviews(self.id)
@@ -70,7 +71,6 @@ class User < ActiveRecord::Base
   def wish_books
     self.tastes.where(taste: 0)
   end
-
 
   def likes
     self.tastes.where(taste: 1)
@@ -92,18 +92,18 @@ class User < ActiveRecord::Base
         book_rating_pairs << {taste: "v", book: like.book}
       end
     end
-    
+
     self.reviews.each do |review|
       unless book_ids.include?(review.book_id)
         book_ids << review.book_id
         book_rating_pairs << {taste: "-", book: review.book}
       end
     end
-    
+
     book_rating_pairs
   end
-  
-  def read_books 
+
+  def read_books
     book_rating_pairs = self.read_books_with_rating
     books = []
     book_rating_pairs.each do |pair|
@@ -120,21 +120,21 @@ class User < ActiveRecord::Base
     books
   end
 
-  def disliked_books
-    books = []
-    self.dislikes.each do |like|
-      books << like.book
-    end
-    books
-  end
-
-  def reviewed_books
-    books = []
-    self.reviews.each do |review|
-      books << review.book
-    end
-    books
-  end
+  # def disliked_books
+  #   books = []
+  #   self.dislikes.each do |like|
+  #     books << like.book
+  #   end
+  #   books
+  # end
+  #
+  # def reviewed_books
+  #   books = []
+  #   self.reviews.each do |review|
+  #     books << review.book
+  #   end
+  #   books
+  # end
 
   def self.valid_users
     User.where("admin > -1")
@@ -151,7 +151,7 @@ class User < ActiveRecord::Base
 
   def recommendations
 
-    user_likes_books = self.liked_books    
+    user_likes_books = self.liked_books
     user_likes_books.shuffle!
 
     all_my_read_books = self.read_books
@@ -174,13 +174,13 @@ class User < ActiveRecord::Base
         end
       end
     end
-    
+
     books = Book.all.shuffle!
     until recommendations.count >= 5 || books.count <= 0
       book = books.shift
       unless all_my_read_books.include?(book) || recommendations.include?(book)
         recommendations << book
-      end 
+      end
     end
 
     recommendations
