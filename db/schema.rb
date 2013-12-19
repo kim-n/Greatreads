@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131219051505) do
+ActiveRecord::Schema.define(:version => 20131219143433) do
 
   create_table "books", :force => true do |t|
     t.string   "title",       :null => false
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(:version => 20131219051505) do
   end
 
   add_index "likes", ["user_id", "book_id"], :name => "index_likes_on_user_id_and_book_id", :unique => true
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id",                       :null => false
+    t.string   "obj_type",                      :null => false
+    t.integer  "obj_id",                        :null => false
+    t.boolean  "checked",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.integer  "club_id",    :default => 0

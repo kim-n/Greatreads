@@ -60,6 +60,14 @@ class User < ActiveRecord::Base
 
   has_many :follows, through: :follower_entries, source: :followee
 
+  has_many(
+    :notifications,
+    class_name: "Notification",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :user
+  )
+
   def reviews
     Post.user_reviews(self.id)
   end
@@ -148,6 +156,7 @@ class User < ActiveRecord::Base
     User.where("admin = -1 AND created_at <> updated_at")
   end
 
+####---Recomendations-----####
 
   def recommendations
 
@@ -186,6 +195,16 @@ class User < ActiveRecord::Base
     recommendations
   end
 
+
+####---Notifications-----####
+  def send_notifications(new_object)
+    self.followers.each do |follower|
+      Notification.send_notification(new_object, follower)
+    end
+  end
+
+
+####---Session && New User-----####
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
