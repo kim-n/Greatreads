@@ -28,7 +28,7 @@ class ClubsController < ApplicationController
 
     if @club
       @is_current_user_member = current_user.club_memberships.where(club_id: @club.id)[0]
-      @posts = @club.posts
+      @posts = @club.posts.find(:all, :order => "created_at DESC")
       @clubbooks = @club.books
       render :show
     else

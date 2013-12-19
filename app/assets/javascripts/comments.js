@@ -21,7 +21,7 @@ $(document).ready(function (){
     $errors = $newComments.children(".errors")
     $errors.remove();
 
-    $newComments.append(data);
+    $newComments.prepend(data);
     $(this)[0].reset()
   });
 

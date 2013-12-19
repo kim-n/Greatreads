@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   )
 
   def top_level_comments
-    self.comments.where(parent_id: 0)
+    self.comments.where(parent_id: 0).find(:all, :order => "created_at DESC")
   end
 
   def self.review_for(current_user_id, book_id)

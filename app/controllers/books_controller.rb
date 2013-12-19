@@ -12,12 +12,13 @@ class BooksController < ApplicationController
   def show
     @book = Book.find_by_isbn(params[:id])
 
-    if @book    
-      @posts = @book.reviews
+    if @book
+      @posts = @book.reviews.find(:all)
 
       if current_user
         @book_rating = Like.find_rating(current_user.id, @book.id)
         @current_user_review = Post.review_for(current_user.id, @book.id)
+        @posts.delete(@current_user_review)
       end
 
       @like_count = @book.likes.count

@@ -7,11 +7,11 @@
   <div class="post-contents">
     <li class="comment-body"><%= comment.body %></li>
   </div>
-  <% comment.children_comments.each do |child| %>
+  <% comment.children_comments.find(:all, :order => "created_at DESC").each do |child| %>
     <%= render "comments/comment", comment: child %>
   <% end %>
 
-  <div class="new-comment"></div>
+
   <li class="reply-button"><a href="#">Reply</a></li>
 
   <div class="reply-form hide-tag">
@@ -19,5 +19,6 @@
         <%= render "comments/form_comment", post: comment, parent_id: comment.id %>
       <% end %>
   </div>
+  <div class="new-comment"></div>
 
 </ul>

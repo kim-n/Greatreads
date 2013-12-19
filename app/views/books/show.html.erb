@@ -40,24 +40,22 @@
 		<% end %>
 		</div>
 
+    <% if @current_user_review %>
+      <header class="sub-title">My Review</header>
+      <%=render partial: "posts/post", locals: {post: @current_user_review} %>
+    <% elsif current_user %>
+      <div class="new-post">
+     	 <header class="sub-title">New Review</header>
+     	 <%= render "posts/form_review", book: @book  %>
+      </div>
+ 	 <% end %>
+
+
+
    <header class="sub-title">Reviews:</header>
    <div class="posts-list">
 	   <%= render "posts/list_posts", :posts => @posts, :book_page => "hide-tag" %>
    </div>
 
-   <% if @current_user_review %>
-   <header class="sub-title">My Review</header>
-    <table>
-		<tr>
-			<td><%= @current_user_review.title %></td>
- 			<td><%= @current_user_review.body %></td>
-		<tr>
-		</table>
-   <% elsif current_user %>
-   <div class="new-post">
-  	 <header class="sub-title">New Review</header>
-    	 <%= render "posts/form_review", book: @book  %>
-     </div>
-	 <% end %>
 
 

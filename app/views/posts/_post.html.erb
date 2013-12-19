@@ -32,17 +32,19 @@
 
    <div class="post-comments hide-tag">
 
+     <div class="comment-form">
+        <% if current_user %>
+          <%= render "comments/form_comment", post: post, parent_id: 0 %>
+        <% end %>
+
+     </div>
+     <div class="new-comment"></div>
+
        <div class="comments-list"><% post.top_level_comments.each do |comment| %>
          <%= render "comments/comment", comment: comment %>
          <% end %>
        </div>
-      <div class="new-comment"></div>
-      <div class="comment-form">
-         <% if current_user %>
-           <%= render "comments/form_comment", post: post, parent_id: 0 %>
-         <% end %>
 
-      </div>
    </div>
 
 </ul>

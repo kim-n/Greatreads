@@ -5,7 +5,7 @@ $(document).ready(function (){
     event.preventDefault();
 
     $postsList = $(this).parent().siblings(".posts-list");
-    $postsList.append(data);
+    $postsList.prepend(data);
   });
 
   // on unsuccessful post creation
@@ -19,18 +19,18 @@ $(document).ready(function (){
 
     $postForm.prepend('<div class="errors">'+ data.responseText +'</div>')
   });
-  
-  
+
+
   // on successful review creation
   $("body").on("ajax:success", ".review-form", function (event, data) {
     event.preventDefault();
 
-    $postsList = $(this).parent().siblings(".posts-list");
-    $postsList.append(data);
+    // $postsList = $(this).parent().siblings(".posts-list");
+    // $postsList.prepend(data);
 
     $postForm = $(this).parent()
     $postForm.append(data)
-    
+
     $postForm.children(".sub-title").html("My Review")
     $postForm.children("form").html("")
   });

@@ -18,10 +18,6 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 </ul>
 
 
-<header class="sub-title">Posts</header>
-<div class="posts-list">
-  <%= render "posts/list_posts", :posts => @posts, :club_page => "hide-tag" %>
-</div>
 
 <% if current_user %>
 	<header class="sub-title">New Post</header>
@@ -30,9 +26,16 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
   </div>
 <% end %>
 
+
+<header class="sub-title">Posts</header>
+<div class="posts-list">
+  <%= render "posts/list_posts", :posts => @posts, :club_page => "hide-tag" %>
+</div>
+
+
+
 <script>
 $(document).ready(function (){
-
   // On successful comment creation
   $("div.filter-buttons").on("ajax:success", ".button_to", function (event, data) {
     event.preventDefault();
