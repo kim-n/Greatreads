@@ -2,6 +2,21 @@
 <header class="page-title"><%= @user.name %></header>
 <h3><%= @user.email %></h3>
 
+<% unless @user.id == current_user.id %>
+<% button_class = @is_followed_by_current_user ? "follow" : "unfollow" %>
+<ul class="<%= button_class %>">
+  <li class="button-follow"><%= button_to "Follow", user_follows_url(params[:id]) %></li>
+  <li class="button-unfollow"><%= button_to "Unfollow", user_follow_url(params[:id]), method: :delete %></li> 
+</ul>
+<% end %>
+
+Followed by:
+<%= render "users/list_users", :users => @user.followees %>
+
+Following:
+<%= render "users/list_users", :users => @user.followers %>
+
+
 <img src="<%= @user.image %>"></img>
 <table>
 	<header class="sub-title">Read List:</header>

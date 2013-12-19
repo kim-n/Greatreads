@@ -3,6 +3,7 @@ GoodReadsClone::Application.routes.draw do
     collection do
       get 'activate'
     end
+    resources :follows, only: [:create, :destroy]
     # get 'recommendations', :to => 'users#recommendations'
     post 'approve', :to => 'users#send_activation_email'
   end
@@ -35,6 +36,7 @@ GoodReadsClone::Application.routes.draw do
   resources :posts, only: [:show] do
     resources :comments, only: [:new, :create]
   end
+  
   root :to => "home#index"
 
   # The priority is based upon order of creation:

@@ -243,6 +243,10 @@ a:hover {
 }
 
 
+.follow .button-follow, .unfollow .button-unfollow {
+  display: none;
+}
+
 
 /*
 input {

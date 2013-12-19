@@ -39,6 +39,25 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
+  
+  has_many(
+    :follower_entries,
+    class_name: "Follow",
+    foreign_key: :follower_id,
+    primary_key: :id,
+    inverse_of: :user_following
+  )
+  
+  has_many(
+    :followee_entries,
+    class_name: "Follow",
+    foreign_key: :followee_id,
+    primary_key: :id,
+    inverse_of: :user_being_followed
+  )
+  has_many :followers, through: :followee_entries, source: :user_following
+  
+  has_many :followees, through: :follower_entries, source: :user_being_followed
 
   def reviews
     Post.user_reviews(self.id)
