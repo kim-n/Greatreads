@@ -16,7 +16,7 @@ class Club < ActiveRecord::Base
     foreign_key: :club_id,
     primary_key: :id
   )
-  
+
   has_many(
     :book_pairings,
     class_name: "ClubBook",
@@ -24,7 +24,17 @@ class Club < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :club
   )
-  
+
   has_many :books, through: :book_pairings, source: :book
-  
+
+  has_many(
+    :user_memberships,
+    class_name: "Membership",
+    foreign_key: :club_id,
+    primary_key: :id,
+    inverse_of: :club
+  )
+
+  has_many :members, through: :user_memberships, source: :user
+
 end

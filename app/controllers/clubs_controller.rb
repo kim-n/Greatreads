@@ -27,6 +27,7 @@ class ClubsController < ApplicationController
     @club = Club.find_by_id(params[:id])
 
     if @club
+      @is_current_user_member = current_user.club_memberships.where(club_id: @club.id)[0]
       @posts = @club.posts
       @clubbooks = @club.books
       render :show

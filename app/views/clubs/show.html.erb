@@ -11,6 +11,13 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 <% end %>
 </div>
 
+<% button_class = @is_current_user_member ? "follow" : "unfollow" %>
+<ul class="<%= button_class %>">
+  <li class="button-follow"><%= button_to "Follow", club_memberships_url(params[:id]) %></li>
+  <li class="button-unfollow"><%= button_to "Unfollow", club_membership_url(params[:id]), method: :delete %></li>
+</ul>
+
+
 <header class="sub-title">Posts</header>
 <div class="posts-list">
   <%= render "posts/list_posts", :posts => @posts, :club_page => "hide-tag" %>

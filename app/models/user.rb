@@ -68,6 +68,16 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
+  has_many(
+    :club_memberships,
+    class_name: "Membership",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :user
+  )
+
+  has_many :clubs, through: :club_memberships, source: :club
+
   def reviews
     Post.user_reviews(self.id)
   end
