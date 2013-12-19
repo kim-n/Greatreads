@@ -31,6 +31,7 @@ class ClubsController < ApplicationController
       @clubbooks = @club.books
       render :show
     else
+      flash[:errors] = ["Invalid club url"]
       redirect_to clubs_url
     end
   end

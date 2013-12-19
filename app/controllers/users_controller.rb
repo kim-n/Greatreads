@@ -47,6 +47,7 @@ class UsersController < ApplicationController
       @read_books_with_rating = @user.read_books_with_rating
       render :show
     else
+      flash[:errors] = ["Invalid user page"]
       redirect_to users_url
     end
   end
