@@ -37,7 +37,7 @@ class Comment < ActiveRecord::Base
       unless parent_comment.user_id == self.user_id
         Notification.create(
           user_id: self.parent_comment.user_id,
-          obj_type: "Comment",
+          obj_type: "CommentReply",
           obj_id: self.id
         )
       end
@@ -46,7 +46,7 @@ class Comment < ActiveRecord::Base
     unless post.user_id == self.user_id
         Notification.create(
           user_id: self.post.user_id,
-          obj_type: "Comment",
+          obj_type: "PostReply",
           obj_id: self.id
         )
       end

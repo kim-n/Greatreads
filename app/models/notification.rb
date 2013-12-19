@@ -9,16 +9,12 @@ class Notification < ActiveRecord::Base
     inverse_of: :notifications
   )
 
-
-####---Notifications-----####
-  def self.send_notification(new_object, user)
-    if new_object.is_a?(Follow)
-      Notification.create(user_id: user.id, obj_type: "Follow", obj_id: new_object.id)
-    elsif new_object.is_a?(Post)
-      Notification.create(user_id: user.id, obj_type: "Post", obj_id: new_object.id)
-    elsif new_object.is_a?(Comment)
-      Notification.create(user_id: user.id, obj_type: "Comment", obj_id: new_object.id)
-    end
-  end
+  # obj_type:
+  # "Post": notify user someone they are following made a new post
+  # "Review": notify user someone they are following made a review
+  # "Follow": notify user someone is watching them
+  # "Club": notify user a post was made in a club they belong to
+  # "CommentReply": notify user someone commented on a comment they created
+  # "PostReply": notify user someone commented to a post they created
 
 end

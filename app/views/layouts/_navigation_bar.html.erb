@@ -20,6 +20,9 @@
 			<li id="username">
 				<a href="<%= user_url(current_user) %>"><%= current_user.name %></a>
 			</li>
+			<li id="notification">
+				<a href="<%= notifications_url %>">N</a>
+			</li>
 			<li id="log-botton">
 				<%= button_to "Log Out", session_url, method: :delete %>
 			</li>

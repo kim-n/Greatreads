@@ -209,10 +209,15 @@ class User < ActiveRecord::Base
 ####---Notifications-----####
   def notify_followers_new_post(new_object)
     self.followers.each do |follower|
-      Notification.send_notification(new_object, follower)
+      Notification.create(user_id: follower.id, obj_type: "Post", obj_id: new_object.id)
     end
   end
 
+  def notify_followers_new_review(new_object)
+    self.followers.each do |follower|
+      Notification.create(user_id: follower.id, obj_type: "Review", obj_id: new_object.id)
+    end
+  end
 
 ####---Session && New User-----####
 

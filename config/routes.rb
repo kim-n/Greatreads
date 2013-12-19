@@ -38,6 +38,8 @@ GoodReadsClone::Application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
+  resources :notifications, only: [:index]
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:

@@ -19,6 +19,7 @@ class PostsController < ApplicationController
       if is_saved
         # Notify user.followers that user made post
         current_user.notify_followers_new_post(post)
+
         # Notify club.members that new post made
         club.notify_members_new_post(post)
 
@@ -55,7 +56,7 @@ class PostsController < ApplicationController
     if request.xhr?
       if is_saved
         # Notify user.followers that user made review
-        current_user.notify_followers_new_post(review)
+        current_user.notify_followers_new_review(review)
 
         render partial: "posts/post", locals: {post: review}
       else
@@ -64,7 +65,7 @@ class PostsController < ApplicationController
     else
       book = Book.find(params[:book_id])
       # Notify user.followers that user made review
-      current_user.notify_followers_new_post(review)
+      current_user.notify_followers_new_review(review)
 
       redirect_to book_url(book.isbn)
     end
