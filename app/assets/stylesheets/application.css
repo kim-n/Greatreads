@@ -67,6 +67,9 @@ img {
   display: none;
 }
 
+.follow .button-follow, .unfollow .button-unfollow {
+  display: none;
+}
 
 /* --- GLOBALS --- */
 
@@ -252,15 +255,28 @@ footer a.github {
   border-radius: 4px;
 }
 
+.back-button {
+  float: right;
+  border: solid;
+}
 .page-title {
   display: block;
   font-size: 30px;
   color: #CC9933;
   padding: 20px 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border-bottom: 1px solid #CC9933;
 }
 
+.sub-title {
+  display: block;
+  font-size: 18px;
+  color: #CC9933;
+  padding: 20px 30px 10px 30px;
+  margin-bottom: 30px;
+  
+  border-bottom: 1px dashed #CC9933;
+}
 .page-left {
   float: left;
   width: 60%;
@@ -268,11 +284,13 @@ footer a.github {
 }
 
 .page-right {
-  border: solid;
   float: right;
   text-align:left;
   width: 35%;
   height: auto;
+  padding: 10px;
+  padding-top: 0px;
+  background: #FAF1D4;
 }
 
 .page-left table {
@@ -307,6 +325,9 @@ th:nth-child(even), td:nth-child(even) {
 .page-left .users-list td:nth-child(even) {
   width: 40%;
 } 
+
+
+
 
 
 /*

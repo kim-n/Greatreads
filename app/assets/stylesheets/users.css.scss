@@ -1,3 +1,77 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page-title {
+  position: relative;
+}
+
+.page-title #email {
+  position: absolute;
+  color: #eee;
+  float: left;
+  font-size: 20px;
+  margin-top: -3px;
+  margin-left: 10px;
+}
+
+.page-left > .group{
+//  padding: 10;
+}
+
+.page-left .user-image{
+  float:left;
+  width: 150px;
+  margin: 10px;
+  margin-right: 20px;
+}
+
+.page-left .user-info {
+  margin-left: 20px;
+}
+
+.page-left  .user-details {
+  padding-top: 50px;
+  height: 110px;
+}
+
+.page-left  .user-details .follow,
+.page-left  .user-details .unfollow {
+  padding-top: 30px;
+}
+
+.page-left {
+  width: 50%;
+}
+
+.page-right {
+  width: 45%;
+}
+
+.follow .button-follow, .unfollow .button-unfollow {
+  display: none;
+}
+
+
+.user-info td {
+  width: 10%;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.user-info td:nth-child(even) {
+  width: 80%;
+  text-align: left;
+}
+
+
+.page-right td, .page-right th {
+  width: 40%;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.page-right td:nth-child(even), .page-right th:nth-child(even) {
+  width: 100%;
+  text-align: left;
+}

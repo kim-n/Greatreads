@@ -1,7 +1,7 @@
 <header class="page-title">All Clubs</header>
 
 <div class="page-left">  
-  <div class="books-list">
+  <div class="clubs-list">
   <%= render "list_clubs", clubs: @clubs %>
   </div>
 </div>
@@ -34,7 +34,8 @@ $(document).ready(function (){
 
     console.log($(this))
     console.log(data)
-    $(".club-list").html(data)
+    $(".clubs-list").html(data)
+    $commentForm[0].reset()
     $(".new-club-form").toggleClass("hide-tag")
 
   });
