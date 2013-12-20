@@ -18,9 +18,9 @@
     <ul class="user-links">
       <% if current_user %>
   			<% if is_admin?(current_user)%>
-  			<li>
-  				<a id="admin-panel" href="<%= home_admin_url %>">ADMIN</a>
-  			</li>
+        <!-- <li>
+          <a id="admin-panel" href="<%= home_admin_url %>">ADMIN</a>
+        </li> -->
   			<% end %>
   			<li id="username">
   				<a href="<%= user_url(current_user) %>"><%= current_user.name %></a>

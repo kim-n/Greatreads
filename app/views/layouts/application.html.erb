@@ -8,24 +8,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
 
   <%= render "layouts/navigation_bar" %>
-  
+
   <div id="bground" >KIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONE</div>
 
 
-	<% if flash.now[:errors] %>
-	  <% flash.now[:errors].each do |error| %>
-	   <%= error %><br />
-	  <% end %>
-	<% end %>
-
+  <div id="flash-errors">
+  	<% if flash.now[:errors] %>
+  	  <% flash.now[:errors].each do |error| %>
+  	   <%= error %><br />
+  	  <% end %>
+  	<% end %>
+  </div>
 
 	<div id="main">
 		<%= yield %>
 	</div>
-  
+
   <footer class="group">
     <div class="copy">Kimberly Narine</div>
     <a class="github" href="https://github.com/kim-n/goodReadsClone">GitHub</a>

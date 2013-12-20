@@ -1,11 +1,16 @@
 <header class="page-title">Home</header>
 
 <header class="sub-title"><a href="<%= books_url %>">Recommendations</a></header>
-<%= render "books/list_books", :books => @recommendations, :root_page => "hide-tag" %>
+<div class="books-display">
+  <%= render "books/display_books", :books => @recommendations %>
+</div>
 
-<header class="sub-title"><a href="<%= books_url %>">Books</a></header>
-<%= render "books/list_books", :books => @books, :root_page => "hide-tag" %>
+<header class="sub-title">New</header>
+<div class="books-display">
+  <%= render "books/display_books", :books => @new %>
+</div>
 
-<header class="sub-title"><a href="<%= clubs_url %>">Clubs</a></header>
-<%= render "clubs/list_clubs", :clubs => @clubs %>
-
+<header class="sub-title">Recently Reviewed</header>
+<div class="books-display">
+  <%= render "books/display_books", :books => @recently_reviewed %>
+</div>

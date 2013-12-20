@@ -41,11 +41,11 @@
 }
 
 .page-left {
-  width: 50%;
+  width: 65%;
 }
 
 .page-right {
-  width: 45%;
+  width: 30%;
 }
 
 .follow .button-follow, .unfollow .button-unfollow {
@@ -74,4 +74,22 @@
 .page-right td:nth-child(even), .page-right th:nth-child(even) {
   width: 100%;
   text-align: left;
+}
+
+.show-follows{
+  height: 75px;
+}
+
+.books-display ul {
+}
+
+.show-follows li {
+  background: blue;
+   width: 50px;
+  padding: 5px;
+  height: 75px;
+}
+
+.books-display .book img {
+  width: 50px;
 }

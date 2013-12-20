@@ -10,7 +10,7 @@ class ClubsController < ApplicationController
   def create
     params[:books_ids].delete("")
     if params[:books_ids].empty?
-      flash[:errors] = ["Clubs must have atleast 1 book"]
+      flash.now[:errors] = ["Clubs must have atleast 1 book"]
       if request.xhr?
         render json: flash[:errors], status: :unprocessable_entity
       else

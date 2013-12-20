@@ -2,18 +2,18 @@
 <header class="page-title"><%= @user.name %>'s Profile<h3 id="email"><%= @user.email %></h3></header>
 
 <div class="group">
-  <div class="page-left">  
-    <div class="group">  
+  <div class="page-left">
+    <div class="group">
       <img class="user-image" src="<%= @user.image %>"></img>
 
       <div class="user-info">
         <div class="user-details">
         <h3 id="user-name"><%= @user.email %></h3>
         <h3 id="user-created">Created on: <%= @user.created_at.to_date %></h3>
-        
+
         <% unless @user.id == current_user.id %>
           <% button_class = @is_followed_by_current_user ? "follow" : "unfollow" %>
-    
+
           <ul class="<%= button_class %>">
             <li class="button-follow">
               <%= button_to "Follow", user_follows_url(params[:id]) %>
@@ -22,9 +22,9 @@
               <%= button_to "Unfollow", user_follow_url(params[:id]), method: :delete %>
             </li>
           </ul>
-        <% end %>    
+        <% end %>
         </div>
-        
+
         <table>
         	<header class="sub-title">Read List:</header>
         	<% @read_books_with_rating.each do |pair| %>
@@ -59,10 +59,15 @@
 
   <div class="page-right">
   	<header class="sub-title">Followed by</header>
-    <%= render "users/list_users", :users => @user.follows %>
+    <div class="show-follows books-display">
+      <%= render "users/display_users", :users => @user.follows  %>
+    </div>
+
 
   	<header class="sub-title">Following</header>
-    <%= render "users/list_users", :users => @user.followers %>
+    <div class="show-follows books-display">
+      <%= render "users/display_users", :users => @user.followers  %>
+    </div>
   </div>
 </div>
 
@@ -73,5 +78,5 @@
   <br>
   <header class="sub-title">Posts:</header>
   <%= render "posts/list_posts", :posts => @posts, :a_post => "hide-tag" %>
-  
+
 </div>

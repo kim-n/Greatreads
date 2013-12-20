@@ -1,0 +1,10 @@
+<ul>
+  <% users.each do |user| %>
+	  <li class="book">
+      <a href="<%= user_url(user) %>">
+      <img src="<%= user.image %>">
+				<%= user.name %>
+			</a>
+		</li>
+	<% end %>
+</ul>

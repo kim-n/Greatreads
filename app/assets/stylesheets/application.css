@@ -85,11 +85,9 @@ a:hover {
   color:#C0C0C0;
 }*/
 
-
-
 #bground {
   background: #F0F0F0;
-  color: #F2F2F2;
+  color: #F5F5F5;
   position: fixed;
   left: -70px;
   top: -40px;
@@ -188,14 +186,14 @@ nav {
 }
 
 .site-nav > .user-links > #notification {
-  background: #CC9933; 
-  padding: 0px 4px; 
+  background: #CC9933;
+  padding: 0px 4px;
   border-radius: 4px;
 }
 
 .site-nav > .user-links > #username {
-  background: #CC9933; 
-  padding: 0px 4px; 
+  background: #CC9933;
+  padding: 0px 4px;
   border-radius: 4px;
 }
 
@@ -231,6 +229,13 @@ footer a.github {
 
 /* --- MAIN --- */
 
+#flash-errors, .errors{
+  background: red;
+  margin: auto;
+  text-align: center;
+
+}
+
 #main {
   width: 820px;
   padding: 20px 40px;
@@ -241,23 +246,48 @@ footer a.github {
   border-top: 0;
 }
 
-#main input {
-  background: #FAF1D4; 
-  padding: 0px 4px; 
+#main a {
+  color: inherit;
+}
+
+#main a:hover {
+  color: #ccc;
+}
+
+#main input[type="submit"] {
+  border: 1px solid #CC9933;
+
+  background: #CC9933;
+  padding: 0px 4px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+#main input[type="submit"]:hover {
+  border: 1px solid #CC9933;
+  background: #ccc;
+
+}
+
+/*#main input#button {
+  background: #CC9933;
+  padding: 0px 4px;
+  border-radius: 4px;
+}
+*/
+
+input[type="text"] {
+  background: #FAF1D4;
+  padding: 0px 4px;
   border: 1px solid #CC9933;
   border-radius: 4px;
   margin-bottom: 20px;
 }
 
-#main input#button {
-  background: #CC9933; 
-  padding: 0px 4px; 
-  border-radius: 4px;
-}
-
 .back-button {
   float: right;
-  border: solid;
+  padding: 2px 4px;
+  border: 1px solid #CC9933;
+  border-radius: 4px;
 }
 .page-title {
   display: block;
@@ -274,7 +304,7 @@ footer a.github {
   color: #CC9933;
   padding: 20px 30px 10px 30px;
   margin-bottom: 30px;
-  
+
   border-bottom: 1px dashed #CC9933;
 }
 .page-left {
@@ -319,15 +349,33 @@ th:nth-child(even), td:nth-child(even) {
 
 .page-left .books-list td, .page-left .users-list th {
   width: 60%;
-} 
+}
 
-.page-left .books-list th:nth-child(even), 
+.page-left .books-list th:nth-child(even),
 .page-left .users-list td:nth-child(even) {
   width: 40%;
-} 
+}
 
 
+/*---- Boks display--------*/
+.books-display{
+  height: 270px;
+}
 
+.books-display ul {
+}
+
+.books-display li {
+  float: left;
+  width: 142px;
+  padding: 10px;
+  font-size: 10px;
+  height: 250px;
+}
+
+.books-display .book img {
+  width: 142px;
+}
 
 
 /*
