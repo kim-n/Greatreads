@@ -6,8 +6,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.valid_users
-
+    @users = User.valid_users.find(:all, :order => "name DESC")
     render :index
   end
   #

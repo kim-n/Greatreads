@@ -173,9 +173,9 @@ class User < ActiveRecord::Base
     user_likes_books = self.liked_books
     user_likes_books.shuffle!
 
-    all_my_read_books = self.read_books
+    my_read_books = self.read_books
 
-    recommendations = []
+    rec = []
     user_likes_books.each do |book|
       likes_of_book = Like.where("taste = ? AND book_id = ? AND user_id <> ?", 1, book.id, self.id )
 
@@ -187,22 +187,22 @@ class User < ActiveRecord::Base
 
       users_who_like_book.each do |user|
         user.liked_books.each do |book|
-          unless all_my_read_books.include?(book)
-            recommendations << book
+          unless my_read_books.include?(book) || rec.include?(book)
+            rec << book
           end
         end
       end
     end
 
-    books = Book.all.shuffle!
-    until recommendations.count >= 5 || books.count <= 0
+    until rec.count > 4
+      books = Book.all.shuffle
       book = books.shift
-      unless all_my_read_books.include?(book) || recommendations.include?(book)
-        recommendations << book
+      unless rec.include?(book) || book.nil?
+        rec << book
       end
     end
 
-    recommendations
+    rec.shuffle.first(5)
   end
 
 
