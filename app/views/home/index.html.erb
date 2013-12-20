@@ -1,16 +1,16 @@
 <header class="page-title">Home</header>
 
 <header class="sub-title"><a href="<%= books_url %>">Recommendations</a></header>
-<div class="books-display">
+<div class="display">
   <%= render "books/display_books", :books => @recommendations %>
 </div>
 
 <header class="sub-title">New</header>
-<div class="books-display">
+<div class="display">
   <%= render "books/display_books", :books => @new %>
 </div>
 
 <header class="sub-title">Recently Reviewed</header>
-<div class="books-display">
+<div class="display">
   <%= render "books/display_books", :books => @recently_reviewed %>
 </div>

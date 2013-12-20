@@ -5,11 +5,13 @@
       <img src="<%= post.user.image %>"></img>
       <a href="<%= user_url(post.user_id) %>"><%= post.user.name %></a>
     </li>
-   	<li class="post-title"><%= post.created_at %></li>
+   	<li class="post-date"><%= post.created_at.to_date  %></li>
    </header>
+
    <div class="post-contents">
    	<li class="post-body"><%= post.body %></li>
    </div>
+
    <footer class="post-footer">
    	<li class="book-title">
  			<a href="<%= book_url(post.book.isbn) %>">
@@ -24,28 +26,21 @@
  			</a>
  		</li>
  		<% end %>
-
-
-     <li class="comment-button"><a href="#">Comments (<%= post.top_level_comments.count %>)</a></li>
-
+    <li class="comment-button"><a href="#">Comments (<%= post.top_level_comments.count %>)</a></li>
    </footer>
 
    <div class="post-comments hide-tag">
-
      <div class="comment-form">
         <% if current_user %>
           <%= render "comments/form_comment", post: post, parent_id: 0 %>
         <% end %>
-
      </div>
      <div class="new-comment"></div>
-
-       <div class="comments-list"><% post.top_level_comments.each do |comment| %>
-         <%= render "comments/comment", comment: comment %>
-         <% end %>
-       </div>
-
-   </div>
+     <div class="comments-list"><% post.top_level_comments.each do |comment| %>
+       <%= render "comments/comment", comment: comment %>
+       <% end %>
+     </div>
+    </div>
 
 </ul>
 

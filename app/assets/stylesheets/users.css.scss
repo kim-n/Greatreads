@@ -64,32 +64,35 @@
   text-align: left;
 }
 
-
-.page-right td, .page-right th {
-  width: 40%;
-  text-align: right;
-  padding-right: 30px;
-}
-
-.page-right td:nth-child(even), .page-right th:nth-child(even) {
-  width: 100%;
-  text-align: left;
-}
+//
+//.page-right td, .page-right th {
+//  width: 40%;
+//  text-align: right;
+//  padding-right: 30px;
+//}
+//
+//.page-right td:nth-child(even), .page-right th:nth-child(even) {
+//  width: 100%;
+//  text-align: left;
+//}
 
 .show-follows{
   height: 75px;
 }
 
-.books-display ul {
+.display ul {
 }
 
 .show-follows li {
-  background: blue;
-   width: 50px;
+  width: 50px;
   padding: 5px;
   height: 75px;
 }
 
-.books-display .book img {
+.show-follows .book img {
   width: 50px;
+}
+
+.page-right .sub-title {
+  margin-bottom: 0px;
 }

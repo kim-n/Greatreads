@@ -206,7 +206,7 @@ nav {
 
 
 /* --- FOOTER --- */
-footer {
+body > footer {
   width: 900px;
   height: 30px;
   margin: auto;
@@ -215,13 +215,13 @@ footer {
   border-top: 0;
 }
 
-footer .copy {
+body > footer .copy {
   float: left;
   color: #ccc;
   padding: 5px 0px 0px 20px;
 }
 
-footer a.github {
+body > footer a.github {
   float: right;
   color: #ccc;
   padding: 5px 20px 0px 0px;
@@ -247,7 +247,7 @@ footer a.github {
 }
 
 #main a {
-  color: inherit;
+  color: green;
 }
 
 #main a:hover {
@@ -275,7 +275,7 @@ footer a.github {
 }
 */
 
-input[type="text"] {
+input[type="text"], textarea {
   background: #FAF1D4;
   padding: 0px 4px;
   border: 1px solid #CC9933;
@@ -357,15 +357,15 @@ th:nth-child(even), td:nth-child(even) {
 }
 
 
-/*---- Boks display--------*/
-.books-display{
+/*---- DISPLAY ----*/
+.display{
   height: 270px;
 }
 
-.books-display ul {
+.display ul {
 }
 
-.books-display li {
+.display li {
   float: left;
   width: 142px;
   padding: 10px;
@@ -373,9 +373,145 @@ th:nth-child(even), td:nth-child(even) {
   height: 250px;
 }
 
-.books-display .book img {
+.display .book img {
   width: 142px;
 }
+
+/*---- POSTS ----*/
+.post {
+  width: 90%;
+  margin-bottom: 30px;
+  border: 1px solid #FAF1D4;
+}
+
+.post .post-header{
+  height: 50px;
+  border-bottom: 1px solid #FAF1D4;
+  background: #f7eabd;
+}
+
+.post .post-contents{
+}
+
+.post .post-header .post-date{
+  float:right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.post .post-header .poster{
+  float:left;
+  font-size: 20px;
+}
+
+.post .post-header .poster img {
+  float: left;
+  width: 50px;
+}
+
+.post .post-header .poster a {
+  float: right;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+
+.post .post-contents .post-body{
+  margin: 10px 20px;
+}
+
+.post .post-footer{
+  border-top: 1px solid #FAF1D4;
+  height: 27px;
+}
+
+
+.post .post-footer .book-title{
+  float:left;
+  margin-left: 20px;
+}
+
+
+.post .post-footer .club-title{
+  float:left;
+  margin-left: 20px;
+}
+
+.post .post-footer .comment-button{
+  float:right;
+  margin-right: 20px;
+}
+
+.post .post-comments {
+  border: 1px solid #FAF1D4;
+  background: #F8F8F8;
+  width: 75%;
+  margin-left: 182px;
+}
+
+.post .post-comments .comments-list {
+  padding: 5px 15px 5px 0px;
+}
+
+.post .post-comments .comment-form {
+  background: #DFDFDF;
+  padding: 5px 15px 0px 0px;
+}
+
+.post .post-comments textarea {
+  margin-left: 10px;
+  margin-bottom: 0;
+  width: 97%;
+  height: 20px;
+}
+
+.post .post-comments input[type="submit"] {
+  margin-left: 10px;
+}
+/*#main  {
+  border: 1px solid #CC9933;
+
+  background: #CC9933;
+  padding: 0px 4px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}*/
+
+
+/*---- COMMENTS ----*/
+
+.comment {
+  border: 1px dashed #CC9933;
+  margin: 10px 20px;
+  margin-right: 0px;
+  background: white;
+}
+
+.comment .post-header {
+  height: 30px;
+}
+
+.comment .comment-body{
+  padding-left: 10px;
+}
+
+.comment .comment-poster{
+  float:left;
+  margin: 0px 5px;
+  margin-top: 5px;
+}
+
+.comment .comment-poster img {
+  float: left;
+  width: 25px;
+}
+
+.comment .comment-poster a {
+  float: right;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
 
 
 /*
@@ -420,105 +556,6 @@ header.sub-title {
 
 
 
-.post {
-  width: 90%;
-  padding-bottom: 20px;
-}
-
-.post .post-header{
-  background: yellow;
-  border: 2px dashed black;
-  height: 50px;
-}
-
-.post .post-contents{
- border: 2px dashed green;
-}
-
-.post .post-footer{
-  height: 20px;
-  border: 2px dashed orange;
-}
-
-
-.post .post-header .post-title{
-  background:orange;
-  float:right;
-}
-
-.post .post-header .poster{
-  background:pink;
-  float:left;
-  font-size: 20px;
-}
-
-.post .post-header .poster img {
-  float: left;
-  width: 50px;
-}
-
-.post .post-header .poster a {
-  float: right;
-  margin-top: 15px;
-  margin-left: 10px;
-}
-
-
-.post .post-contents .post-body{
-  background: purple;
-  margin: 10px 20px;
-}
-
-.post .post-footer .book-title{
-  background:red;
-  float:left;
-
-}
-
-.post .post-footer .club-title{
-  background:orange;
-  float:left;
-  margin-left: 20px;
-}
-
-.post .post-footer .comment-button{
-  float:right;
-}
-
-.post .post-comments {
-  background: rgba(0,0,0, 0.2);
-  width: 75%;
-  margin-left: 190px;
-}
-
-.comment {
-  border: 1px dashed grey;
-  margin: 10px 20px;
-  margin-right: 0px;
-
-}
-
-.comment .comment-body{
-  background: green;
-  padding-left: 10px;
-}
-
-.comment .comment-poster{
-  background: pink;
-  float:left;
-  margin: 0px 5px;
-}
-
-.comment .comment-poster img {
-  float: left;
-  width: 50px;
-}
-
-.comment .comment-poster a {
-  float: right;
-  margin-top: 15px;
-  margin-left: 10px;
-}
 
 
 .follow .button-follow, .unfollow .button-unfollow {
