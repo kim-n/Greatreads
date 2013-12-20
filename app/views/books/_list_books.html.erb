@@ -4,7 +4,7 @@
 	<tr>
 		<th>Title</th>
 		<th>Author</th>
-		<th></th>
+    <!-- <th></th> -->
 	</tr>
 
   <% books.each do |book| %>
@@ -18,9 +18,9 @@
 	    <td>
 				<%= book.author %>
 			</td>
-	    <td class="<%= root_page %>">
-				<img src="<%= book.pic %>" width="50">
-			</td>
+      <!-- <td class="<%= root_page %>">
+        <img src="<%= book.pic %>" width="50">
+      </td> -->
 
 		</tr>
 	<% end %>

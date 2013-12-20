@@ -1,6 +1,13 @@
-<% if current_user %>
-  <%= render "new_book"%>
-<% end %>
-
 <header class="page-title">All Books</header>
-<%= render "list_books", :books => @books %>
+
+<div class="page-left">  
+  <div class="users-list">
+    <%= render "list_books", :books => @books %>
+  </div>
+</div>
+
+<div class="page-right">  
+  <% if current_user %>
+    <%= render "new_book" %>
+  <% end %>
+</div>

@@ -8,8 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
 
   <%= render "layouts/navigation_bar" %>
+  
+  <div id="bground" >KIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONEKIMBERLYNARINEGOODREADSCLONE</div>
 
 
 	<% if flash.now[:errors] %>
@@ -22,6 +25,10 @@
 	<div id="main">
 		<%= yield %>
 	</div>
-
+  
+  <footer class="group">
+    <div class="copy">Kimberly Narine</div>
+    <a class="github" href="https://github.com/kim-n/goodReadsClone">GitHub</a>
+  </footer>
 </body>
 </html>

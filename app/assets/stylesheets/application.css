@@ -27,8 +27,8 @@ strong, a, img, p, h1, h2, h3, time, ul, li, small, input {
 /* --- ELEMENTS --- */
 
 body {
-  font-family: sans-serif;
-  background: #fff;
+  font-family: Geneva;
+  background: transparent;
   font-size: 16px;
   line-height: normal;
 }
@@ -51,13 +51,22 @@ img {
 }
 
 
-/* --- CLEARFIX --- */
+/* --- UTILITIES --- */
 
 .group:after {
   content: "";
   display: table;
   clear: both;
 }
+
+.admin {
+  display: none;
+}
+
+.hide-tag {
+  display: none;
+}
+
 
 /* --- GLOBALS --- */
 
@@ -74,17 +83,51 @@ a:hover {
 }*/
 
 
+
+#bground {
+  background: #F0F0F0;
+  color: #F2F2F2;
+  position: fixed;
+  left: -70px;
+  top: -40px;
+  height: 110%;
+  width: 110%;
+  z-index: -1;
+  word-wrap: break-word;
+  font-size: 240px;
+  text-align: center;
+  font-family:Courier;
+}
+
+
 /* --- NAV BAR --- */
 nav {
-  background: #F5ECCE;
+  background: #FAF1D4;
   height: 50px;
+  border-bottom: 1px solid #CC9933;
 }
 
 .site-nav {
   width: 900px;
   margin: auto;
   height: inherit;
-  border: 1px solid black;
+}
+.site-nav a {
+  color: black;
+}
+
+.site-nav a:hover {
+  color: #ccc;
+}
+
+.site-nav .button_to input {
+  background: #CC9933;
+  padding: 0px 4px;
+  border-radius: 4px;
+}
+
+.site-nav .button_to input:hover {
+  color: #ccc;
 }
 
 .site-nav > .static-elements {
@@ -95,8 +138,10 @@ nav {
   font-size: 30px;
   float:left;
   font-weight: 100;
+  font-family: sans-serif;
   position: relative;
   margin: 5px 40px 0px 20px;
+  color:inherit;
 }
 
 .site-nav > .static-elements > a#logo > strong {
@@ -107,18 +152,18 @@ nav {
   position: absolute;
   color: red;
   font-size: 20px;
-  font-family: cursive;
   right: -20px;
-  bottom: -12px;
+  bottom: -10px;
 }
 
 .site-nav > .static-elements > #search-box {
   float:left;
   background: white;
   border-radius: 4px;
-  margin-top: 14px;
+  margin: 12px 10px 0px 10px;
   width: 140px;
   font-size: 15px;
+  padding:4px;
 }
 
 .site-nav > .static-elements > .site-links {
@@ -127,8 +172,7 @@ nav {
 
 .site-nav > .static-elements > .site-links > li{
   float:left;
-  margin: 14px 10px;
-  border: 2px solid white;
+  margin: 15px 10px 0px 10px;
 }
 
 .site-nav > .user-links {
@@ -137,42 +181,136 @@ nav {
 
 .site-nav > .user-links li {
   float: left;
+  margin: 15px 10px 0px 10px;
 }
 
+.site-nav > .user-links > #notification {
+  background: #CC9933; 
+  padding: 0px 4px; 
+  border-radius: 4px;
+}
+
+.site-nav > .user-links > #username {
+  background: #CC9933; 
+  padding: 0px 4px; 
+  border-radius: 4px;
+}
+
+
+.site-nav > .user-links > #log-botton {
+  background: #CC9933;
+  padding: 0px 4px;
+  border-radius: 4px;
+}
+
+
+/* --- FOOTER --- */
+footer {
+  width: 900px;
+  height: 30px;
+  margin: auto;
+  background: white;
+  border: 1px solid #CC9933;
+  border-top: 0;
+}
+
+footer .copy {
+  float: left;
+  color: #ccc;
+  padding: 5px 0px 0px 20px;
+}
+
+footer a.github {
+  float: right;
+  color: #ccc;
+  padding: 5px 20px 0px 0px;
+}
 
 /* --- MAIN --- */
+
 #main {
-  width: 900px;
+  width: 820px;
+  padding: 20px 40px;
+  min-height: 600px;
   margin: auto;
-  height: auto;
-  border: 1px solid red;
+  background: white;
+  border: 1px solid #CC9933;
+  border-top: 0;
 }
+
+#main input {
+  background: #FAF1D4; 
+  padding: 0px 4px; 
+  border: 1px solid #CC9933;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#main input#button {
+  background: #CC9933; 
+  padding: 0px 4px; 
+  border-radius: 4px;
+}
+
+.page-title {
+  display: block;
+  font-size: 30px;
+  color: #CC9933;
+  padding: 20px 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #CC9933;
+}
+
+.page-left {
+  float: left;
+  width: 60%;
+  height: auto;
+}
+
+.page-right {
+  border: solid;
+  float: right;
+  text-align:left;
+  width: 35%;
+  height: auto;
+}
+
+.page-left table {
+  border-collapse:collapse;
+  width: 100%;
+}
+
+th{
+  background: #CC9933;
+}
+
+tr:nth-child(odd) {
+  background-color: #FAF1D4;
+}
+
+td, th {
+  width: 40%;
+  text-align: right;
+  padding-right: 30px;
+}
+
+th:nth-child(even), td:nth-child(even) {
+  width: 60%;
+  text-align: left;
+}
+
+.page-left .books-list td, .page-left .users-list th {
+  width: 60%;
+} 
+
+.page-left .books-list th:nth-child(even), 
+.page-left .users-list td:nth-child(even) {
+  width: 40%;
+} 
+
+
 /*
 
-nav #search-box:focus{
-  border: 0px;
-}
-
-nav > ul{
-  float:right;
-}
-
-nav > ul > li{
-  float: left;
-  padding-right: 10px;
-}
-
-nav a:visited{
-  color:white;
-}
-
-nav  a:hover {
-  color: #C0C0C0;
-}
-
-nav > a#logo {
-  float:left;
-}
 
 nav li input {
   background: #04B45F;
@@ -208,13 +346,7 @@ header.sub-title {
 }
 
 
-.admin {
-  display: none;
-}
 
-.hide-tag {
-  display: none;
-}
 
 
 

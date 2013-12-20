@@ -1,17 +1,19 @@
 <header class="page-title">All Clubs</header>
 
-<% if current_user && is_admin?(current_user) %>
-	<a class="create-club-button" href="#">Create Club</a><br>
-  <div class="new-club-form hide-tag">
-  <%= render "club_form", books: Book.all %>
+<div class="page-left">  
+  <div class="books-list">
+  <%= render "list_clubs", clubs: @clubs %>
   </div>
-<% end %>
-
-<div class="club-list">
-<%= render "list_clubs", clubs: @clubs %>
 </div>
 
-
+<div class="page-right">
+  <% if current_user && is_admin?(current_user) %>
+  	<a class="create-club-button" href="#">Create Club</a><br>
+    <div class="new-club-form hide-tag">
+    <%= render "club_form", books: Book.all %>
+    </div>
+  <% end %>  
+</div>
 
 <script>
 $(document).ready(function (){

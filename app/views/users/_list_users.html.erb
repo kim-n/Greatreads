@@ -5,18 +5,13 @@
 
 <table>
   <tr>
-    <th class="admin <%= req_page %>">St: </th>
     <th>Name</th>
     <th>Email</th>
+    <th class="admin <%= req_page %>">St: </th>
   </tr>
 	
   <% users.each do |user| %>
 	<tr>
-		<td class="admin <%= req_page%>">
-		  <%= "S" if user.admin == 0 %>
-		  <%= "T" if user.admin == 1 %>
-		  <%= "A" if user.admin == 2 %>
-		</td>
 		<td>
 			<a href="<%= user_url(user.id) %>">
 				<%= user.name %>
@@ -25,7 +20,11 @@
     <td>
 			<%= user.email %>
 		</td>
-		
+		<td class="admin <%= req_page%>">
+		  <%= "S" if user.admin == 0 %>
+		  <%= "T" if user.admin == 1 %>
+		  <%= "A" if user.admin == 2 %>
+		</td>
 		<td class="admin <%= usr_page %>" >
 			<%= button_to icon, user_approve_url(user.id)%>
 		</td>
