@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
     user = User.new(params[:user])
 
     if user.save
-      msg = UserMailer.request_confirm(user)
+      msg = UserMailer.activation_email(user)
       msg.deliver!
     end
     redirect_to root_url

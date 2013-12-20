@@ -58,13 +58,12 @@
   </div>
 
   <div class="page-right">
-  	<header class="sub-title">Followed by</header>
+  	<header class="sub-title">Following</header>
     <div class="show-follows display">
       <%= render "users/display_users", :users => @user.follows  %>
     </div>
 
-
-  	<header class="sub-title">Following</header>
+  	<header class="sub-title">Followed by</header>
     <div class="show-follows display">
       <%= render "users/display_users", :users => @user.followers  %>
     </div>

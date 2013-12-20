@@ -359,7 +359,6 @@ th:nth-child(even), td:nth-child(even) {
 
 /*---- DISPLAY ----*/
 .display{
-  height: 270px;
 }
 
 .display ul {
