@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.book-image input[type="submit"] {
+  float:left;
+  margin: 0px 8px;
+}
+
+.is-wish input[type="submit"]{
+  margin-left: 4px;
+}
+.is-none, .is-wish, .is-like, .is-dislike {
+  margin-left: 4px
+}
+
+
 .is-none > #unlike, .is-none > #undislike,
 .is-none > #unwish {
 	display: none;
@@ -22,9 +36,9 @@
 	display: none;
 }
 
-.is-like > #unlike, .is-dislike > #undislike,
-.is-wish > #unwish {
-	border: 2px solid blue;
+.is-like > #unlike input[type="submit"], .is-dislike > #undislike input[type="submit"],
+.is-wish > #unwish input[type="submit"] {
+  background: #33CC66;
 }
 
 .is-reviewed > #wish, .is-reviewed > #unwish {
@@ -34,6 +48,7 @@
 img.cover {
 	float: left;
 	padding: 10px;
+  width: 280px;
 }
 
 //.group ul {
@@ -57,11 +72,20 @@ img.cover {
 //  clear:both;
 //};
 
-.desctiprion{
-	display: block;
-	float: left;
-	width: 450px;
+.book-description {
+  float:right;
+  width: 60%;
+  padding: 0px 10px;
+  height: 480px;
+  overflow:auto;
 }
+
+
+.book-description .author{
+  padding: 40px 0px 20px 0px;
+  font-size: 20px;
+}
+
 
 .display{
 }
@@ -69,3 +93,9 @@ img.cover {
 .page-right {
   height: 260px;
 }
+
+.book-image {
+  float: left;
+}
+
+

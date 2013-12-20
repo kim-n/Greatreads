@@ -15,7 +15,7 @@
 /* --- RESET --- */
 
 html, body, header, footer, section, article, div,
-strong, a, img, p, h1, h2, h3, time, ul, li, small, input {
+strong, a, img, p, h1, h2, h3, time, ul, li, small, input, select {
   margin: 0;
   padding: 0;
   border: 0;
@@ -256,7 +256,7 @@ body > footer a.github {
 
 #main input[type="submit"] {
   border: 1px solid #CC9933;
-
+  display: inline;
   background: #CC9933;
   padding: 0px 4px;
   border-radius: 4px;
@@ -264,23 +264,21 @@ body > footer a.github {
 }
 #main input[type="submit"]:hover {
   border: 1px solid #CC9933;
-  background: #ccc;
-
+  background: #33CC66;
 }
 
-/*#main input#button {
-  background: #CC9933;
-  padding: 0px 4px;
-  border-radius: 4px;
-}
-*/
-
-input[type="text"], textarea {
+textarea {
   background: #FAF1D4;
-  padding: 0px 4px;
+  padding: 4px 4px;
   border: 1px solid #CC9933;
   border-radius: 4px;
   margin-bottom: 20px;
+  height: 30px;
+}
+
+
+select {
+  background: #FAF1D4;
 }
 
 .back-button {
@@ -288,6 +286,7 @@ input[type="text"], textarea {
   padding: 2px 4px;
   border: 1px solid #CC9933;
   border-radius: 4px;
+  z-index: 2;
 }
 .page-title {
   display: block;
@@ -511,7 +510,26 @@ th:nth-child(even), td:nth-child(even) {
   margin-left: 5px;
 }
 
+/*---- POST FORM ----*/
+.review-form{
+  width: 50%;
+}
 
+.review-form textarea, .post-form textarea {
+  margin-left: 10px;
+  margin-bottom: 0;
+  width: 97%;
+  height: 50px;
+}
+
+.post-form input[type="submit"], .review-form input[type="submit"] {
+  margin-left: 10px;
+}
+.post-form .post-book{
+  margin-left: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
 
 /*
 

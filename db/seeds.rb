@@ -21,114 +21,131 @@ isbns = []
 end
 
 isbns.each do |isbn|
-  sleep(2)
+  sleep(1)
   page =Nokogiri::XML(open("https://www.goodreads.com/book/isbn?isbn=#{isbn}&key=#{ENV["GOODREADS_DEV_KEY"]}") )
   title = page.xpath("//book//title")[0].text.strip
   pic = page.xpath("//book//image_url")[0].text.strip
   author = page.xpath("//book//authors//name")[0].text.strip
   description = page.xpath("//book//description")[0].text.strip
   pic.gsub!(/m\//,'l/') unless pic.index("goodreads")
+  next if description.include?("https://www.goodreads.com/")
+  next if title.length > 36
   Book.create(title: title, author: author, pic: pic, isbn: isbn, description: description) unless description.nil? || title.nil?
 end
 
-images = ["https://identicons.github.com/807d5a1c7facea5fca0692a25dc6d238.png", "https://identicons.github.com/glimberg.png",
-"https://identicons.github.com/GrantSolar.png",
-"https://identicons.github.com/gvx.png"]
+image = "https://identicons.github.com/FliPPeh.png"
 
-User.create(email: "k", name: "Admin", password: "k",
-admin: 2,
-image: images.shuffle.first)
-User.create(email: "dummyAdmin", name: "Who let YOU in?", password: "whydidiletyouin",
- admin: 2, image: images.shuffle.first)
-User.create(email: "dummyRegular", name: "Dummy User", password: "okayGO",
- admin: 0, image: images.shuffle.first)
+clone_image = "https://identicons.github.com/807d5a1c7facea5fca0692a25dc6d238.png"
+
+images = ["https://identicons.github.com/glimberg.png",
+"https://identicons.github.com/GrantSolar.png"]
+
+User.create(email: "kim@narine.com", name: "Kimberly N", password: "k",
+admin: 2, image: image)
+User.create(email: "not@clone.com", name: "Not a Clone", password: "password",
+ admin: 2, image: images.first)
 
 
-[-1,0,1,2].each do |admin_num|
-
-  (5-admin_num).times do
-    username = Faker::Internet.email
-    User.create(
-      email: username,
-      name: Faker::Name.name ,
-      password: username,
-      admin: admin_num,
-      image: images.shuffle.first
-    )
-  end
+# create clones
+12.times do |t|
+ User.create(
+   email: "clone#{t}@drone.com",
+   name: "Clone Drone#{t}" ,
+   password: "password",
+   admin: 0,
+   image: clone_image
+   )
 end
 
-book_id = 1
-User.valid_users.each do |user|
-  user.posts.create(
-    title:Faker::Lorem.word,
-    body:Faker::Lorem.sentence,
-    book_id: (book_id % 4) + 1,
-    club_id: 0
-  )
-  book_id = book_id + 1
-end
-
-
-User.valid_users.shuffle[0...4].each do |user|
-  user.created_clubs.create(
-    title:Faker::Lorem.word
-  )
-end
-
-book_id = 1
-User.valid_users.each do |user|
-  [4,5,6,7].each do |id|
-    user.reviews.create(
-      title:Faker::Lorem.word,
-      body:Faker::Lorem.sentence,
-      book_id: (id)
-    )
-  end
-end
-
-
-Club.all.each do |club|
-  id = rand(8) + 1
-  club.book_pairings.create(book_id: id)
-  club.book_pairings.create(book_id: (id + 1) % 8)
-end
-
-
-
-book_id = 1
-User.valid_users.shuffle.each do |user|
-
-  3.times do |t|
-    club = Club.all.shuffle[0]
+User.all.last(12).each do |user|
+  Book.all.each do |book|
     user.posts.create(
-      title:Faker::Lorem.word,
-      body:Faker::Lorem.sentence,
-      book_id: club.books.shuffle[0].id,
-      club_id: club.id
-    )
+      title: "Great",
+      body: "Great book! I really enjoyed it. I recommended it to all my friends. They all love it.",
+      book_id: book.id
+      )
   end
 end
 
-book_id = 4
-User.valid_users.each do |user|
-
+User.all[2..5].each do |user|
+  Book.all.each do |book|
     user.tastes.create(
-      book_id: (book_id % 7) + 1,
+      book_id: book.id,
       taste: -1
     )
-    user.tastes.create(
-      book_id: ((book_id + 1) % 7) + 1,
-      taste: 0
-    )
-    user.tastes.create(
-      book_id: ((book_id + 2) % 7) + 1,
-      taste: 1
-    )
-
-    book_id = book_id + 1
+  end
 end
 
+User.all[6..9].each do |user|
+  Book.all.each do |book|
+    user.tastes.create(
+      book_id: book.id,
+      taste: 1
+    )
+  end
+end
+
+
+#
+# User.valid_users.shuffle[0...4].each do |user|
+#   user.created_clubs.create(
+#     title:Faker::Lorem.word
+#   )
+# end
+#
+# book_id = 1
+# User.valid_users.each do |user|
+#   [4,5,6,7].each do |id|
+#     user.reviews.create(
+#       title:Faker::Lorem.word,
+#       body:Faker::Lorem.sentence,
+#       book_id: (id)
+#     )
+#   end
+# end
+#
+#
+# Club.all.each do |club|
+#   id = rand(8) + 1
+#   club.book_pairings.create(book_id: id)
+#   club.book_pairings.create(book_id: (id + 1) % 8)
+# end
+#
+#
+#
+# book_id = 1
+# User.valid_users.shuffle.each do |user|
+#
+#   3.times do |t|
+#     club = Club.all.shuffle[0]
+#     user.posts.create(
+#       title:Faker::Lorem.word,
+#       body:Faker::Lorem.sentence,
+#       book_id: club.books.shuffle[0].id,
+#       club_id: club.id
+#     )
+#   end
+# end
+#
+# book_id = 4
+# User.valid_users.each do |user|
+#
+#     user.tastes.create(
+#       book_id: (book_id % 7) + 1,
+#       taste: -1
+#     )
+#     user.tastes.create(
+#       book_id: ((book_id + 1) % 7) + 1,
+#       taste: 0
+#     )
+#     user.tastes.create(
+#       book_id: ((book_id + 2) % 7) + 1,
+#       taste: 1
+#     )
+#
+#     book_id = book_id + 1
+# end
+#
 
 
 #

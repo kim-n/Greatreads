@@ -4,22 +4,16 @@
     value="<%= form_authenticity_token %>">
   </input>
 
-  <label>Title
-    <input type="text" name="post[title]"></input>
-  </label>
-  <br>
+  <textarea name="post[body]"></textarea>
 
-  <label>Body
-    <input type="text" name="post[body]"></input>
-	<br>
 
-	</label>Book:
-  	<select name="post[book_id]">
+  	<select class="post-book" name="post[book_id]">
+      <option>Book List</option>
   		<% books.each do |book| %>
   		<option value="<%= book.id %>"><%= book.title %></option>
   		<% end %>
   	</select>
-  </label>
+
 
 <input type="submit" value="Post!"></input>
 </form>

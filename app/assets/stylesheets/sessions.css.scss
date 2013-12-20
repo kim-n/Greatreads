@@ -34,9 +34,6 @@ article form label#password input {
 }
 
 article form input#button {
-  background: #CC9933;
-  padding: 0px 4px;
-  border-radius: 4px;
   float: right;
   margin-right: 52.8%;
 }
@@ -51,22 +48,25 @@ article > a {
   background: red;
 }
 
-.trial-logins > form > div > input{
+//.trial-logins input[type="submit"]{
+//  background: red;
+//  color:white;
+//  padding: 20px;
+//  margin-top: 50px;
+//  border-radius: 10px;
+//  border: 0px;
+//
+//}
 
-
-	background: red;
-	color:white;
-	padding: 20px;
-  margin-top: 50px;
-	border-radius: 10px;
-  border: 0px;
-
-}
-
-.trial-logins .button_to:first-child{
+#main .trial-logins input[type="submit"]{
   float: left;
   margin-left: 40%;
-
+  margin-top: 50px;
+  padding: 20px;
+  background: red;
+  color:white;
+  border-radius: 10px;
+  border: 0px;
 }
 
 //.trial-logins .button_to:last-child{
@@ -75,7 +75,7 @@ article > a {
 //
 //}
 
-.trial-logins .button_to input:hover{
+#main .trial-logins .button_to input:hover{
 	background: #33CC66;
 }
 

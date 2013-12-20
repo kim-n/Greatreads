@@ -1,44 +1,44 @@
+<% if current_user %>
+	<% if @book_rating.nil? %>
+		<% button_class = "is-none" %>
+	<% elsif @book_rating.taste == 0%>
+		<% button_class = "is-wish" %>
+	<% elsif @book_rating.taste == 1 %>
+		<% button_class = "is-like" %>
+	<% elsif @book_rating.taste == -1 %>
+		<% button_class = "is-dislike" %>
+	<% end %>
+
+  <% if @current_user_review %>
+    <% button_class += " is-reviewed" %>
+  <% end %>
+<% else %>
+	<%= @like_count %> Likes <%= @dislike_count %> Dislikes
+<% end %>
+
+
 <a class="back-button" href="<%= books_url %>">ALL BOOKS</a>
+
 <header class="page-title"><%= @book.title %></header>
-<h3><%= @book.author %></h3>
 
+  <div class="group">
+    <div class="book-description">
+      <h3 class="author"><%= @book.author %></h3>
+      <div class="desctiprion"><%= @book.description.html_safe %></div>
+    </div>
+    <div class="book-image">
+      <img class="cover" src="<%= @book.pic %>">
+        <ul class="<%= button_class %>">
+          <li id="like"><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></li>
+          <li id="unlike"><%= button_to "#{@like_count} Likes", book_like_url(@book), method: :delete %></li>
+          <li id="dislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></li>
+          <li id="undislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book), method: :delete %></li>
+          <li id="wish"><%= button_to "+Wish", book_like_url(@book, {taste: "0"}) %></li>
+          <li id="unwish"><%= button_to "+Unwish", book_like_url(@book), method: :delete%></li>
+        </ul>
+  		</div>
+    </div>
 
-   <%= @book.isbn %>
-
-	 <div class="group">
-   <img class="cover" src="<%= @book.pic %>">
-
-	 <div class="desctiprion"><%= @book.description.html_safe %></div>
-
-
-		<% if current_user %>
-			<% if @book_rating.nil? %>
-				<% button_class = "is-none" %>
-			<% elsif @book_rating.taste == 0%>
-				<% button_class = "is-wish" %>
-			<% elsif @book_rating.taste == 1 %>
-				<% button_class = "is-like" %>
-			<% elsif @book_rating.taste == -1 %>
-				<% button_class = "is-dislike" %>
-			<% end %>
-
-      <% if @current_user_review %>
-        <% button_class += " is-reviewed" %>
-      <% end %>
-
-			<ul class="<%= button_class %>">
-			<li id="like"><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></li>
-			<li id="unlike"><%= button_to "#{@like_count} Likes", book_like_url(@book), method: :delete %></li>
-			<li id="dislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></li>
-			<li id="undislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book), method: :delete %></li>
-			<li id="wish"><%= button_to "+Wish", book_like_url(@book, {taste: "0"}) %></li>
-			<li id="unwish"><%= button_to "+Unwish", book_like_url(@book), method: :delete%></li>
-			</ul>
-
-		<% else %>
-			<%= @like_count %> Likes <%= @dislike_count %> Dislikes
-		<% end %>
-		</div>
 
     <% if @current_user_review %>
       <header class="sub-title">My Review</header>
