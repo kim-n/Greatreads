@@ -109,7 +109,17 @@ img.cover {
 }
 
 
-.edit, .delete {
+.edit, .post-delete-form {
+  display:none;
+}
+
+.post:hover .edit,
+.post:hover .post-delete-form {
+  display: inline;
   float: right;
   margin: 0px 10px;
+}
+
+.my-post .post:hover .post-date {
+  display:none;
 }

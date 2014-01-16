@@ -58,7 +58,7 @@ class PostsController < ApplicationController
         # Notify user.followers that user made review
         current_user.notify_followers_new_review(review)
 
-        render partial: "posts/post", locals: {post: review}
+        render partial: "posts/post", locals: {post: review, modifiable: true}
       else
         render json: review.errors.full_messages, status: :unprocessable_entity
       end

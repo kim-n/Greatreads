@@ -1,4 +1,10 @@
 <ul class="post">
+  <% modifiable ||= false %>
+
+  <% if modifiable %>
+      <%= button_to "DELETE",   post_url(post), class: "delete", method: :delete, :remote => true, form_class: "post-delete-form" %>
+      <a  href="#" class="edit">edit</a>
+  <% end %>
 
    <header class="post-header">
  		<li class="poster">

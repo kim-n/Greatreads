@@ -43,10 +43,8 @@
 
     <div class="my-post">
     <% if @current_user_review %>
-      <header class="sub-title">My Review
-        <%= button_to "DELETE",   post_url(@current_user_review), class: "delete", method: :delete, :remote => true, form_class: "post-delete-form" %>
-        <a  href="#" class="edit">edit</a></header>
-      <%=render partial: "posts/post", locals: {post: @current_user_review} %>
+      <header class="sub-title">My Review</header>
+      <%=render partial: "posts/post", locals: {post: @current_user_review, modifiable: true} %>
     <% elsif current_user %>
      	 <header class="sub-title">New Review</header>
      	 <%= render "posts/form_review", book: @book  %>
