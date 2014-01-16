@@ -1,24 +1,3 @@
-<% if current_user %>
-	<% if @book_rating.nil? %>
-		<% button_class = "is-none" %>
-	<% elsif @book_rating.taste == 0%>
-		<% button_class = "is-wish" %>
-	<% elsif @book_rating.taste == 1 %>
-		<% button_class = "is-like" %>
-	<% elsif @book_rating.taste == -1 %>
-		<% button_class = "is-dislike" %>
-	<% end %>
-
-  <% if @current_user_review %>
-    <% button_class += " is-reviewed" %>
-  <% end %>
-<% else %>
-  <% button_class = "no-user" %>
-  <!-- <%= @like_count %> Likes <%= @dislike_count %> Dislikes -->
-<% end %>
-
-
-
 <a class="back-button" href="<%= books_url %>">ALL BOOKS</a>
 
 <header class="page-title"><%= @book.title %></header>
@@ -30,14 +9,9 @@
     </div>
     <div class="book-image">
       <img class="cover" src="<%= @book.pic %>">
-        <ul class="<%= button_class %>">
-          <li id="like"><%= button_to "#{@like_count} Likes", book_like_url(@book, {taste: "1"}) %></li>
-          <li id="unlike"><%= button_to "#{@like_count} Likes", book_like_url(@book), method: :delete %></li>
-          <li id="dislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book, {taste: "-1"}) %></li>
-          <li id="undislike"><%= button_to "#{@dislike_count} Dislikes", book_like_url(@book), method: :delete %></li>
-          <li id="wish"><%= button_to "+Wish", book_like_url(@book, {taste: "0"}) %></li>
-          <li id="unwish"><%= button_to "+Unwish", book_like_url(@book), method: :delete%></li>
-        </ul>
+      <div class="likes-section">
+              <%=render partial: "likes/list_likes", locals: {book: @book, is_reviewed: @current_user_review, book_rating: @book_rating, dislike_count: @dislike_count, like_count: @like_count} %>
+      </div>
   		</div>
     </div>
 
@@ -64,7 +38,6 @@ $(document).ready(function (){
     $("body").on("ajax:success", ".post-delete-form", function (event, data) {
       event.preventDefault();
       
-      console.log(data)
       $insertion = $(".my-post")
       $insertion.children(".sub-title").html("New Review")
       $insertion.append(data)
@@ -76,18 +49,31 @@ $(document).ready(function (){
     
     
     $("body").on("ajax:error", ".post-delete-form", function (event, data) {
-      event.preventDefault();
-      
-      conosle.log("WTF")
-      console.log(data)
-      // conosle.log($("sub-title")[0].html())
-      // // $postsList = $(this).parent().siblings(".posts-list");
-      // // $postsList.prepend(data);
-      // 
-      // $("sub-title")[0].html("New Post")
-      // $(".post").append(data)
+      console.log("ERROR DELETING POST")
     });
     
+    $("body").on("ajax:success", ".like-form", function (event, data) {
+      event.preventDefault();
+      
+      console.log(data)
+      $insertion = $(".likes-section")
+      
+      $insertion.html(data)
 
+    });
+    
+    
+    
+    $("body").on("ajax:success", ".comment-delete-form", function (event, data) {
+      event.preventDefault();
+      $(this).parent().remove();
+    });
+    
+    
+    $("body").on("ajax:error", ".comment-delete-form", function (event, data) {
+      console.log("ERROR DELETING COMMENT")
+      console.log(data)
+    });
+    
 });
 </script>

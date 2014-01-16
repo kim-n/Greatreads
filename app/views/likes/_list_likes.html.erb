@@ -1,0 +1,28 @@
+<% if current_user %>
+	<% if book_rating.nil? %>
+		<% button_class = "is-none" %>
+	<% elsif book_rating.taste == 0%>
+		<% button_class = "is-wish" %>
+	<% elsif book_rating.taste == 1 %>
+		<% button_class = "is-like" %>
+	<% elsif book_rating.taste == -1 %>
+		<% button_class = "is-dislike" %>
+	<% end %>
+
+  <% if is_reviewed %>
+    <% button_class += " is-reviewed" %>
+  <% end %>
+<% else %>
+  <% button_class = "no-user" %>
+<% end %>
+
+
+<ul class="<%= button_class %>">
+  <li id="like"><%= button_to "#{like_count} Likes", book_like_url(book, {taste: "1"}), :remote => true, form_class: "like-form" %></li>
+  <li id="unlike"><%= button_to "#{like_count} Likes", book_like_url(book), method: :delete, :remote => true, form_class: "like-form" %></li>
+  <li id="dislike"><%= button_to "#{dislike_count} Dislikes", book_like_url(book, {taste: "-1"}), :remote => true, form_class: "like-form" %></li>
+  <li id="undislike"><%= button_to "#{dislike_count} Dislikes", book_like_url(book), method: :delete, :remote => true, form_class: "like-form" %></li>
+  <li id="wish"><%= button_to "+Wish", book_like_url(book, {taste: "0"}), :remote => true, form_class: "like-form" %></li>
+  <li id="unwish"><%= button_to "-Wish", book_like_url(book), method: :delete, :remote => true, form_class: "like-form"%></li>
+</ul>
+

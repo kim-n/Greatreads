@@ -42,4 +42,18 @@ class CommentsController < ApplicationController
     @comments = Comment.where(parent_id: 0)
     render :index
   end
+  
+  def destroy
+    comment = Comment.find(params[:id])
+
+    book = Book.find( comment.post.book_id )
+    comment.destroy
+    
+    if request.xhr?
+      render json: :ok
+    else
+      redirect_to book_url(book.isbn)
+    end
+
+  end
 end
