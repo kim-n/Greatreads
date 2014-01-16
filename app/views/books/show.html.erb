@@ -41,16 +41,17 @@
   		</div>
     </div>
 
-
+    <div class="my-post">
     <% if @current_user_review %>
-      <header class="sub-title">My Review</header>
+      <header class="sub-title">My Review
+        <%= button_to "DELETE",   post_url(@current_user_review), class: "delete", method: :delete, :remote => true, form_class: "post-delete-form" %>
+        <a  href="#" class="edit">edit</a></header>
       <%=render partial: "posts/post", locals: {post: @current_user_review} %>
     <% elsif current_user %>
-      <div class="new-post">
      	 <header class="sub-title">New Review</header>
      	 <%= render "posts/form_review", book: @book  %>
-      </div>
  	 <% end %>
+   </div>
 
 
 
@@ -60,4 +61,35 @@
    </div>
 
 
+<script>
+$(document).ready(function (){ 
+    $("body").on("ajax:success", ".post-delete-form", function (event, data) {
+      event.preventDefault();
+      
+      console.log(data)
+      $insertion = $(".my-post")
+      $insertion.children(".sub-title").html("New Review")
+      $insertion.append(data)
 
+
+      $insertion.children(".post").remove()
+
+    });
+    
+    
+    $("body").on("ajax:error", ".post-delete-form", function (event, data) {
+      event.preventDefault();
+      
+      conosle.log("WTF")
+      console.log(data)
+      // conosle.log($("sub-title")[0].html())
+      // // $postsList = $(this).parent().siblings(".posts-list");
+      // // $postsList.prepend(data);
+      // 
+      // $("sub-title")[0].html("New Post")
+      // $(".post").append(data)
+    });
+    
+
+});
+</script>

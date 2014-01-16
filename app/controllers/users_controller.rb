@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :require_current_user!, except: [:update, :new, :index, :show]
-  before_filter :require_no_current_user!, only: [:update, :new]
+  before_filter :require_current_user!, except: [:update, :new, :index, :show, :create]
+  before_filter :require_no_current_user!, only: [:update, :new, :create]
   # before_filter :require_administrator!, only: [:create, :new]
 
 
@@ -9,17 +9,20 @@ class UsersController < ApplicationController
     @users = User.valid_users.find(:all, :order => "name DESC")
     render :index
   end
-  #
-  # def create
-  #   user = User.new(params[:user])
-  #
-  #   if user.save
-  #     self.current_user = user
-  #     redirect_to user_url(current_user)
-  #   else
-  #     render :new
-  #   end
-  # end
+  
+  def create
+    images = ["https://identicons.github.com/glimberg.png",
+    "https://identicons.github.com/GrantSolar.png"]
+    
+    user = User.new(params[:user])
+    user.image = images.shuffle[0]
+    if user.save
+      log_in(user)
+      redirect_to user_url(current_user)
+    else
+      render :new
+    end
+  end
 
   def update
     user = User.find_by_session_token(params[:id])

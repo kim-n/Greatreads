@@ -34,7 +34,7 @@ GoodReadsClone::Application.routes.draw do
 
   resources :comments, only: [:index, :show]
 
-  resources :posts, only: [:show] do
+  resources :posts, only: [:show, :destroy] do
     resources :comments, only: [:new, :create]
   end
 

@@ -81,6 +81,19 @@ class PostsController < ApplicationController
       redirect_to book_url(book.isbn)
     end
   end
+  
+  def destroy
+    post = Post.find(params[:id])
 
+    book = Book.find( post.book_id )
+    post.destroy
+    
+    if request.xhr?
+      render partial: "posts/form_review", locals: {book: book}
+    else
+      redirect_to book_url(book.isbn)
+    end
+
+  end
 
 end

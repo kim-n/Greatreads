@@ -5,7 +5,7 @@
       <img src="<%= post.user.image %>"></img>
       <a href="<%= user_url(post.user_id) %>"><%= post.user.name %></a>
     </li>
-   	<li class="post-date"><%= post.created_at.to_date  %></li>
+   	<li class="post-date"><%= post.created_at.to_date.to_formatted_s(:rfc822)  %></li>
    </header>
 
    <div class="post-contents">

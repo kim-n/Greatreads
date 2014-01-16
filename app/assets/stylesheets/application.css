@@ -254,9 +254,14 @@ body > footer a.github {
 /*  border-radius: 4px;*/
   margin-bottom: 20px;
 }
+
 #main input[type="submit"]:hover {
   border: 1px solid #CC9933;
   background: #33CC66;
+}
+
+input[type="password"], input[type="text"] {
+  background: #eee;
 }
 
 textarea {
