@@ -13,8 +13,10 @@
     <% button_class += " is-reviewed" %>
   <% end %>
 <% else %>
-	<%= @like_count %> Likes <%= @dislike_count %> Dislikes
+  <% button_class = "no-user" %>
+  <!-- <%= @like_count %> Likes <%= @dislike_count %> Dislikes -->
 <% end %>
+
 
 
 <a class="back-button" href="<%= books_url %>">ALL BOOKS</a>

@@ -1,3 +1,11 @@
 // Place all the styles related to the clubs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.follow .button-follow, .unfollow .button-unfollow,
+.no-user .button-follow, .no-user .button-unfollow {
+  display: none;
+}
+
+ 

@@ -250,8 +250,8 @@ body > footer a.github {
   border: 1px solid #CC9933;
   display: inline;
   background: #CC9933;
-  padding: 0px 4px;
-  border-radius: 4px;
+  padding: 4px 4px;
+/*  border-radius: 4px;*/
   margin-bottom: 20px;
 }
 #main input[type="submit"]:hover {

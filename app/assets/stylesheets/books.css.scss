@@ -8,13 +8,23 @@
   margin: 0px 8px;
 }
 
+.no-user > #unlike, .no-user > #undislike,
+.no-user > #wish, .no-user > #unwish {
+  display:none;
+}
+
+.no-user > #like input[type="submit"],
+.no-user > #dislike input[type="submit"]{
+// background: purple; 
+}
+
+
 .is-wish input[type="submit"]{
   margin-left: 4px;
 }
 .is-none, .is-wish, .is-like, .is-dislike {
   margin-left: 4px
 }
-
 
 .is-none > #unlike, .is-none > #undislike,
 .is-none > #unwish {
