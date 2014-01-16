@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       flash[:errors] = ["Wrong credentials, try again"]
       redirect_to new_session_url
     else
-      self.current_user = user
+      log_in(user)
       redirect_to root_url
     end
 

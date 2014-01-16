@@ -10,6 +10,7 @@ class HomeController < ApplicationController
     reviews.each do |review|
       @recently_reviewed << review.book
     end
+    render :index
   end
 
 end

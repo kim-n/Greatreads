@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if (user.email == params[:user][:email])
       params[:user][:admin] = 0
       user.update_attributes(params[:user])
-      self.current_user = user
+      log_in(user)
 
       redirect_to root_url
     else
