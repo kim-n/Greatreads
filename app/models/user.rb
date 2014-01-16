@@ -194,8 +194,8 @@ class User < ActiveRecord::Base
       end
     end
 
-    until rec.count > 4
-      books = Book.all.shuffle
+    books = Book.all.shuffle
+    until rec.count > 4 || books.empty?
       book = books.shift
       unless rec.include?(book) || book.nil?
         rec << book

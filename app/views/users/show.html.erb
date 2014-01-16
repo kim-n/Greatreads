@@ -11,7 +11,7 @@
         <h3 id="user-name"><%= @user.email %></h3>
         <h3 id="user-created">Created on: <%= @user.created_at.to_date %></h3>
 
-        <% unless @user.id == current_user.id %>
+        <% unless current_user.nil? || @user.id == current_user.id %>
           <% button_class = @is_followed_by_current_user ? "follow" : "unfollow" %>
 
           <ul class="<%= button_class %>">

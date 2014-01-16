@@ -34,6 +34,7 @@ group :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
 end
 
 gem 'figaro'

@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       @posts = @user.post_items
       @wishes = @user.wish_books
       @read_books_with_rating = @user.read_books_with_rating
-      @is_followed_by_current_user = current_user.follows.where(id: @user.id)[0]
+      @is_followed_by_current_user = current_user.nil? ? false : current_user.follows.where(id: @user.id)[0]
       render :show
     else
       flash[:errors] = ["Invalid user page"]

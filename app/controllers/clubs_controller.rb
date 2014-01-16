@@ -48,7 +48,7 @@ class ClubsController < ApplicationController
     @club = Club.find_by_id(params[:id])
 
     if @club
-      @is_current_user_member = current_user.club_memberships.where(club_id: @club.id)[0]
+      @is_current_user_member = current_user.nil? ? false : current_user.club_memberships.where(club_id: @club.id)[0]
       @posts = @club.posts.find(:all, :order => "created_at DESC")
       @clubbooks = @club.books
       render :show

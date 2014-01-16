@@ -9,16 +9,23 @@ require 'open-uri'
 
 
 
-isbns = []
 
-1.times do |t|
-  page = Nokogiri::HTML(open("http://www.amazon.com/gp/bestsellers/books/ref=sv_b_2##{t+1}") )
-  page.css("div.zg_title").css("a").each do |link|
-    book_link = link.attributes()["href"].value.strip
-    book_isbn = book_link.match(/\/dp\/(.*)/i).captures
-    isbns += book_isbn
-  end
-end
+
+# 
+# 1.times do |t|
+#   page = Nokogiri::HTML(open("http://www.amazon.com/gp/bestsellers/books/ref=sv_b_2##{t+1}") )
+#   page.css("div.zg_title").css("a").each do |link|
+#     book_link = link.attributes()["href"].value.strip
+#     book_isbn = book_link.match(/\/dp\/(.*)/i).captures
+#     isbns += book_isbn
+#   end
+# end
+# # 
+
+
+
+
+isbns = ['0061120081', '0451524934', '0679783261', '0452284244', '0316769177', '0156012197', '0743273567', '0439554934', '0743477111', '0142437204']
 
 isbns.each do |isbn|
   sleep(1)
@@ -28,9 +35,9 @@ isbns.each do |isbn|
   author = page.xpath("//book//authors//name")[0].text.strip
   description = page.xpath("//book//description")[0].text.strip
   pic.gsub!(/m\//,'l/') unless pic.index("goodreads")
-  next if description.include?("https://www.goodreads.com/")
-  next if title.length > 36
-  Book.create(title: title, author: author, pic: pic, isbn: isbn, description: description) unless description.nil? || title.nil?
+  next if description.include?("https://www.goodreads.com/") || description.nil?
+  next if title.length > 36 || title.nil?
+  Book.create(title: title, author: author, pic: pic, isbn: isbn, description: description) 
 end
 
 image = "https://identicons.github.com/FliPPeh.png"
@@ -47,27 +54,59 @@ User.create(email: "not@clone.com", name: "Not a Clone", password: "password",
 
 
 # create clones
-12.times do |t|
+3.times do |t|
  User.create(
-   email: "clone#{t}@drone.com",
-   name: "Clone Drone#{t}" ,
+   email: "good_clone#{t}@drone.com",
+   name: "Book_Lover#{t}" ,
    password: "password",
    admin: 0,
    image: clone_image
    )
 end
 
-User.all.last(12).each do |user|
+# create clones
+3.times do |t|
+ User.create(
+   email: "bad_clone#{t}@drone.com",
+   name: "Book_Hater#{t}" ,
+   password: "password",
+   admin: 0,
+   image: clone_image
+   )
+end
+
+
+
+User.all[2..4].each do |user|
   Book.all.each do |book|
     user.posts.create(
-      title: "Great",
-      body: "Great book! I really enjoyed it. I recommended it to all my friends. They all love it.",
+      title: "Amazing!",
+      body: "Great book! I really enjoyed it. I recommended it to all my friends.",
       book_id: book.id
       )
   end
 end
 
-User.all[2..5].each do |user|
+User.all[5..7].each do |user|
+  Book.all.each do |book|
+    user.posts.create(
+      title: "Ugh!",
+      body: "Terrible book! I did not enjoyed it. I recommended it to all my enemies.",
+      book_id: book.id
+      )
+  end
+end
+
+User.all[2..4].each do |user|
+  Book.all.each do |book|
+    user.tastes.create(
+      book_id: book.id,
+      taste: 1
+    )
+  end
+end
+
+User.all[5..7].each do |user|
   Book.all.each do |book|
     user.tastes.create(
       book_id: book.id,
@@ -76,14 +115,21 @@ User.all[2..5].each do |user|
   end
 end
 
-User.all[6..9].each do |user|
-  Book.all.each do |book|
-    user.tastes.create(
-      book_id: book.id,
-      taste: 1
-    )
-  end
+
+book_lover = User.all[2]
+book_hater = User.all[5]
+
+book_lover.created_clubs.create(title: "Most Loved Books")
+book_hater.created_clubs.create(title: "Most Hated Books")
+
+Club.all.each do |club|
+  id = rand(Book.count) + 1
+  club.book_pairings.create(book_id: id)
+  club.book_pairings.create(book_id: (id + 1) % 8)
+  club.book_pairings.create(book_id: (id + 2) % 8)
 end
+
+
 
 
 #
