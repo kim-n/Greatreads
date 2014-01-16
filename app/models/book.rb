@@ -9,16 +9,8 @@ class Book < ActiveRecord::Base
   )
 
   has_many(
-    :club_pairngs,
+    :club_pairings,
     class_name: "ClubBook",
-    foreign_key: :book_id,
-    primary_key: :id,
-    inverse_of: :book
-  )
-
-  has_many(
-    :wish_items,
-    class_name: "WishList",
     foreign_key: :book_id,
     primary_key: :id,
     inverse_of: :book
