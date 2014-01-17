@@ -14,7 +14,8 @@ class Club < ActiveRecord::Base
     :posts,
     class_name: "Post",
     foreign_key: :club_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
@@ -22,7 +23,8 @@ class Club < ActiveRecord::Base
     class_name: "ClubBook",
     foreign_key: :club_id,
     primary_key: :id,
-    inverse_of: :club
+    inverse_of: :club,
+    dependent: :destroy
   )
 
   has_many :books, through: :book_pairings, source: :book
@@ -32,7 +34,8 @@ class Club < ActiveRecord::Base
     class_name: "Membership",
     foreign_key: :club_id,
     primary_key: :id,
-    inverse_of: :club
+    inverse_of: :club,
+    dependent: :destroy
   )
 
   has_many :members, through: :user_memberships, source: :user

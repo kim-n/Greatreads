@@ -28,7 +28,8 @@ class Comment < ActiveRecord::Base
     :children_comments,
     class_name: "Comment",
     foreign_key: :parent_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
 

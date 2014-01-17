@@ -5,7 +5,8 @@ class Book < ActiveRecord::Base
     :post_items,
     class_name: "Post",
     foreign_key: :book_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
@@ -13,14 +14,16 @@ class Book < ActiveRecord::Base
     class_name: "ClubBook",
     foreign_key: :book_id,
     primary_key: :id,
-    inverse_of: :book
+    inverse_of: :book,
+    dependent: :destroy
   )
   
   has_many(
     :tastes,
     class_name: "Like",
     foreign_key: :book_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
   
   def likes

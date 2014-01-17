@@ -21,14 +21,16 @@ class User < ActiveRecord::Base
     :posts,
     class_name: "Post",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :tastes,
     class_name: "Like",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many :rated_books, through: :tastes, source: :book
@@ -37,7 +39,8 @@ class User < ActiveRecord::Base
     :comments,
     class_name: "Comment",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
@@ -45,7 +48,8 @@ class User < ActiveRecord::Base
     class_name: "Follow",
     foreign_key: :follower_id,
     primary_key: :id,
-    inverse_of: :follower
+    inverse_of: :follower,
+    dependent: :destroy
   )
 
   has_many(
@@ -53,7 +57,8 @@ class User < ActiveRecord::Base
     class_name: "Follow",
     foreign_key: :followee_id,
     primary_key: :id,
-    inverse_of: :followee
+    inverse_of: :followee,
+    dependent: :destroy
   )
 
   has_many :followers, through: :followee_entries, source: :follower
@@ -65,7 +70,8 @@ class User < ActiveRecord::Base
     class_name: "Notification",
     foreign_key: :user_id,
     primary_key: :id,
-    inverse_of: :user
+    inverse_of: :user,
+    dependent: :destroy
   )
 
   has_many(
@@ -73,7 +79,8 @@ class User < ActiveRecord::Base
     class_name: "Membership",
     foreign_key: :user_id,
     primary_key: :id,
-    inverse_of: :user
+    inverse_of: :user,
+    dependent: :destroy
   )
 
   has_many :clubs, through: :club_memberships, source: :club
