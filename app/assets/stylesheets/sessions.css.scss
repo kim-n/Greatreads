@@ -2,51 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-article {
-  text-align: center;
-  padding-top: 150px;
-  position: relative;
-
-}
-
-
-article form label#email {
-  margin-left: 30px;
-
-}
-
-article form label#email input {
-  background: #FAF1D4;
-  padding: 0px 4px;
-  border: 1px solid #CC9933;
-  border-radius: 4px;
-  margin-bottom: 20px;
-
-}
-
-article form label#password input {
-  background: #FAF1D4;
-  padding: 0px 4px;
-  border: 1px solid #CC9933;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-article form input#button {
-  float: right;
-  margin-right: 52.8%;
-}
-
-article > a {
-  float: left;
-  margin-left: 32%;
-
-}
-
-.trial-logins{
-  background: red;
-}
+//
+//article {
+//  text-align: center;
+//  padding-top: 150px;
+//  position: relative;
+//
+//}
+//
+//
+//article form label#email {
+//  margin-left: 30px;
+//
+//}
+//
+//article form label#email input {
+//  background: #FAF1D4;
+//  padding: 0px 4px;
+//  border: 1px solid #CC9933;
+//  border-radius: 4px;
+//  margin-bottom: 20px;
+//
+//}
+//
+//article form label#password input {
+//  background: #FAF1D4;
+//  padding: 0px 4px;
+//  border: 1px solid #CC9933;
+//  border-radius: 4px;
+//  margin-bottom: 20px;
+//}
+//
+//article form input#button {
+//  float: right;
+//  margin-right: 52.8%;
+//}
+//
+//article > a {
+//  float: left;
+//  margin-left: 32%;
+//
+//}
+//
+//.trial-logins{
+//  background: red;
+//}
 
 //.trial-logins input[type="submit"]{
 //  background: red;
