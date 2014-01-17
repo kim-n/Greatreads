@@ -1,12 +1,10 @@
 <ul class="comment">
-  <% if current_user && comment.user_id == current_user.id %>
-    <%= button_to "DELETE",   comment_url(comment), class: "delete", method: :delete, :remote => true, form_class: "comment-delete-form" %>
-  <% end %>
   <header class="post-header">
   <li class="comment-poster">
     <img src="<%= comment.user.image %>"></img>
     <a href="<%= user_url(comment.user_id) %>"><%= comment.user.name %></a></li>
   </header>
+  
   <div class="post-contents">
     <li class="comment-body"><%= comment.body %></li>
   </div>
@@ -15,14 +13,19 @@
   <% end %>
 
 
-  <% if current_user %>
+  <footer class="comment-footer">
+    <% if current_user %>
+    <% if comment.user_id == current_user.id %>
+      <%= button_to "DELETE",   comment_url(comment), class: "delete", method: :delete, :remote => true, form_class: "comment-delete-form" %>
+    <% end %>
+    <a  class="reply-button" href="#">Reply</a>
 
-  <li class="reply-button"><a href="#">Reply</a></li>
+    <div class="reply-form hide-tag">
+          <%= render "comments/form_comment", post: comment, parent_id: comment.id %>
+    </div>
+    <div class="new-comment"></div>
+    <% end %>
+  </footer>
 
-  <div class="reply-form hide-tag">
-        <%= render "comments/form_comment", post: comment, parent_id: comment.id %>
-  </div>
-  <div class="new-comment"></div>
-  <% end %>
 
 </ul>

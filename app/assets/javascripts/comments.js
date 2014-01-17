@@ -23,6 +23,8 @@ $(document).ready(function (){
 
     $newComments.prepend(data);
     $(this)[0].reset()
+    $('.comment-form input[type="submit"]').hide();
+    
   });
 
   // on unsuccessful comment creation
@@ -56,6 +58,24 @@ $(document).ready(function (){
     $commentButton.siblings(".reply-form").toggleClass("hide-tag")
   });
 
+
+  $('.comment-form input[type="submit"]').hide();
+  $('body').on('focus', '.comment-text', function (event){
+      $('.comment-form input[type="submit"]').hide();
+      $(this).parent().children('input[type="submit"]').show();
+  });
+
+  
+  $("body").on("ajax:success", ".comment-delete-form", function (event, data) {
+    event.preventDefault();
+    $(this).parent().remove();
+  });
+  
+  
+  $("body").on("ajax:error", ".comment-delete-form", function (event, data) {
+    console.log("ERROR DELETING COMMENT")
+    console.log(data)
+  });
 
 
 });

@@ -15,7 +15,7 @@
 /* --- RESET --- */
 
 html, body, header, footer, section, article, div,
-strong, a, img, p, h1, h2, h3, time, ul, li, small, input, select {
+strong, a, img, p, h1, h2, h3, time, ul, li, small, input, select, form {
   margin: 0;
   padding: 0;
   border: 0;
@@ -44,9 +44,13 @@ ul {
   list-style: none;
 }
 
+form {
+  display: inline;
+}
+
 a {
   text-decoration: none;
-  color: #00f;
+  color: #707070;
 }
 
 strong {
@@ -58,10 +62,24 @@ img {
 }
 
 
-input[type="password"], input[type="text"], input[type="submit"] {
+input[type="password"], input[type="text"] {
   background: #FDF9EC;
   margin: 2px;
   border: 1px solid #eee;
+}
+
+
+input[type="submit"]{
+  background: #ccc;
+  margin: 2px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  border: 1px solid #eee;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer; 
+  cursor: hand; 
 }
 
 
@@ -294,27 +312,26 @@ body > footer a.github {
   border-top: 0;
 }
 
-#main a {
+/*#main a {
   color: green;
 }
-
+*/
 #main a:hover {
   color: #ccc;
 }
-
+/*
 #main input[type="submit"] {
   border: 1px solid #d7d7d7;
   display: inline;
   background: #d7d7d7;
   padding: 4px 4px;
-/*  border-radius: 4px;*/
   margin-bottom: 20px;
 }
 
 #main input[type="submit"]:hover {
   border: 1px solid #d7d7d7;
   background: #33CC66;
-}
+}*/
 
 textarea {
   background: #FAF1D4;
@@ -428,7 +445,7 @@ th:nth-child(even), td:nth-child(even) {
 .post {
   width: 90%;
   margin-bottom: 30px;
-  border: 1px solid #FAF1D4;
+  border-top: 1px solid #FAF1D4;
 }
 
 .post .post-header{
@@ -468,7 +485,7 @@ th:nth-child(even), td:nth-child(even) {
 }
 
 .post .post-footer{
-  border-top: 1px solid #FAF1D4;
+  border-bottom: 1px solid #FAF1D4;
   height: 27px;
 }
 
@@ -515,6 +532,26 @@ th:nth-child(even), td:nth-child(even) {
 .post .post-comments input[type="submit"] {
   margin-left: 10px;
 }
+
+
+.post .modify-post {
+/*  padding-top: 10px;*/
+}
+
+.post .modify-post a{
+  padding-top: 5px;
+}
+
+.post .modify-post input[type="submit"] {
+  margin:0px;
+  padding:0px;
+  display:inline;
+  background:none;
+  color:red;
+  border:none;
+}
+
+
 /*#main  {
   border: 1px solid #d7d7d7;
 
@@ -559,6 +596,23 @@ th:nth-child(even), td:nth-child(even) {
   margin-left: 5px;
 }
 
+.comment .comment-footer {
+  display:inline;
+}
+
+.comment-footer input[type="submit"] {
+  margin:0px;
+  padding:0px;
+  display:inline;
+  background:none;
+  color:red;
+  border:none;
+}
+
+.comment-footer form div {
+  display:inline;
+}
+
 /*---- POST FORM ----*/
 .review-form{
   width: 50%;
@@ -574,6 +628,7 @@ th:nth-child(even), td:nth-child(even) {
 .post-form input[type="submit"], .review-form input[type="submit"] {
   margin-left: 10px;
 }
+
 .post-form .post-book{
   margin-left: 10px;
   display: block;

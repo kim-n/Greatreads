@@ -1,9 +1,12 @@
 <ul class="post">
   <% modifiable ||= false %>
+  <% is_review ||= false%>
 
   <% if modifiable %>
-      <%= button_to "DELETE",   post_url(post), class: "delete", method: :delete, :remote => true, form_class: "post-delete-form" %>
-      <a  href="#" class="edit">edit</a>
+  <div class="modify-post">
+    <%= button_to "DELETE",   post_url(post), class: "delete", method: :delete, :remote => true, form_class: "post-delete-form" %>
+    <!-- <a  href="#" class="edit">edit</a> -->
+  </div>
   <% end %>
 
    <header class="post-header">
@@ -19,12 +22,14 @@
    </div>
 
    <footer class="post-footer">
+     <% unless is_review %>
    	<li class="book-title">
  			<a href="<%= book_url(post.book.isbn) %>">
  				<%= post.book.title %>
  			</a>
      </li>
-
+     <% end %>
+     
  		<% unless post.club_id == 0 %>
  		<li class="club-title">
  			<a href="<%= club_url(post.club) %>">

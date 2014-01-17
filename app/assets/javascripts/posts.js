@@ -37,6 +37,31 @@ $(document).ready(function (){
 
   });
 
+  $("body").on("ajax:success", ".post-delete-form", function (event, data) {
+    event.preventDefault();
+    
+    $insertion = $(".my-post")
+    $insertion.children(".sub-title").html("New Review")
+    $insertion.append(data)
 
+
+    $insertion.children(".post").remove()
+
+  });
+  
+  
+  $("body").on("ajax:error", ".post-delete-form", function (event, data) {
+    console.log("ERROR DELETING POST")
+  });
+  
+  $("body").on("ajax:success", ".like-form", function (event, data) {
+    event.preventDefault();
+    
+    console.log(data)
+    $insertion = $(".likes-section")
+    
+    $insertion.html(data)
+
+  });
 
 });
