@@ -1,13 +1,27 @@
 <header class="page-title">All Books</header>
-
-<div class="page-right">
-  <% if current_user %>
-    <%= render "new_book" %>
-  <% end %>
+<% if current_user %>
+<div class="add-book-wrapper">
+  <button class="add-book-widget" href="">+</button>
+  <div class="add-book">
+      <%= render "new_book" %>
+  </div>
 </div>
+<% end %>
 
 <div class="display">
   <%= render "display_books", :books => @books %>
 </div>
+
+<script>
+$(document).ready( function () {
+  $('div.add-book').hide();
+  
+  
+  $('.add-book-widget').on("click", function (event) {
+    event.preventDefault()
+    $('div.add-book').toggle();
+  })
+})
+</script>
 
 

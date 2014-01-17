@@ -18,7 +18,7 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 <% end %>
 <ul class="<%= button_class %>">
   <li class="button-follow"><%= button_to "Follow", club_memberships_url(params[:id]) %></li>
-  <li class="button-unfollow"><%= button_to "Unfollow", club_membership_url(params[:id]), method: :delete %></li>
+  <li class="button-unfollow"><%= button_to "Unfollow", club_memberships_url(params[:id]), method: :delete %></li>
 </ul>
 
 
