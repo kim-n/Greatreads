@@ -27,9 +27,9 @@ strong, a, img, p, h1, h2, h3, time, ul, li, small, input, select, form {
 /* --- ELEMENTS --- */
 
 body {
-  font-family: Geneva;
+  font-family: 'Josefin Sans', sans-serif;
   background: transparent;
-  font-size: 16px;
+  font-size: 20px;
   line-height: normal;
   background: #F8F8F4;
 /*  background-image:url('lghtmesh.png');*/
@@ -125,6 +125,8 @@ nav {
   background-repeat: x-repeat;
   height: 90px;
   border-bottom: 1px solid #d7d7d7;
+  font-family: sans-serif;
+  font-size: 18px;
 }
 
 .nav-wrapper {

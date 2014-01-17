@@ -2,65 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//
-//article {
-//  text-align: center;
-//  padding-top: 150px;
-//  position: relative;
-//
-//}
-//
-//
-//article form label#email {
-//  margin-left: 30px;
-//
-//}
-//
-//article form label#email input {
-//  background: #FAF1D4;
-//  padding: 0px 4px;
-//  border: 1px solid #CC9933;
-//  border-radius: 4px;
-//  margin-bottom: 20px;
-//
-//}
-//
-//article form label#password input {
-//  background: #FAF1D4;
-//  padding: 0px 4px;
-//  border: 1px solid #CC9933;
-//  border-radius: 4px;
-//  margin-bottom: 20px;
-//}
-//
-//article form input#button {
-//  float: right;
-//  margin-right: 52.8%;
-//}
-//
-//article > a {
-//  float: left;
-//  margin-left: 32%;
-//
-//}
-//
-//.trial-logins{
-//  background: red;
-//}
+p {
+  margin-bottom: 20px;
+}
 
-//.trial-logins input[type="submit"]{
-//  background: red;
-//  color:white;
-//  padding: 20px;
-//  margin-top: 50px;
-//  border-radius: 10px;
-//  border: 0px;
-//
-//}
+article {
+  text-align: center;
+  padding-top: 150px;
+  position: relative;
+
+}
+
+
+article form label#email {
+  margin-left: 30px;
+
+}
+
+article form label#email input {
+  background: #FAF1D4;
+  padding: 0px 4px;
+  border: 1px solid #CC9933;
+  border-radius: 4px;
+  margin-bottom: 20px;
+
+}
+
+article form label#password input {
+  background: #FAF1D4;
+  padding: 0px 4px;
+  border: 1px solid #CC9933;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+article form input#button {
+  float: right;
+  margin-right: 49%;
+}
+
+article > a {
+  float: left;
+  margin-left: 32%;
+
+}
+
+.trial-logins{
+  background: red;
+  margin-left: 35%;
+}
+
+.trial-logins input[type="submit"]{
+  background: red;
+  color:white;
+  padding: 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+  border: 0px;
+  margin-right: 20px;
+}
 
 #main .trial-logins input[type="submit"]{
   float: left;
-  margin-left: 40%;
   margin-top: 50px;
   padding: 20px;
   background: red;

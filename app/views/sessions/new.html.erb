@@ -1,5 +1,5 @@
 <article class="group">
-
+  <p> Goodreads Clone</p>
   <form action="<%= session_url %>" method="POST">
     <input type="hidden"
       name="authenticity_token"
@@ -22,10 +22,11 @@
   <!-- <%= link_to "Request", request_url %> -->
   
   <%= link_to "Sign Up", new_user_url %>
-  
+    
 </article>
 
 <div class="trial-logins">
-<%= button_to "Try App!", session_url(@book, {user: {email: "not@clone.com", password: "password"} }) %>
-<!-- <%= button_to "Try App!", session_url(@book, {user: {email: "dummyRegular", password: "okayGO"} }) %> -->
+<%= button_to "Librarian", session_url(@book, {user: {email: "librarian@greatreads.com", password: "password"} }) %>
+<%= button_to "Guest", session_url(@book, {user: {email: "guest@greatreads.com", password: "password"} }) %>
 </div>
+

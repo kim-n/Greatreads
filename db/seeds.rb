@@ -47,87 +47,119 @@ clone_image = "https://identicons.github.com/807d5a1c7facea5fca0692a25dc6d238.pn
 images = ["https://identicons.github.com/glimberg.png",
 "https://identicons.github.com/GrantSolar.png"]
 
-User.create(email: "kim@narine.com", name: "Kimberly N", password: "k",
+images2 = ["https://identicons.github.com/glimberg.png",
+"https://identicons.github.com/GrantSolar.png"]
+
+
+User.create(email: "librarian@greatreads.com", name: "Librarian", password: "password",
 admin: 2, image: image)
-User.create(email: "not@clone.com", name: "Not a Clone", password: "password",
- admin: 2, image: images.first)
+
+User.create(email: "guest@greatreads.com", name: "Guest", password: "password",
+ admin: 0, image: clone_image)
+
+User.create(email: "love@everything.com", name: "loves_everthing", password: "password",
+admin: 0, image: images[0])
+
+User.create(email: "hate@everything.com", name: "hates_everythin", password: "password",
+ admin: 0, image: images[1])
 
 
-# create clones
-3.times do |t|
- User.create(
-   email: "good_clone#{t}@drone.com",
-   name: "Book_Lover#{t}" ,
-   password: "password",
-   admin: 0,
-   image: clone_image
-   )
-end
+User.create(email: "ken@me.com", name: "Jen", password: "password",
+admin: 0, image: images2[0])
 
-# create clones
-3.times do |t|
- User.create(
-   email: "bad_clone#{t}@drone.com",
-   name: "Book_Hater#{t}" ,
-   password: "password",
-   admin: 0,
-   image: clone_image
-   )
-end
-
-
-
-User.all[2..4].each do |user|
-  Book.all.each do |book|
-    user.posts.create(
-      title: "Amazing!",
-      body: "Great book! I really enjoyed it. I recommended it to all my friends.",
-      book_id: book.id
-      )
-  end
-end
-
-User.all[5..7].each do |user|
-  Book.all.each do |book|
-    user.posts.create(
-      title: "Ugh!",
-      body: "Terrible book! I did not enjoyed it. I recommended it to all my enemies.",
-      book_id: book.id
-      )
-  end
-end
-
-User.all[2..4].each do |user|
-  Book.all.each do |book|
-    user.tastes.create(
-      book_id: book.id,
-      taste: 1
-    )
-  end
-end
-
-User.all[5..7].each do |user|
-  Book.all.each do |book|
-    user.tastes.create(
-      book_id: book.id,
-      taste: -1
-    )
-  end
-end
-
-
-book_lover = User.all[2]
-book_hater = User.all[5]
-
-book_lover.created_clubs.create(title: "Most Loved Books")
-book_hater.created_clubs.create(title: "Most Hated Books")
-
-Club.all.each do |club|
-  id = rand(Book.count) + 1
-  club.book_pairings.create(book_id: id)
-  club.book_pairings.create(book_id: (id + 1) % 8)
-  club.book_pairings.create(book_id: (id + 2) % 8)
-end
+User.create(email: "ben@me.com", name: "Ben", password: "password",
+ admin: 0, image: images2[1])
+ 
+ 
+ book_lover = User.all[2]
+ book_hater = User.all[3]
+ 
+ book_lover.created_clubs.create(title: "Most Loved Books")
+ book_hater.created_clubs.create(title: "Most Hated Books")
+ 
+ 
+ Club.all.each do |club|
+   Book.all.each do |book|
+     club.book_pairings.create(book_id: book.id)
+   end
+ end
+ 
+# 
+# # create clones
+# 3.times do |t|
+#  User.create(
+#    email: "good_clone#{t}@drone.com",
+#    name: "Book_Lover#{t}" ,
+#    password: "password",
+#    admin: 0,
+#    image: clone_image
+#    )
+# end
+# 
+# # create clones
+# 3.times do |t|
+#  User.create(
+#    email: "bad_clone#{t}@drone.com",
+#    name: "Book_Hater#{t}" ,
+#    password: "password",
+#    admin: 0,
+#    image: clone_image
+#    )
+# end
+# 
+# 
+# 
+# User.all[2..4].each do |user|
+#   Book.all.each do |book|
+#     user.posts.create(
+#       title: "Amazing!",
+#       body: "Great book! I really enjoyed it. I recommended it to all my friends.",
+#       book_id: book.id
+#       )
+#   end
+# end
+# 
+# User.all[5..7].each do |user|
+#   Book.all.each do |book|
+#     user.posts.create(
+#       title: "Ugh!",
+#       body: "Terrible book! I did not enjoyed it. I recommended it to all my enemies.",
+#       book_id: book.id
+#       )
+#   end
+# end
+# 
+# User.all[2..4].each do |user|
+#   Book.all.each do |book|
+#     user.tastes.create(
+#       book_id: book.id,
+#       taste: 1
+#     )
+#   end
+# end
+# 
+# User.all[5..7].each do |user|
+#   Book.all.each do |book|
+#     user.tastes.create(
+#       book_id: book.id,
+#       taste: -1
+#     )
+#   end
+# end
+# 
+# 
+# book_lover = User.all[2]
+# book_hater = User.all[5]
+# 
+# book_lover.created_clubs.create(title: "Most Loved Books")
+# book_hater.created_clubs.create(title: "Most Hated Books")
+# 
+# Club.all.each do |club|
+#   id = rand(Book.count) + 1
+#   club.book_pairings.create(book_id: id)
+#   club.book_pairings.create(book_id: (id + 1) % 8)
+#   club.book_pairings.create(book_id: (id + 2) % 8)
+# end
 
 
 
