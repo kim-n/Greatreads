@@ -1,4 +1,5 @@
 <ul class="comment">
+  <a name="comment<%= comment.id %>"></a>
   
   <% if current_user && comment.user_id == current_user.id %>
       <%= button_to "DELETE",   comment_url(comment), class: "delete", method: :delete, :remote => true, form_class: "comment-delete-form" %>

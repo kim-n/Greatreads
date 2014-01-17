@@ -40,6 +40,17 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
 
 <script>
 $(document).ready(function (){
+  
+  var commentAnchor = window.location.hash.substr(1);
+  var postAnchor = window.location.search.substr(1);
+  if(commentAnchor && postAnchor) {
+    var $post = $('a[name="' + postAnchor +'"]');
+    var $commentSection = $post.parent().children(".post-comments");
+  
+    $commentSection.show();  
+    $(document).scrollTop( $('a[name="' + commentAnchor +'"]').offset().top );  
+  }
+  
   // On successful comment creation
   $("div.filter-buttons").on("ajax:success", ".button_to", function (event, data) {
     event.preventDefault();

@@ -3,13 +3,13 @@
     <% user = post.user %>
     <% book = post.book%>
     <% club = post.club %>
-    <li>Person you are following <a href="<%= user_url(user) %>"><%= user.name %></a> made a post about <a href="<%= book_url(book.isbn) %>"><%= book.title %></a> at <a href="<%= club_url(club) %>"><%= club.title %></a></li>
+    <li>The person you are following <a href="<%= user_url(user) %>"><%= user.name %></a> made a post about <a href="<%= book_url(book.isbn) %>"><%= book.title %></a> at <a href="<%= club_url(club)  + "#post" + post.id.to_s %>"><%= club.title %></a></li>
 
   <% elsif note.obj_type == "Review" %>
     <% post = Post.find(note.obj_id) %>
     <% user = post.user %>
     <% book = post.book%>
-    <li>Person you are following <a href="<%= user_url(user) %>"><%= user.name %></a> reviewed <a href="<%= book_url(book.isbn) %>"><%= book.title %></a></li>
+    <li>The person you are following <a href="<%= user_url(user) %>"><%= user.name %></a> <a href="<%= book_url(book.isbn) + "#post" + post.id.to_s %>">reviewed</a> <a href="<%= book_url(book.isbn) %>"><%= book.title %></a></li>
 
   <% elsif note.obj_type == "Follow" %>
     <% follow = Follow.find(note.obj_id) %>
@@ -21,13 +21,14 @@
     <% user = post.user %>
     <% book = post.book%>
     <% club = post.club %>
-    <li>Post was made to club you are following <a href="<%= club_url(club) %>"><%= club.title %></a> about <a href="<%= book_url(book.isbn) %>"><%= book.title %></a>  by <a href="<%= user_url(user) %>"><%= user.name %></a></li>
+    <li>A post was made to the club you are following <a href="<%= club_url(club) %>"><%= club.title %></a> about <a href="<%= club_url(club)  + "#post" + post.id.to_s %>"><%= book.title %></a></li>
 
   <% elsif note.obj_type == "CommentReply" %>
     <% comment = Comment.find(note.obj_id) %>
     <% user = comment.user %>
+    <% book = comment.post.book %>
     <% your_comment = comment.parent_comment %>
-    <li><a href="<%= user_url(user) %>"><%= user.name %></a> replied to your comment "<%= your_comment.body %>" by saying "<%= comment.body %>"</li>
+    <li><a href="<%= user_url(user) %>"><%= user.name %></a> replied to your comment "<%= your_comment.body %>" by saying "<%= comment.body %>"  at <a href="<%= book_url(book.isbn) + "?post" + comment.post.id.to_s + "#comment" + comment.id.to_s %>"><%= book.title %></a></li>
 
   <% elsif note.obj_type == "PostReply" %>
     <% comment = Comment.find(note.obj_id) %>
@@ -36,9 +37,9 @@
     <% book = post.book%>
     <% club = post.club %>
     <% if post.club_id == 0 %>
-        <li><a href="<%= user_url(user) %>"><%= user.name %></a> replied to your review about <a href="<%= book_url(book.isbn) %>"><%= book.title %></a> by saying "<%= comment.body %>"</li>
+        <li><a href="<%= user_url(user) %>"><%= user.name %></a> <a href="<%= book_url(book.isbn)  + "?post" + comment.post.id.to_s +  "#comment" + comment.id.to_s %>">replied</a> to your <a href="<%= book_url(book.isbn) + "#post" + post.id.to_s %>">review</a> about <a href="<%= book_url(book.isbn) %>"><%= book.title %></a> by saying "<%= comment.body %>"</li>
     <% else %>
-        <li><a href="<%= user_url(user) %>"><%= user.name %></a> replied to your post about <a href="<%= book_url(book.isbn) %>"><%= book.title %></a> from <a href="<%= club_url(club) %>"><%= club.title %></a> by saying "<%= comment.body %>"</li>
+        <li><a href="<%= user_url(user) %>"><%= user.name %></a> <a href="<%= club_url(club)  + "?post" + comment.post.id.to_s +  "#comment" + comment.id.to_s %>">replied</a> to your <a href="<%= club_url(club) + "#post" + post.id.to_s %>">post</a> about <a href="<%= book_url(book.isbn) %>"><%= book.title %></a> from <a href="<%= club_url(club) %>"><%= club.title %></a> by saying "<%= comment.body %>"</li>
     <% end %>
 
 
