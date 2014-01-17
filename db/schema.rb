@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20131219153141) do
     t.integer  "user_id",    :null => false
     t.integer  "post_id",    :null => false
     t.integer  "parent_id",  :null => false
-    t.string   "body",       :null => false
+    t.text     "body",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20131219153141) do
     t.integer  "book_id",                   :null => false
     t.integer  "user_id",                   :null => false
     t.string   "title"
-    t.string   "body",                      :null => false
+    t.text     "body",                      :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end

@@ -1,2 +1,6 @@
-<h3>Notification</h3>
-<%=render partial: "notifications/list_notes", locals: {notifications: @notifications} %>
+<header class="page-title">Notification</header>
+<h3>New</h3>
+<%=render partial: "notifications/list_notes", locals: {notifications: @new_notifications} %>
+<br>
+<h3 >Old</h3>
+<%=render partial: "notifications/list_notes", locals: {notifications: @notifications - @new_notifications} %>

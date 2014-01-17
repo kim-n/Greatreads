@@ -26,6 +26,7 @@ class ClubsController < ApplicationController
           params[:books_ids].each do |book_id|
             club.book_pairings.create!(book_id: book_id)
           end
+          current_user.club_memberships.create!(club_id: club.id)
         end
 
         if request.xhr?

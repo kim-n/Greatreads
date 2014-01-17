@@ -27,7 +27,13 @@
   				<a href="<%= user_url(current_user) %>"><%= current_user.name %></a>
   			</li>
   			<li id="notification">
-  				<a href="<%= notifications_url %>">N</a>
+  				<a href="<%= notifications_url %>">
+            <% if current_user.new_notifications.size == 0 %>
+            N
+            <% else %>
+            <%= current_user.new_notifications.size %>
+            <% end %>
+          </a>
   			</li>
   			<li id="log-botton">
   				<%= button_to "Log Out", session_url, method: :delete %>

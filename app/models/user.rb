@@ -225,6 +225,10 @@ class User < ActiveRecord::Base
       Notification.create(user_id: follower.id, obj_type: "Review", obj_id: new_object.id)
     end
   end
+  
+  def new_notifications
+    self.notifications.where(checked: false)
+  end
 
 ####---Session && New User-----####
 

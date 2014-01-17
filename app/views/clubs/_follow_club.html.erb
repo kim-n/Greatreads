@@ -13,6 +13,7 @@
     <%= button_to "Unfollow", club_memberships_url(club), method: :delete, form_class: "follow-form", remote: true %>
   </li>
   <% end %>
+  
   <div class="new-post">
     <header class="sub-title">New Post</header>
   	<%= render "posts/form_post", books: books, club: club  %>
