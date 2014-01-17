@@ -1,4 +1,9 @@
 <ul class="comment">
+  
+  <% if current_user && comment.user_id == current_user.id %>
+      <%= button_to "DELETE",   comment_url(comment), class: "delete", method: :delete, :remote => true, form_class: "comment-delete-form" %>
+  <% end %>
+
   <header class="post-header">
   <li class="comment-poster">
     <img src="<%= comment.user.image %>"></img>
@@ -13,19 +18,18 @@
   <% end %>
 
 
-  <footer class="comment-footer">
     <% if current_user %>
-    <% if comment.user_id == current_user.id %>
-      <%= button_to "DELETE",   comment_url(comment), class: "delete", method: :delete, :remote => true, form_class: "comment-delete-form" %>
-    <% end %>
-    <a  class="reply-button" href="#">Reply</a>
+    <footer class="comment-footer">
+      <a  class="reply-button" href="#">Reply</a>
 
     <div class="reply-form hide-tag">
           <%= render "comments/form_comment", post: comment, parent_id: comment.id %>
     </div>
-    <div class="new-comment"></div>
-    <% end %>
   </footer>
+    
+    <% end %>
+  <div class="new-comment"></div>
+  
 
 
 </ul>

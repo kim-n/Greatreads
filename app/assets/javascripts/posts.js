@@ -46,7 +46,6 @@ $(document).ready(function (){
 
 
     $insertion.children(".post").remove()
-
   });
   
   

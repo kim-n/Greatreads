@@ -67,6 +67,7 @@ $(document).ready(function (){
 
   
   $("body").on("ajax:success", ".comment-delete-form", function (event, data) {
+      console.log($(this))
     event.preventDefault();
     $(this).parent().remove();
   });

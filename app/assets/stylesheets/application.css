@@ -508,7 +508,7 @@ th:nth-child(even), td:nth-child(even) {
 
 .post .post-comments {
   border: 1px solid #FAF1D4;
-  background: #F8F8F8;
+/*  background: #F8F8F8;*/
   width: 75%;
   margin-left: 182px;
 }
@@ -565,14 +565,16 @@ th:nth-child(even), td:nth-child(even) {
 /*---- COMMENTS ----*/
 
 .comment {
-  border: 1px dashed #d7d7d7;
+  border-bottom: 1px dashed #d7d7d7;
+  border-left: 1px dashed #d7d7d7;
   margin: 10px 20px;
   margin-right: 0px;
-  background: white;
+  background: none;
 }
 
 .comment .post-header {
   height: 30px;
+  background: #DFDFDF;
 }
 
 .comment .comment-body{
@@ -611,6 +613,24 @@ th:nth-child(even), td:nth-child(even) {
 
 .comment-footer form div {
   display:inline;
+}
+
+
+.comment .comment-delete-form {
+  position: absolute;
+  left:50%;
+  margin-left: 250px;
+  margin-top: 4px;
+}
+
+
+.comment .comment-delete-form input[type="submit"] {
+  margin:0px;
+  padding:0px;
+  display:inline;
+  background:none;
+  color:red;
+  border:none;
 }
 
 /*---- POST FORM ----*/
