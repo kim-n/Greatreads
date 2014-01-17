@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.page-right .sub-title {
+  margin-top:10px;
+}
+
 .page-title #email {
   position: absolute;
   color: #eee;
@@ -46,6 +50,7 @@
 
 .page-right {
   width: 30%;
+  font-size:70%;
 }
 
 .follow .button-follow, .unfollow .button-unfollow {
@@ -53,13 +58,13 @@
 }
 
 
-.user-info td {
+.page-left td {
   width: 10%;
   text-align: right;
   padding-right: 30px;
 }
 
-.user-info td:nth-child(even) {
+.page-left td:nth-child(even) {
   width: 80%;
   text-align: left;
 }
@@ -95,4 +100,17 @@
 
 .page-right .sub-title {
   margin-bottom: 0px;
+}
+
+.post {
+  width: 100%;
+}
+
+.post .post-comments {
+  margin-left: 130px;
+}
+
+.comment .comment-delete-form {
+  margin-left: 40px;
+  margin-top: 4px;
 }

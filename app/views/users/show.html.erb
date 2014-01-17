@@ -1,5 +1,5 @@
 <a class="back-button" href="<%= users_url %>">ALL Users</a>
-<header class="page-title"><%= @user.name %>'s Profile<h3 id="email"><%= @user.email %></h3></header>
+<header class="page-title"><%= @user.name %>'s Profile</header>
 
 <div class="group">
   <div class="page-left">
@@ -9,7 +9,7 @@
       <div class="user-info">
         <div class="user-details">
         <h3 id="user-name"><%= @user.email %></h3>
-        <h3 id="user-created">Created on: <%= @user.created_at.to_date %></h3>
+        <h3 id="user-created">Created on: <%= @user.created_at.to_date.to_formatted_s(:rfc822) %></h3>
 
         <% unless current_user.nil? || @user.id == current_user.id %>
           <% button_class = @is_followed_by_current_user ? "follow" : "unfollow" %>
@@ -24,58 +24,61 @@
           </ul>
         <% end %>
         </div>
+      </div>
+      
+      <table>
+      	<header class="sub-title">Books Read:</header>
+      	<% @read_books_with_rating.each do |pair| %>
+      	<tr>
+      		<td><%= pair[:taste] %></td>
+      		<td>
+      			<a href="<%= book_url(pair[:book].isbn) %>">
+      				<%= pair[:book].title %>
+      			</a>
+      		</td>
+      	</tr>
+      	<% end %>
+      </table>
 
-        <table>
-        	<header class="sub-title">Read List:</header>
-        	<% @read_books_with_rating.each do |pair| %>
-        	<tr>
-        		<td><%= pair[:taste] %></td>
-        		<td>
-        			<a href="<%= book_url(pair[:book].isbn) %>">
-        				<%= pair[:book].title %>
-        			</a>
-        		</td>
-        	</tr>
-        	<% end %>
-        </table>
 
+      <table>
+      	<header class="sub-title">Wish List:</header>
+      	<% @wishes.each do |wish| %>
+      	<tr>
+          <td></td>
+      		<td>
+      			<a href="<%= book_url(wish.book.isbn) %>">
+      				<%= wish.book.title %>
+      			</a>
+      		</td>
+      	</tr>
+      	<% end %>
+      </table>
+      
+      <header class="sub-title">Reviews:</header>
+      <%= render "posts/list_posts", :posts => @reviews, :a_review => "hide-tag" %>
 
-        <table>
-        	<header class="sub-title">Wish List:</header>
-        	<% @wishes.each do |wish| %>
-        	<tr>
-            <td></td>
-        		<td>
-        			<a href="<%= book_url(wish.book.isbn) %>">
-        				<%= wish.book.title %>
-        			</a>
-        		</td>
-        	</tr>
-        	<% end %>
-        </table>
-       </div>
+      <br>
+      <header class="sub-title">Posts:</header>
+      <%= render "posts/list_posts", :posts => @posts, :a_post => "hide-tag" %>
+       
     </div>
   </div>
 
   <div class="page-right">
   	<header class="sub-title">Following</header>
-    <div class="show-follows display">
+    <div class="show-follows ">
       <%= render "users/display_users", :users => @user.follows  %>
     </div>
 
   	<header class="sub-title">Followed by</header>
-    <div class="show-follows display">
+    <div class="show-follows ">
       <%= render "users/display_users", :users => @user.followers  %>
     </div>
   </div>
 </div>
 
 <div class="page-full">
-  <header class="sub-title">Reviews:</header>
-  <%= render "posts/list_posts", :posts => @reviews, :a_review => "hide-tag" %>
 
-  <br>
-  <header class="sub-title">Posts:</header>
-  <%= render "posts/list_posts", :posts => @posts, :a_post => "hide-tag" %>
 
 </div>

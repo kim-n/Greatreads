@@ -111,17 +111,17 @@ class User < ActiveRecord::Base
     self.tastes.each do |like|
       if like.taste == 1
         book_ids << like.book_id
-        book_rating_pairs << {taste: "^", book: like.book}
+        book_rating_pairs << {taste: "\u25B3", book: like.book}
       elsif like.taste == -1
         book_ids << like.book_id
-        book_rating_pairs << {taste: "v", book: like.book}
+        book_rating_pairs << {taste: "\u25BD", book: like.book}
       end
     end
 
     self.reviews.each do |review|
       unless book_ids.include?(review.book_id)
         book_ids << review.book_id
-        book_rating_pairs << {taste: "-", book: review.book}
+        book_rating_pairs << {taste: "\u25AD", book: review.book}
       end
     end
 

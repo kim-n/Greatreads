@@ -152,7 +152,7 @@ nav {
 
 .static-elements a:hover {
   color: #ccc;
-  border-bottom: 2px dashed #ccc;
+/*  border-bottom: 2px dashed #ccc;*/
 }
 
 .site-nav .button_to input {

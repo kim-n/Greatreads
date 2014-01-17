@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
     comment = current_user.comments.new(params[:comment])
     comment.post_id = params[:post_id]
     comment.parent_id = params[:parent_id]
-    puts params[:parent_id]
 
     is_saved = comment.save
 

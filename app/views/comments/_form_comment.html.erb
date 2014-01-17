@@ -1,5 +1,5 @@
 <form class="comment-form"
-action="<%= post_comments_url(post.id, {parent_id: parent_id}) %>" method="post"
+action="<%= post_comments_url(post, {parent_id: parent_id}) %>" method="post"
 data-remote="true">
   <input type="hidden"
           name="authenticity_token"
