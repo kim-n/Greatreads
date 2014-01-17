@@ -84,6 +84,37 @@ User.create(email: "ben@me.com", name: "Ben", password: "password",
    end
  end
  
+ Book.all.each do |book|
+   book_hater.tastes.create(
+     book_id: book.id,
+     taste: -1
+   )
+   book_lover.tastes.create(
+     book_id: book.id,
+     taste: 1
+   )
+ end
+ 
+ User.all.each do |user|
+   Follow.create(followee_id: user.id, follower_id: book_hater.id) unless book_hater.id == user.id
+   Follow.create(followee_id: user.id, follower_id: book_lover.id) unless book_lover.id == user.id
+ end
+ 
+
+ Book.all.each do |book|
+   book_hater.posts.create(
+     title: "Ugh!",
+     body: "I hate this.",
+     book_id: book.id
+     )
+     
+   book_lover.posts.create(
+     title: "Love!",
+     body: "I loved #{book.title} it changed my life",
+     book_id: book.id
+     )
+ end
+
 # 
 # # create clones
 # 3.times do |t|
