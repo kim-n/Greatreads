@@ -1,7 +1,7 @@
 <a class="back-button" href="<%= clubs_url %>">ALL CLUBS</a>
 
 
-<% if current_user  && is_admin?(current_user) %>
+<% if current_user  && @club.creator == current_user%>
 <div class="club-show-page">
 <div class="add-club-wrapper">
   <button class="add-club-widget" href="#">+</button>
@@ -15,6 +15,13 @@
 <header class="page-title"><%= @club.title %></header>
 Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></a>
 
+
+<div class="follow-section">
+    <%=render partial: "clubs/follow_club", locals: {is_current_user_member: @is_current_user_member, club: @club, books: @clubbooks } %>
+</div>
+
+
+<header class="sub-title">Filter</header>
 <div class="filter-buttons">
     <%= button_to "ALL", club_filter_url(@club.id, {book_id: 0}), remote: true %>
 <% @clubbooks.each do |book| %>
@@ -22,25 +29,6 @@ Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></
   <!-- <button><%= book.title %></button> -->
 <% end %>
 </div>
-
-<% if current_user %>
-  <% button_class = @is_current_user_member ? "follow" : "unfollow" %>
-<% else %>
-  <% button_class = "no-user" %>
-<% end %>
-<ul class="<%= button_class %>">
-  <li class="button-follow"><%= button_to "Follow", club_memberships_url(params[:id]) %></li>
-  <li class="button-unfollow"><%= button_to "Unfollow", club_memberships_url(params[:id]), method: :delete %></li>
-</ul>
-
-
-
-<% if current_user %>
-	<header class="sub-title">New Post</header>
-  <div class="new-post">
-  	<%= render "posts/form_post", books: @clubbooks, club: @club  %>
-  </div>
-<% end %>
 
 
 <header class="sub-title">Posts</header>
@@ -78,6 +66,22 @@ $(document).ready(function (){
       $('div.add-club').toggle();
     })
   })
+  
+  $("body").on("ajax:success", ".follow-form", function (event, data) {
+    event.preventDefault();
+    
+    console.log(data)
+    $insertion = $(".follow-section")
+    $insertion.html(data)
+  });
+  
+  $("body").on("ajax:error", ".follow-form", function (event, data) {
+    event.preventDefault();
+
+    $insertion = $(".follow-section")
+    $insertion.html(data)
+
+  });
 
 });
 </script>

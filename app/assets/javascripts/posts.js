@@ -7,9 +7,13 @@ $(document).ready(function (){
 
     $errors = $postForm.children(".errors")
     $errors.remove();
-
-    $postsList = $(this).parent().siblings(".posts-list");
+    
+    $('.new-post form')[0].reset()
+    
+    $postsList = $(".posts-list");
     $postsList.prepend(data);
+    $($postsList.children()[0]).css({"border": "2px solid red"})
+    setTimeout(function () { $($postsList.children()[0]).css({"border": "0"}) }, 1000)
   });
 
   // on unsuccessful post creation
@@ -20,7 +24,7 @@ $(document).ready(function (){
 
     $errors = $postForm.children(".errors")
     $errors.remove();
-
+    
     $postForm.prepend('<div class="errors">'+ data.responseText +'</div>')
   });
 

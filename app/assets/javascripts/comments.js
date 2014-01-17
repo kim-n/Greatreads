@@ -24,7 +24,7 @@ $(document).ready(function (){
     $newComments.prepend(data);
     $(this)[0].reset()
     $('.comment-form input[type="submit"]').hide();
-    
+
   });
 
   // on unsuccessful comment creation

@@ -99,9 +99,10 @@ input[type="submit"]:hover {
   display: none;
 }
 
-.follow .button-follow, .unfollow .button-unfollow {
+.follow .button-follow, .unfollow .button-unfollow , .unfollow .new-post, .no-user .new-post{
   display: none;
 }
+
 
 /* --- GLOBALS --- */
 

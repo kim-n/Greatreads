@@ -30,7 +30,7 @@ GoodReadsClone::Application.routes.draw do
     post 'filter', :to => 'clubs#filter_show'
     post 'add_book', :to => 'clubs#add_book'
     resources :posts, :only => [:create]
-    resources :memberships, only: [:create]
+    resource :memberships, only: [:create, :destroy]
   end
 
   resources :comments, only: [:index, :show, :destroy]
