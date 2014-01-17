@@ -1,5 +1,17 @@
 <a class="back-button" href="<%= clubs_url %>">ALL CLUBS</a>
 
+
+<% if current_user  && is_admin?(current_user) %>
+<div class="club-show-page">
+<div class="add-club-wrapper">
+  <button class="add-club-widget" href="#">+</button>
+  <div class="add-club">
+    <%= render "new_book", books: Book.all - @clubbooks %>
+  </div>
+</div>
+</div>
+<% end %>
+
 <header class="page-title"><%= @club.title %></header>
 Creator: <a href="<%= user_url(@club.creator.id) %>"><%= @club.creator.name %></a>
 
@@ -56,6 +68,16 @@ $(document).ready(function (){
     event.preventDefault();
     $(".posts-list").html(data)
   });
+  
+  $(document).ready( function () {
+    $('div.add-club').hide();
+  
+  
+    $('.add-club-widget').on("click", function (event) {
+      event.preventDefault()
+      $('div.add-club').toggle();
+    })
+  })
 
 });
 </script>

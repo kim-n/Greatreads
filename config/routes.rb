@@ -28,6 +28,7 @@ GoodReadsClone::Application.routes.draw do
 
   resources :clubs, :only => [:index, :create, :show, :destroy] do
     post 'filter', :to => 'clubs#filter_show'
+    post 'add_book', :to => 'clubs#add_book'
     resources :posts, :only => [:create]
     resources :memberships, only: [:create]
   end

@@ -68,12 +68,12 @@ class ClubsController < ApplicationController
     render partial: "posts/list_posts", locals:{posts: @posts, club_page: "hide-tag"}
   end
 
-  #
-  #
-  # def new
-  #   @books = Book.all
-  #   render :new
-  # end
+  def add_book
+    club = Club.find_by_id(params[:club_id])
+    club_book = club.book_pairings.create(book_id: params[:books_ids].first)
+    
+    redirect_to club_url(club)
+  end
 
   def destroy
     club = Club.find(params[:id])

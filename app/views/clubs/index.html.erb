@@ -6,24 +6,30 @@
   </div>
 </div>
 
-<div class="page-right">
-  <% if current_user && is_admin?(current_user) %>
-  	<a class="create-club-button" href="#">Create Club</a><br>
-    <div class="new-club-form hide-tag">
-    <%= render "club_form", books: Book.all %>
+  
+  <% if current_user  && is_admin?(current_user) %>
+  <div class="add-club-wrapper">
+    <button class="add-club-widget" href="#">+</button>
+    <div class="add-club">
+      <%= render "club_form", books: Book.all %>
     </div>
-  <% end %>  
-</div>
-
+  </div>
+  <% end %>
+  
+  
+  
 <script>
 $(document).ready(function (){
 
-  // On click of create club button drop down of create form
-  $("body").on("click", ".create-club-button", function (event){
-    event.preventDefault();
-    $commentButton = $(this)
-    $(".new-club-form").toggleClass("hide-tag")
-  });
+  $(document).ready( function () {
+    $('div.add-club').hide();
+  
+  
+    $('.add-club-widget').on("click", function (event) {
+      event.preventDefault()
+      $('div.add-club').toggle();
+    })
+  })
 
 
   // On successful club creation
@@ -32,11 +38,14 @@ $(document).ready(function (){
 
     $commentForm = $(this)
 
-    console.log($(this))
-    console.log(data)
     $(".clubs-list").html(data)
     $commentForm[0].reset()
-    $(".new-club-form").toggleClass("hide-tag")
+    
+    $newClubDiv = $("div.add-club-wrapper")
+    $errors = $newClubDiv.children(".errors")
+    $errors.remove();
+    
+    $(".add-club").hide()
 
   });
 
@@ -44,28 +53,13 @@ $(document).ready(function (){
   $("body").on("ajax:error", ".club-form", function (event, data) {
     event.preventDefault();
     $commentForm = $(this)
-    $newClubDiv = $("div.new-club-form")
+    $newClubDiv = $("div.add-club-wrapper")
 
     $errors = $newClubDiv.children(".errors")
     $errors.remove();
 
     $newClubDiv.append('<div class="errors">' + data.responseText + '</div>');
   });
-  //
-  //
-  //
-  // // On click of comment button drop down of comments appear
-  // $("body").on("click", ".reply-button", function (event){
-  //   event.preventDefault();
-  //
-  //   $commentButton = $(this)
-  //
-  //   $(".reply-button").removeClass("hide-tag")
-  //   $(this).toggleClass("hide-tag")
-  //
-  //   $(".reply-form").addClass("hide-tag")
-  //   $commentButton.siblings(".reply-form").toggleClass("hide-tag")
-  // });
 
 
 

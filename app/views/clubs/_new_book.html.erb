@@ -1,0 +1,11 @@
+<form action="<%= club_add_book_url(params[:id]) %>" method="post">
+  <input type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>" >
+
+  <label>Book
+	<%= render "books_list", books: books%>
+  </label>
+  
+  <input type="submit" value="+"></input>
+</form>

@@ -8,4 +8,25 @@
   display: none;
 }
 
- 
+//INDEX
+
+.add-club-widget{
+   background-color: #ecf0f1 ;
+}
+
+.add-club {
+  
+}
+
+.add-club-wrapper {
+  position: absolute;
+  background: #707070;
+  border-radius: 5px;
+  left:50%;
+  top: 140px;
+  margin-left: -230px;
+}
+
+.club-show-page .add-club-wrapper {
+  margin-left: -420px;
+}
