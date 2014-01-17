@@ -20,16 +20,14 @@
 
 
     <% if current_user %>
-    <footer class="comment-footer">
       <a  class="reply-button" href="#">Reply</a>
 
     <div class="reply-form hide-tag">
           <%= render "comments/form_comment", post: comment, parent_id: comment.id %>
     </div>
-  </footer>
+    <div class="new-comment"></div>
     
     <% end %>
-  <div class="new-comment"></div>
   
 
 

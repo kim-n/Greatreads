@@ -517,16 +517,18 @@ th:nth-child(even), td:nth-child(even) {
   padding: 5px 15px 5px 0px;
 }
 
-.post .post-comments .comment-form {
+.post .post-comments > .comment-form {
   background: #DFDFDF;
   padding: 5px 15px 0px 0px;
+  height: 40px;
 }
 
 .post .post-comments textarea {
   margin-left: 10px;
   margin-bottom: 0;
-  width: 97%;
+  width: 60%;
   height: 20px;
+  float:left;
 }
 
 .post .post-comments input[type="submit"] {
@@ -602,16 +604,30 @@ th:nth-child(even), td:nth-child(even) {
   display:inline;
 }
 
-.comment-footer input[type="submit"] {
-  margin:0px;
-  padding:0px;
-  display:inline;
-  background:none;
-  color:red;
-  border:none;
+
+.reply-form {
+  height: 40px;
+/*  background:blue;*/
 }
 
-.comment-footer form div {
+
+.reply-form input[type="submit"] {
+  margin:6px;
+  display:inline;
+  color:black;
+  background: #ccc;
+  border-radius: 3px;
+  border: 1px solid #eee;
+  
+}
+
+
+.reply-form textarea {
+  margin:5px;
+  width: 50%;
+}
+
+.reply-form form div {
   display:inline;
 }
 
