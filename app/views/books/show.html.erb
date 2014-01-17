@@ -36,7 +36,17 @@
 <script>
 $(function (){
   
-
+  var commentAnchor = window.location.hash.substr(1);
+  var postAnchor = window.location.search.substr(1);
+  if(commentAnchor) {
+    var $post = $('a[name="' + postAnchor +'"]');
+    var $commentSection = $post.parent().children(".post-comments");
+  
+    console.log(commentAnchor)
+    console.log($(document).scrollTop( $('a[name="' + commentAnchor +'"]')).offset())
+    $commentSection.show();  
+    $(document).scrollTop( $('a[name="' + commentAnchor +'"]').offset().top );  
+  }
 
 });
 </script>

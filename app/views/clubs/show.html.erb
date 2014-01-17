@@ -43,7 +43,7 @@ $(document).ready(function (){
   
   var commentAnchor = window.location.hash.substr(1);
   var postAnchor = window.location.search.substr(1);
-  if(commentAnchor && postAnchor) {
+  if(commentAnchor) {
     var $post = $('a[name="' + postAnchor +'"]');
     var $commentSection = $post.parent().children(".post-comments");
   
